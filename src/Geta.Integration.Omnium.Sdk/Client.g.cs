@@ -48756,6 +48756,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? Created { get; set; }
 
         /// <summary>
+        /// Date and time the customer was modified
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Modified { get; set; }
+
+        /// <summary>
         /// True if customer is inactive, and should not be able to make purchases
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isInactive", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -48945,6 +48951,18 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? CreatedTo { get; set; }
 
         /// <summary>
+        /// Customer modified from date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modifiedFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ModifiedFrom { get; set; }
+
+        /// <summary>
+        /// Customer modified before date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modifiedTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ModifiedTo { get; set; }
+
+        /// <summary>
         /// Filter by customer
         /// </summary>
         [Newtonsoft.Json.JsonProperty("taxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -48991,6 +49009,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("projectTypeId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ProjectTypeId { get; set; }
+
+        /// <summary>
+        /// Sort order (ModifiedAscending, ModifiedDescending, CreatedAscending, CreatedDescending)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("sortOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string SortOrder { get; set; }
 
         /// <summary>
         /// Number of items to take
@@ -54107,6 +54131,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? Created { get; set; }
 
         /// <summary>
+        /// Date and time the customer was modified
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Modified { get; set; }
+
+        /// <summary>
         /// True if customer is inactive, and should not be able to make purchases
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isInactive", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -57661,6 +57691,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? Created { get; set; }
 
         /// <summary>
+        /// Date and time the customer was modified
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Modified { get; set; }
+
+        /// <summary>
         /// True if customer is inactive, and should not be able to make purchases
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isInactive", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -58532,6 +58568,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("projectValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal ProjectValue { get; set; }
+
+        /// <summary>
+        /// Additional project value. To manually adjust project value. Will be added to project value together with the transaction values.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("projectAdditionalValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ProjectAdditionalValue { get; set; }
 
         /// <summary>
         /// Project budget value (Calculated if project has transactions)
@@ -60384,6 +60426,12 @@ namespace Geta.Integration.Omnium.Sdk
         public string Description { get; set; }
 
         /// <summary>
+        /// Product specification
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("specification", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Specification { get; set; }
+
+        /// <summary>
         /// If true, this variant should represent the product in flattened variant lists
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isMainProductVariant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -60878,6 +60926,32 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("marketId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketId { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPriceReference
+    {
+        [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string CurrencyCode { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("marketId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string MarketId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("date", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime Date { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string PromotionId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("priceListId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string PriceListId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("promotionName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string PromotionName { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("unitPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal UnitPrice { get; set; }
 
     }
 
@@ -61416,6 +61490,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("gender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Gender { get; set; }
+
+        /// <summary>
+        /// Price history (lowest prices for each market)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lowestPriceHistory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPriceReference> LowestPriceHistory { get; set; }
 
     }
 
@@ -61970,6 +62050,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("gender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Gender { get; set; }
 
+        /// <summary>
+        /// Price history (lowest prices for each market)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lowestPriceHistory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPriceReference> LowestPriceHistory { get; set; }
+
     }
 
     /// <summary>
@@ -62381,6 +62467,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contactPersonEmails", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ContactPersonEmails { get; set; }
+
+        /// <summary>
+        /// Filter by contact person phone numbers
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("contactPersonPhones", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string> ContactPersonPhones { get; set; }
 
         /// <summary>
         /// Customer name

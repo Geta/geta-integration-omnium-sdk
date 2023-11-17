@@ -27,8 +27,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  <Target Name="NSwag" BeforeTargets="Build" Condition="'$(CI_BUILD)'!='True'">
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run nswag.json /assembly:$(TargetPath) /variables:Configuration=$(Configuration) /runtime:Net60" WorkingDirectory="$(ProjectDir)">
+  <Target Name="DefineNSWagFileName">
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+      <NSwagConfigFile>nswag.test.json</NSwagConfigFile>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+      <NSwagConfigFile>nswag.json</NSwagConfigFile>
+    </PropertyGroup>
+  </Target>
+  <Target Name="NSwag" BeforeTargets="Build">
+    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run $(NSwagConfigFile) /assembly:$(TargetPath) /variables:Configuration=$(Configuration) /runtime:Net60" WorkingDirectory="$(ProjectDir)">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
       <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
     </Exec>
