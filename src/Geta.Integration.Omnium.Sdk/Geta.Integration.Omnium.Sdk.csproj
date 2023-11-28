@@ -28,10 +28,10 @@
     </PackageReference>
   </ItemGroup>
   <Target Name="DefineNSWagFileName">
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PropertyGroup Condition="$(Version.Contains('-alpha'))">
       <NSwagConfigFile>nswag.test.json</NSwagConfigFile>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PropertyGroup Condition="!$(Version.Contains('-alpha'))">
       <NSwagConfigFile>nswag.json</NSwagConfigFile>
     </PropertyGroup>
   </Target>
