@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/Geta/geta-notfoundhandler.git</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/Geta/geta-integration-omnium-sdk/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <PackageIcon>icon.png</PackageIcon>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -33,6 +34,13 @@
   <PropertyGroup Condition="!$(Version.Contains('-alpha'))">
     <NSwagConfigFile>nswag.json</NSwagConfigFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\images\icon.png">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+      <Link>icon.png</Link>
+    </None>
+  </ItemGroup>
   <Target Name="NSwag" BeforeTargets="Build">
     <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run $(NSwagConfigFile) /assembly:$(TargetPath) /variables:Configuration=$(Configuration) /runtime:Net60" WorkingDirectory="$(ProjectDir)">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />

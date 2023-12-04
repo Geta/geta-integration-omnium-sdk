@@ -739,7 +739,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="isPriceRecalculated">OBSOLETE: Prices is always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string cartId, string customerId, bool? enrichCart, bool? isPriceRecalculated);
@@ -751,7 +751,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="isPriceRecalculated">OBSOLETE: Prices is always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string cartId, string customerId, bool? enrichCart, bool? isPriceRecalculated, System.Threading.CancellationToken cancellationToken);
@@ -12569,7 +12569,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="isPriceRecalculated">OBSOLETE: Prices is always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string cartId, string customerId, bool? enrichCart, bool? isPriceRecalculated)
@@ -12584,7 +12584,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="isPriceRecalculated">OBSOLETE: Prices is always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string cartId, string customerId, bool? enrichCart, bool? isPriceRecalculated, System.Threading.CancellationToken cancellationToken)
