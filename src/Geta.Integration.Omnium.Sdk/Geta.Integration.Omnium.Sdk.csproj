@@ -41,7 +41,7 @@
       <Link>icon.png</Link>
     </None>
   </ItemGroup>
-  <Target Name="NSwag" BeforeTargets="Build">
+  <Target Name="NSwag" BeforeTargets="BeforeBuild">
     <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run $(NSwagConfigFile) /assembly:$(TargetPath) /variables:Configuration=$(Configuration) /runtime:Net60" WorkingDirectory="$(ProjectDir)">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
       <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
