@@ -1,34 +1,38 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 namespace Geta.Integration.Omnium.Sdk;
 
 public static class IServiceCollectionExtensions
 {
-    public static IServiceCollection AddOmniumIntegration(
-        this IServiceCollection services,
-        IConfiguration configuration,
-        Action<OmniumConfiguration>? action = null)
+    /// <summary>
+    /// Configures Omnium Integration required services
+    /// </summary>
+    /// <param name="services">Service collection</param>
+    /// <returns>Service collection for chaining</returns>
+    public static IServiceCollection AddOmniumIntegration(this IServiceCollection services)
     {
-        // TODO: bind against config file
-        var settings = new OmniumConfiguration();
-        action?.Invoke(settings);
-        services.AddSingleton(_ => Options.Create(settings));
-
-        // TODO: validate configuration
-        //services.AddOptions<OmniumConfiguration>()
-        //    .Bind(configuration.GetSection(nameof(OmniumConfiguration)))
-        //    .ValidateDataAnnotations()
-        //    .ValidateOnStart();
-
-        // TODO: configure Omnium clients
         services.AddScoped<AuthService>();
         services.AddTransient<TokenHandler>();
 
-        services.AddHttpClient("Omnium_LoginClient", options => { options.BaseAddress = new Uri(settings.BaseAddress); });
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IConfigureOptions<OmniumConfiguration>, OmniumConfigurationConfigurer>());
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IValidateOptions<OmniumConfiguration>, OmniumConfigurationValidator>());
+
+        services.AddHttpClient(
+            "Omnium_LoginClient",
+            (serviceProvider, httpClient) =>
+            {
+                var configuration = serviceProvider.GetRequiredService<IOptions<OmniumConfiguration>>();
+                httpClient.BaseAddress = new Uri(configuration.Value.BaseAddress);
+            });
+        
         services
-            .AddHttpClient<IClient, Client>(options => { options.BaseAddress = new Uri(settings.BaseAddress); })
+            .AddHttpClient<IClient, Client>((serviceProvider, httpClient) =>
+            {
+                var configuration = serviceProvider.GetRequiredService<IOptions<OmniumConfiguration>>();
+                httpClient.BaseAddress = new Uri(configuration.Value.BaseAddress);
+            })
             .AddHttpMessageHandler<TokenHandler>();
 
         return services;

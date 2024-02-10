@@ -1,4 +1,4 @@
-﻿namespace Geta.Integration.Omnium.Sdk;
+namespace Geta.Integration.Omnium.Sdk;
 
 public class AuthService
 {
@@ -15,7 +15,7 @@ public class AuthService
     ///     to get the Baerer token string
     /// </summary>
     /// <returns>Token string used for authentication</returns>
-    public async Task<string> GetToken(string clientId, string clientSecret)
+    public async Task<string> GetTokenAsync(string clientId, string clientSecret)
     {
         // TODO: Add expiration to prevent getting token for each request
         var result = await _loginClient.PostAsync($"/api/Token?clientId={clientId}&clientSecret={clientSecret}&returnAsJson=false", null);
