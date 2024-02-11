@@ -1,5 +1,8 @@
 namespace Geta.Integration.Omnium.Sdk;
 
+/// <summary>
+/// Service handling access tokens (but this guy does not do refresh, it's delegating handler responsibility)
+/// </summary>
 public class AuthService
 {
     private readonly HttpClient _loginClient;
@@ -17,7 +20,6 @@ public class AuthService
     /// <returns>Token string used for authentication</returns>
     public async Task<string> GetTokenAsync(string clientId, string clientSecret)
     {
-        // TODO: Add expiration to prevent getting token for each request
         var result = await _loginClient.PostAsync($"/api/Token?clientId={clientId}&clientSecret={clientSecret}&returnAsJson=false", null);
         var content = await result.Content.ReadAsStringAsync();
 

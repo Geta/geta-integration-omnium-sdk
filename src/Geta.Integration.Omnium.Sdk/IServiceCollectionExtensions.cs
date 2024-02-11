@@ -13,6 +13,8 @@ public static class IServiceCollectionExtensions
     /// <returns>Service collection for chaining</returns>
     public static IServiceCollection AddOmniumIntegration(this IServiceCollection services)
     {
+        services.AddMemoryCache();
+            
         services.AddScoped<AuthService>();
         services.AddTransient<TokenHandler>();
 
@@ -26,7 +28,7 @@ public static class IServiceCollectionExtensions
                 var configuration = serviceProvider.GetRequiredService<IOptions<OmniumConfiguration>>();
                 httpClient.BaseAddress = new Uri(configuration.Value.BaseAddress);
             });
-        
+
         services
             .AddHttpClient<IClient, Client>((serviceProvider, httpClient) =>
             {
