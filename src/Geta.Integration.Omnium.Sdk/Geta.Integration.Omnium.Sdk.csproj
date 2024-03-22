@@ -5,11 +5,12 @@
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageId>Geta.Integration.Omnium.Sdk</PackageId>
-    <Title>NotFound handler Admin UI integration Optimizely</Title>
+    <Title>Omnium SDK Client Package</Title>
+    <Description>Omnium SDK Client Package</Description>
     <Authors>Geta Digital</Authors>
     <Company>Geta Digital</Company>
     <PackageProjectUrl>https://github.com/Geta/geta-integration-omnium-sdk</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Geta/geta-notfoundhandler.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Geta/geta-integration-omnium-sdk.git</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/Geta/geta-integration-omnium-sdk/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
@@ -19,10 +20,15 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="13.20.0" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.20.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="NSwag.MSBuild" Version="13.20.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
