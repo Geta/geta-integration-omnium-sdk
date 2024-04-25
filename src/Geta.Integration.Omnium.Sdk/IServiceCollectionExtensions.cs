@@ -35,8 +35,9 @@ public static class IServiceCollectionExtensions
                 var configuration = serviceProvider.GetRequiredService<IOptions<OmniumConfiguration>>();
                 httpClient.BaseAddress = new Uri(configuration.Value.BaseAddress);
             })
+            .AddPolicyHandler(ExceptionPolicies.GetRetryOnTooManyRequestsPolicy())
             .AddHttpMessageHandler<TokenHandler>();
-
+            
         return services;
     }
 }
