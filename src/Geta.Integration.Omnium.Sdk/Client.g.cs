@@ -796,7 +796,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -807,7 +807,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update quantity on cart order line by skuId / code
@@ -1494,6 +1494,25 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ClickAndCollectGetOrderForCustomerAsync(string? customerId, string? orderId, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Extend the customer pickup deadline for a click and collect order
+        /// </summary>
+        /// <param name="orderId">The id of the order</param>
+        /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Extend the customer pickup deadline for a click and collect order
+        /// </summary>
+        /// <param name="orderId">The id of the order</param>
+        /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get comment.
@@ -7769,6 +7788,51 @@ namespace Geta.Integration.Omnium.Sdk
         System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersUpdateAndRunWorkflowAsync(OmniumPurchaseOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
+        /// Update status and run workflow for a purchase order
+        /// </summary>
+        /// <remarks>
+        /// If you need to update status on a purchase order, set the corresponding. The workflow request object allows you to add expected delivery date.
+        /// <br/>&lt;br /&gt;
+        /// <br/>If you do not wish to automatically run the workflow for the purchase order, you can specify this using "skipRunWorkflow:true".
+        /// <br/>&lt;br /&gt;&lt;br /&gt;
+        /// <br/>Basic example on how you would update status to "Confirmed" for an existing order:
+        /// <br/>            
+        /// <br/>     POST /api/purchaseOrders/{purchaseOrderId}/UpdateStatus
+        /// <br/>     {
+        /// <br/>         "status": "Confirmed",
+        /// <br/>         "expectedDeliveryDate": 2024-01-01
+        /// <br/>     }
+        /// </remarks>
+        /// <param name="purchaseOrderId">The ID of the purchase order</param>
+        /// <param name="body">Information about the</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update status and run workflow for a purchase order
+        /// </summary>
+        /// <remarks>
+        /// If you need to update status on a purchase order, set the corresponding. The workflow request object allows you to add expected delivery date.
+        /// <br/>&lt;br /&gt;
+        /// <br/>If you do not wish to automatically run the workflow for the purchase order, you can specify this using "skipRunWorkflow:true".
+        /// <br/>&lt;br /&gt;&lt;br /&gt;
+        /// <br/>Basic example on how you would update status to "Confirmed" for an existing order:
+        /// <br/>            
+        /// <br/>     POST /api/purchaseOrders/{purchaseOrderId}/UpdateStatus
+        /// <br/>     {
+        /// <br/>         "status": "Confirmed",
+        /// <br/>         "expectedDeliveryDate": 2024-01-01
+        /// <br/>     }
+        /// </remarks>
+        /// <param name="purchaseOrderId">The ID of the purchase order</param>
+        /// <param name="body">Information about the</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
         /// Update many purchase orders
         /// </summary>
         /// <remarks>
@@ -12966,12 +13030,12 @@ namespace Geta.Integration.Omnium.Sdk
                         else
                         if (status_ == 404)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new OmniumApiException<string>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == 500)
@@ -13121,7 +13185,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity)
         {
             return CartAddItemToExistingCartAsync(cartId, skuId, quantity, System.Threading.CancellationToken.None);
         }
@@ -13135,7 +13199,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken)
         {
             if (skuId == null)
                 throw new System.ArgumentNullException("skuId");
@@ -13183,22 +13247,22 @@ namespace Geta.Integration.Omnium.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCart>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCartOmniumValidationResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<OmniumCart>(status_, headers_, objectResponse_.Object);
+                            return new SwaggerResponse<OmniumCartOmniumValidationResult>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 422)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumValidationResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCartOmniumValidationResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<OmniumValidationResult>("Item added, but validation completed with errors or warnings", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new OmniumApiException<OmniumCartOmniumValidationResult>("Item added, but validation completed with errors or warnings", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == 400)
@@ -16921,6 +16985,112 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<OmniumOrder>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Extend the customer pickup deadline for a click and collect order
+        /// </summary>
+        /// <param name="orderId">The id of the order</param>
+        /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime)
+        {
+            return ClickAndCollectExtendCustomerPickupDeadlineAsync(orderId, extendedPickupTime, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Extend the customer pickup deadline for a click and collect order
+        /// </summary>
+        /// <param name="orderId">The id of the order</param>
+        /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime, System.Threading.CancellationToken cancellationToken)
+        {
+            if (orderId == null)
+                throw new System.ArgumentNullException("orderId");
+
+            if (extendedPickupTime == null)
+                throw new System.ArgumentNullException("extendedPickupTime");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("api/ClickAndCollect/ExtendCustomerPickupDeadline?");
+            urlBuilder_.Append(System.Uri.EscapeDataString("orderId") + "=").Append(System.Uri.EscapeDataString(ConvertToString(orderId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append(System.Uri.EscapeDataString("extendedPickupTime") + "=").Append(System.Uri.EscapeDataString(ConvertToString(extendedPickupTime, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Length--;
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 400)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Bad Request", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Not Found", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Server Error", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            return new SwaggerResponse(status_, headers_);
                         }
                         else
                         {
@@ -44695,6 +44865,133 @@ namespace Geta.Integration.Omnium.Sdk
         }
 
         /// <summary>
+        /// Update status and run workflow for a purchase order
+        /// </summary>
+        /// <remarks>
+        /// If you need to update status on a purchase order, set the corresponding. The workflow request object allows you to add expected delivery date.
+        /// <br/>&lt;br /&gt;
+        /// <br/>If you do not wish to automatically run the workflow for the purchase order, you can specify this using "skipRunWorkflow:true".
+        /// <br/>&lt;br /&gt;&lt;br /&gt;
+        /// <br/>Basic example on how you would update status to "Confirmed" for an existing order:
+        /// <br/>            
+        /// <br/>     POST /api/purchaseOrders/{purchaseOrderId}/UpdateStatus
+        /// <br/>     {
+        /// <br/>         "status": "Confirmed",
+        /// <br/>         "expectedDeliveryDate": 2024-01-01
+        /// <br/>     }
+        /// </remarks>
+        /// <param name="purchaseOrderId">The ID of the purchase order</param>
+        /// <param name="body">Information about the</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body)
+        {
+            return PurchaseOrdersRunWorkflowAsync(purchaseOrderId, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update status and run workflow for a purchase order
+        /// </summary>
+        /// <remarks>
+        /// If you need to update status on a purchase order, set the corresponding. The workflow request object allows you to add expected delivery date.
+        /// <br/>&lt;br /&gt;
+        /// <br/>If you do not wish to automatically run the workflow for the purchase order, you can specify this using "skipRunWorkflow:true".
+        /// <br/>&lt;br /&gt;&lt;br /&gt;
+        /// <br/>Basic example on how you would update status to "Confirmed" for an existing order:
+        /// <br/>            
+        /// <br/>     POST /api/purchaseOrders/{purchaseOrderId}/UpdateStatus
+        /// <br/>     {
+        /// <br/>         "status": "Confirmed",
+        /// <br/>         "expectedDeliveryDate": 2024-01-01
+        /// <br/>     }
+        /// </remarks>
+        /// <param name="purchaseOrderId">The ID of the purchase order</param>
+        /// <param name="body">Information about the</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("api/PurchaseOrders/{purchaseOrderId}/UpdateStatus");
+            urlBuilder_.Replace("{purchaseOrderId}", System.Uri.EscapeDataString(ConvertToString(purchaseOrderId, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumPurchaseOrderWorkflowExecutionResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Bad Request", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Purchase order to update was not found", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Update many purchase orders
         /// </summary>
         /// <remarks>
@@ -59683,16 +59980,28 @@ namespace Geta.Integration.Omnium.Sdk
     public partial class OmniumPaymentReportSearchRequest
     {
         /// <summary>
-        /// Transaction date from
+        /// Transaction created date from
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createdFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? CreatedFrom { get; set; } = default!;
 
         /// <summary>
-        /// Transaction date to
+        /// Transaction created date to
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createdTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? CreatedTo { get; set; } = default!;
+
+        /// <summary>
+        /// Transaction paid date from
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paidFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PaidFrom { get; set; } = default!;
+
+        /// <summary>
+        /// Transaction paid date to
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paidTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PaidTo { get; set; } = default!;
 
         /// <summary>
         /// Transaction store Ids
@@ -67665,6 +67974,20 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
+    /// Purchase order workflow execution request
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPurchaseOrderWorkflowRequest
+    {
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Status { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("expectedDeliveryDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ExpectedDeliveryDate { get; set; } = default!;
+
+    }
+
+    /// <summary>
     /// Class for rating other entities, like products, customers, stores, etc
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -68658,13 +68981,13 @@ namespace Geta.Integration.Omnium.Sdk
         public bool? CreditShipment { get; set; } = default!;
 
         /// <summary>
-        /// Shoould user pay for the shipping return cost
+        /// Should user pay for the shipping return cost
         /// </summary>
         [Newtonsoft.Json.JsonProperty("chargeShipmentCost", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? ChargeShipmentCost { get; set; } = default!;
 
         /// <summary>
-        /// Amout for return shipping cost
+        /// Amout for return shipping cost. If ChargeShipmentCost is true and ChargeShipmentCostAmount is 0, the cost will be overriden standard return cost for market.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("chargeShipmentCostAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal? ChargeShipmentCostAmount { get; set; } = default!;
@@ -68936,6 +69259,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("languageCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? LanguageCode { get; set; } = default!;
+
+        /// <summary>
+        /// If true, the product will be excluded from product feed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("excludeFromFeed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExcludeFromFeed { get; set; } = default!;
 
     }
 
@@ -72510,6 +72839,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("current", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Current { get; set; } = default!;
+
+        /// <summary>
+        /// Date the step was started
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? StartDate { get; set; } = default!;
 
         /// <summary>
         /// Date the step was completed (if null, the step was never completed)
