@@ -1,5 +1,5 @@
 {
-  "runtime": "Net60",
+  "runtime": "Net80",
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
@@ -13,7 +13,9 @@
       "clientBaseClass": null,
       "configurationClass": null,
       "generateClientClasses": true,
+      "suppressClientClassesOutput": false,
       "generateClientInterfaces": true,
+      "suppressClientInterfacesOutput": false,
       "clientBaseInterface": null,
       "injectHttpClient": true,
       "disposeHttpClient": false,
@@ -28,9 +30,11 @@
       "generateBaseUrlProperty": true,
       "generateSyncMethods": false,
       "generatePrepareRequestAndProcessResponseAsAsyncMethods": false,
-      "exposeJsonSerializerSettings": false,
+      "exposeJsonSerializerSettings": true,
       "clientClassAccessModifier": "public",
       "typeAccessModifier": "public",
+      "propertySetterAccessModifier": "",
+      "generateNativeRecords": false,
       "generateContractsOutput": false,
       "contractsNamespace": "Geta.Integration.Omnium.Sdk",
       "contractsOutputFilePath": "Contracts.g.cs",
@@ -85,7 +89,7 @@
       "inlineNamedAny": false,
       "generateDtoTypes": true,
       "generateOptionalPropertiesAsNullable": true,
-      "generateNullableReferenceTypes": true,
+      "generateNullableReferenceTypes": false,
       "templateDirectory": null,
       "serviceHost": null,
       "serviceSchemes": null,

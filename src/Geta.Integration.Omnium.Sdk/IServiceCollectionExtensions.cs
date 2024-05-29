@@ -30,7 +30,7 @@ public static class IServiceCollectionExtensions
             });
 
         services
-            .AddHttpClient<IClient, Client>((serviceProvider, httpClient) =>
+            .AddHttpClient<Client>((serviceProvider, httpClient) =>
             {
                 var configuration = serviceProvider.GetRequiredService<IOptions<OmniumConfiguration>>();
                 httpClient.BaseAddress = new Uri(configuration.Value.BaseAddress);
