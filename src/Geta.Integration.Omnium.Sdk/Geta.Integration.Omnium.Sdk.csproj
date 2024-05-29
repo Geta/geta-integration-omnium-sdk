@@ -44,12 +44,6 @@
     </PackageReference>
     <PackageReference Include="Polly" Version="8.4.0" />
   </ItemGroup>
-  <!--<PropertyGroup Condition="$(Version.Contains('-alpha'))">
-    <NSwagConfigFile>nswag.test.json</NSwagConfigFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="!$(Version.Contains('-alpha'))">
-    <NSwagConfigFile>nswag.json</NSwagConfigFile>
-  </PropertyGroup>-->
   <ItemGroup>
     <None Include="..\..\images\icon.png">
       <Pack>true</Pack>
@@ -57,28 +51,18 @@
       <Link>icon.png</Link>
     </None>
   </ItemGroup>
-  <PropertyGroup Condition="$(Version.Contains('-alpha'))">
-    <OmniumSchemaEndpoint>https://apitest.omnium.no/docs/oms/docs.json</OmniumSchemaEndpoint>
-  </PropertyGroup>
-  <PropertyGroup Condition="!$(Version.Contains('-alpha'))">
-    <OmniumSchemaEndpoint>https://api.omnium.no/docs/oms/docs.json</OmniumSchemaEndpoint>
-  </PropertyGroup>
   <ItemGroup>
-    <OpenApiReference Include="OpenAPIs\docs.json">
+    <OpenApiReference Include="docs.json" Condition="$(Version.Contains('-alpha'))" SourceUrl="https://apitest.omnium.no/docs/oms/docs.json">
       <CodeGenerator>NSwagCSharp</CodeGenerator>
       <ClassName>Client</ClassName>
-      <SourceUri>$(OmniumSchemaEndpoint)</SourceUri>
+      <OutputPath>Client.g.cs</OutputPath>
+    </OpenApiReference>
+    <OpenApiReference Include="docs.json" Condition="!$(Version.Contains('-alpha'))" SourceUrl="https://api.omnium.no/docs/oms/docs.json">
+      <CodeGenerator>NSwagCSharp</CodeGenerator>
+      <ClassName>Client</ClassName>
       <OutputPath>Client.g.cs</OutputPath>
     </OpenApiReference>
   </ItemGroup>
-  <!--<Target Name="NSwag" BeforeTargets="BeforeBuild">
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net80) run $(NSwagConfigFile) /variables:Configuration=$(Configuration)" WorkingDirectory="$(ProjectDir)">
-      <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
-      <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
-    </Exec>
-    <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
-    <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-  </Target>-->
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
     <ItemGroup>
       <DocFile Include="bin\$(Configuration)\$(TargetFramework)\*.xml" />
