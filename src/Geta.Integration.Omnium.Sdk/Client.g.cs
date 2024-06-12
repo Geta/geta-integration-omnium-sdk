@@ -1126,6 +1126,54 @@ namespace Geta.Integration.Omnium.Sdk
         System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
+        /// Scroll carts by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning products</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll carts by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning products</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Scroll carts is used to get a large amount of carts.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll carts is used to get a large amount of carts.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
         /// Create order from cart
         /// </summary>
         /// <param name="orderType">Order type to create (Pos, Online, ClickAndCollect, etc)</param>
@@ -3777,36 +3825,6 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<OmniumGetMultipleResponse>> OrdersGetOrdersByIdsAsync(System.Collections.Generic.IEnumerable<string>? ids, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATHAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATHAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATH2Async();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATH2Async(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search and filtering of orders.
@@ -9403,7 +9421,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("BusinessCustomer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -9530,7 +9548,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("BusinessCustomer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -9647,7 +9665,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("BusinessCustomer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -9767,7 +9785,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("BusinessCustomer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -9882,7 +9900,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("BusinessCustomer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -10084,7 +10102,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("The customer to update, with the given customerId, was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -10190,7 +10208,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -10484,7 +10502,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -10684,7 +10702,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Business customer with the given id was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -10771,7 +10789,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Customer does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -11515,7 +11533,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -11726,7 +11744,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -11839,7 +11857,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("NumberOptions not configured", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -11930,7 +11948,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -12025,7 +12043,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -12422,7 +12440,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -12582,7 +12600,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -12722,7 +12740,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -12891,7 +12909,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -13101,7 +13119,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -13221,7 +13239,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -13348,7 +13366,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -13461,7 +13479,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -13574,7 +13592,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart or order line was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -13707,7 +13725,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -13830,7 +13848,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart or order line was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -13942,7 +13960,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14062,7 +14080,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14156,7 +14174,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14265,7 +14283,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -14384,7 +14402,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14491,7 +14509,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Store or cart not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14598,7 +14616,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -14715,7 +14733,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -14831,7 +14849,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -14938,7 +14956,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -15054,7 +15072,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -15173,6 +15191,199 @@ namespace Geta.Integration.Omnium.Sdk
         }
 
         /// <summary>
+        /// Scroll carts by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning products</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body)
+        {
+            return CartScrollSearchAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll carts by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning products</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("api/Cart/ScrollSearch");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCartOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumCartOmniumSearchResult>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Search request invalid", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Scroll carts is used to get a large amount of carts.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id)
+        {
+            return CartScrollAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll carts is used to get a large amount of carts.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("api/Cart/Scroll/{id}");
+            urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCartOmniumResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumCartOmniumResult>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Create order from cart
         /// </summary>
         /// <param name="orderType">Order type to create (Pos, Online, ClickAndCollect, etc)</param>
@@ -15259,7 +15470,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -15375,7 +15586,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart or shipment options not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -15498,7 +15709,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart or shipment options not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -15607,7 +15818,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart or payment options not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -15926,7 +16137,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -16138,7 +16349,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Cart was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -16240,7 +16451,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -16348,7 +16559,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -16450,7 +16661,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -18229,7 +18440,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -18435,7 +18646,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -19498,7 +19709,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Gift card does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -23727,7 +23938,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The order does not exist.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -24087,7 +24298,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order line was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -24209,7 +24420,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -24331,7 +24542,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -24529,7 +24740,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -24717,7 +24928,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -24820,7 +25031,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -25441,7 +25652,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The order status was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -25558,229 +25769,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("No orders were found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 500)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATHAsync()
-        {
-            return OrdersDEAAATHAsync(System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATHAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/Orders/dth");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "text/plain");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumOrderSearchResultViewModel>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<OmniumOrderSearchResultViewModel>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 400)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 404)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 500)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATH2Async()
-        {
-            return OrdersDEAAATH2Async(System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Search and filtering of orders.
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersDEAAATH2Async(System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/Orders/dth2");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "text/plain");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumOrderSearchResultViewModel>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<OmniumOrderSearchResultViewModel>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 400)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 404)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -25894,7 +25883,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26221,7 +26210,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Orders were not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26362,7 +26351,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Orders were not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26488,7 +26477,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Orders were not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26607,7 +26596,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Orders were not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26730,7 +26719,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -26932,7 +26921,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -27044,7 +27033,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order to delete was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -27141,7 +27130,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The order was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -28625,7 +28614,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer to update was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -28731,7 +28720,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -28834,7 +28823,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer, with the given customerId, was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -28937,7 +28926,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("No customer with given combo of store and phone number was found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29038,7 +29027,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29128,7 +29117,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer with the given ID was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29221,7 +29210,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29328,7 +29317,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29421,7 +29410,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -29989,7 +29978,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Customer club member was not found, or the membership is ended", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -30538,7 +30527,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Club member not found, or customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -30656,7 +30645,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Club member not found, or customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -30876,7 +30865,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Club member not found, or customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -30983,7 +30972,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Club member not found, or customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -31086,7 +31075,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Club member not found, or customer not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 200)
@@ -31605,7 +31594,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Interests not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -31713,7 +31702,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The customer was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -31820,7 +31809,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("NumberOptions not configured", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -33465,7 +33454,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Products do not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -33583,7 +33572,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -33691,7 +33680,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or SKU does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -33776,7 +33765,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -33895,7 +33884,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -34001,7 +33990,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -34113,7 +34102,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or SKU does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -34232,7 +34221,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or SKU does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -34334,7 +34323,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or SKU does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -35115,7 +35104,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product does not exist, or does not contain variants", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -35224,7 +35213,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -35337,7 +35326,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -35440,7 +35429,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -35562,7 +35551,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Products not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -35668,7 +35657,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Products not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -35886,7 +35875,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -35988,7 +35977,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or variant not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -36078,7 +36067,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product or variant does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -36175,7 +36164,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Variant not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -36278,7 +36267,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -36391,7 +36380,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -36492,7 +36481,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -36596,7 +36585,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -36690,7 +36679,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -36785,7 +36774,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -36984,7 +36973,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Product not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -39415,7 +39404,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -39653,7 +39642,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -39764,7 +39753,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -39879,7 +39868,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -39990,7 +39979,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -40101,7 +40090,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Project does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 401)
@@ -42025,7 +42014,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42147,7 +42136,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42272,7 +42261,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42397,7 +42386,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42522,7 +42511,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42647,7 +42636,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42749,7 +42738,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42871,7 +42860,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -42996,7 +42985,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43121,7 +43110,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43246,7 +43235,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43364,7 +43353,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43489,7 +43478,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43599,7 +43588,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43721,7 +43710,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43846,7 +43835,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -43971,7 +43960,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -44188,7 +44177,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -44313,7 +44302,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -44741,7 +44730,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("The promotion was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -47043,7 +47032,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -47138,7 +47127,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -47248,7 +47237,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -47831,7 +47820,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -47946,7 +47935,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -48064,7 +48053,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -48182,7 +48171,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -48285,7 +48274,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Store does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -48392,7 +48381,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Store does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -48865,7 +48854,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -48971,7 +48960,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Store does not exist", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 400)
@@ -49688,7 +49677,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -49794,7 +49783,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("The subscription was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -49905,7 +49894,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Subscription to delete was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -50019,7 +50008,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -50137,7 +50126,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -50248,7 +50237,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -51288,7 +51277,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Trigger was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         {
@@ -51589,7 +51578,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Not Found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -51952,7 +51941,7 @@ namespace Geta.Integration.Omnium.Sdk
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new OmniumApiException<string>("Order to update was not found", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return null;
                         }
                         else
                         if (status_ == 500)
@@ -53720,6 +53709,33 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("discountTotalIncVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.Obsolete]
         public decimal DiscountTotalIncVat { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Generic query result
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumCartOmniumResult
+    {
+        /// <summary>
+        /// Total number of hits
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalHits", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalHits { get; set; } = default!;
+
+        /// <summary>
+        /// Search results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumCart>? Result { get; set; } = default!;
+
+        /// <summary>
+        /// The Scroll ID is used when fetching large amounts of data (10000 or more documents).
+        /// <br/>Whenever the search results yields a ContinuationToken, the Scroll endpoints should be used to continue fetching documents
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scrollId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScrollId { get; set; } = default!;
 
     }
 
@@ -55927,6 +55943,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alwaysApply", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool AlwaysApply { get; set; } = default!;
+
+        /// <summary>
+        /// Reward is given as bonus points (only for customer club promotions)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isBonusPointsReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsBonusPointsReward { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("promotionMultiBuyReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public OmniumPromotionMultiBuyReward PromotionMultiBuyReward { get; set; } = default!;
@@ -58770,6 +58792,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("alwaysApply", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool AlwaysApply { get; set; } = default!;
 
+        /// <summary>
+        /// Reward is given as bonus points (only for customer club promotions)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isBonusPointsReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsBonusPointsReward { get; set; } = default!;
+
         [Newtonsoft.Json.JsonProperty("promotionMultiBuyReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public OmniumPromotionMultiBuyReward PromotionMultiBuyReward { get; set; } = default!;
 
@@ -61270,7 +61298,7 @@ namespace Geta.Integration.Omnium.Sdk
         public int? PromotionPriority { get; set; } = default!;
 
         /// <summary>
-        /// Used for calculation of price.
+        /// If true, tax should be excluded from the unit price specified. Tax will be added in later calculations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isTaxExcluded", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsTaxExcluded { get; set; } = default!;
@@ -61337,11 +61365,11 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("currencyCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? CurrencyCode { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string? CustomerId { get; set; } = default!;
+        [Newtonsoft.Json.JsonProperty("customerIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? CustomerIds { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("customerGroup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string? CustomerGroup { get; set; } = default!;
+        [Newtonsoft.Json.JsonProperty("customerGroups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumCustomerGroupReference>? CustomerGroups { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("validFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? ValidFrom { get; set; } = default!;
@@ -63460,6 +63488,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortIndexBoost", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? SortIndexBoost { get; set; } = default!;
+
+        /// <summary>
+        /// Used for manual sorting of products
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Modified { get; set; } = default!;
 
     }
 
@@ -70031,6 +70065,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal ShippingTax { get; set; } = default!;
 
         /// <summary>
+        /// Shipment tax rate. If tax is 25%, value here should be 25.00. If not set, default tax rate from market will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shipmentTaxRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? ShipmentTaxRate { get; set; } = default!;
+
+        /// <summary>
         /// Tracking number from external shipping provider
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shipmentTrackingNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -70644,6 +70684,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shippingTax", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal? ShippingTax { get; set; } = default!;
+
+        /// <summary>
+        /// Shipment tax rate. If tax is 25%, value here should be 25.00. If not set, default tax rate from market will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shipmentTaxRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? ShipmentTaxRate { get; set; } = default!;
 
         /// <summary>
         /// Tracking number from external shipping provider
