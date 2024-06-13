@@ -32,7 +32,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>> BusinessCustomerAssetsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>?> BusinessCustomerAssetsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -43,7 +44,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>> BusinessCustomerAssetsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>?> BusinessCustomerAssetsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add asset to customer from stream
@@ -53,7 +55,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsAddAssetAsync(string businessCustomerId, string? fileName, System.IO.Stream body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsAddAssetAsync(string businessCustomerId, string? fileName, System.IO.Stream body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -64,7 +67,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsAddAssetAsync(string businessCustomerId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsAddAssetAsync(string businessCustomerId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add assets to customer
@@ -74,7 +78,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsAddAssetsAsync(string? businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsAddAssetsAsync(string? businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -85,7 +90,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsAddAssetsAsync(string? businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsAddAssetsAsync(string? businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update asset to customer
@@ -95,7 +101,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsUpdateAssetsAsync(string businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsUpdateAssetsAsync(string businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -106,7 +113,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomerAssetsUpdateAssetsAsync(string businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomerAssetsUpdateAssetsAsync(string businessCustomerId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete assets from customers
@@ -116,7 +124,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomerAssetsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomerAssetsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -127,7 +136,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomerAssetsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomerAssetsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add business customer to database
@@ -135,7 +145,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The business customer to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersPostAsync(OmniumBusinessCustomer? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersPostAsync(OmniumBusinessCustomer? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -144,7 +155,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The business customer to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersPostAsync(OmniumBusinessCustomer? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersPostAsync(OmniumBusinessCustomer? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update business customer
@@ -152,7 +164,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomersUpdateAsync(OmniumBusinessCustomer? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomersUpdateAsync(OmniumBusinessCustomer? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -161,7 +174,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomersUpdateAsync(OmniumBusinessCustomer? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomersUpdateAsync(OmniumBusinessCustomer? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch business customer - update only some values in request
@@ -169,7 +183,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Business customer patch. Only properties with value will be updated.</param>
         /// <returns>Business customer updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>> BusinessCustomersPatchBusinessCustomerAsync(OmniumBusinessCustomerPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>?> BusinessCustomersPatchBusinessCustomerAsync(OmniumBusinessCustomerPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -178,7 +193,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Business customer patch. Only properties with value will be updated.</param>
         /// <returns>Business customer updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>> BusinessCustomersPatchBusinessCustomerAsync(OmniumBusinessCustomerPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>?> BusinessCustomersPatchBusinessCustomerAsync(OmniumBusinessCustomerPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update a range of customers to the OMS.
@@ -187,7 +203,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of business customer objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumBusinessCustomer>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumBusinessCustomer>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -197,7 +214,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of business customer objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumBusinessCustomer>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumBusinessCustomer>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get business customers by searching for phone number of contact person
@@ -205,7 +223,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="phoneNumber">Phone number of contact person</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactPhoneAsync(string phoneNumber);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactPhoneAsync(string phoneNumber);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -214,14 +233,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="phoneNumber">Phone number of contact person</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactPhoneAsync(string phoneNumber, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactPhoneAsync(string phoneNumber, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get business customers by searching for contact person private customer ID
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactPrivateCustomerIdAsync(string privateCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactPrivateCustomerIdAsync(string privateCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -229,7 +250,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactPrivateCustomerIdAsync(string privateCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactPrivateCustomerIdAsync(string privateCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get business customers by searching for e-mail of contact person
@@ -237,7 +259,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="email">Email of contact person</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactEmailAsync(string email);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactEmailAsync(string email);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -246,7 +269,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="email">Email of contact person</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>> BusinessCustomersGetBusinessCustomerByContactEmailAsync(string email, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumBusinessCustomer>>?> BusinessCustomersGetBusinessCustomerByContactEmailAsync(string email, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get business customer by ID
@@ -254,7 +278,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Customer ID</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomersGetAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomersGetAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -263,7 +288,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Customer ID</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> BusinessCustomersGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> BusinessCustomersGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete business customer
@@ -271,7 +297,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Business customer ID</param>
         /// <returns>Customer is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersDeleteBusinessCustomerAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersDeleteBusinessCustomerAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -280,7 +307,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Business customer ID</param>
         /// <returns>Customer is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersDeleteBusinessCustomerAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersDeleteBusinessCustomerAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Free text search for business customers
@@ -288,7 +316,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="query">Search query</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersSearchGETAsync(string? query);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersSearchGETAsync(string? query);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -297,7 +326,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="query">Search query</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersSearchGETAsync(string? query, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersSearchGETAsync(string? query, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search business customers
@@ -305,7 +335,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returning items found</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -314,7 +345,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returning items found</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all business customers, or get all business customers that has been changed since a given date and time.
@@ -325,7 +357,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changedSince">Customers added or modified since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -337,7 +370,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changedSince">Customers added or modified since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all sales limitations for the customer.
@@ -346,7 +380,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Market ID for the the customer</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>> BusinessCustomersGetSalesLimitationsForCustomerAsync(string? id, string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>?> BusinessCustomersGetSalesLimitationsForCustomerAsync(string? id, string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -356,14 +391,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Market ID for the the customer</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>> BusinessCustomersGetSalesLimitationsForCustomerAsync(string? id, string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>?> BusinessCustomersGetSalesLimitationsForCustomerAsync(string? id, string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all sales limitations all customers.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>> BusinessCustomersGetSalesLimitationsAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>?> BusinessCustomersGetSalesLimitationsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -371,7 +408,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>> BusinessCustomersGetSalesLimitationsAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumSalesLimitation>>?> BusinessCustomersGetSalesLimitationsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll business Customer by search
@@ -382,7 +420,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning business customers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -394,7 +433,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning business customers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll is used to get a large amount of business customers.
@@ -406,7 +446,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -419,7 +460,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>> BusinessCustomersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomerOmniumSearchResult>?> BusinessCustomersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Send email to business customer. Gets logged as note to customer. Consider using Notifications/SendEmail for more general purposes.
@@ -428,7 +470,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersSendEmailToCustomerAsync(string? businessCustomerId, OmniumEmailMessage? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersSendEmailToCustomerAsync(string? businessCustomerId, OmniumEmailMessage? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -438,14 +481,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersSendEmailToCustomerAsync(string? businessCustomerId, OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersSendEmailToCustomerAsync(string? businessCustomerId, OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deleting ALL items! For development environments ONLY
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersDeleteAllAsync(string? safeword, string? tenantId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersDeleteAllAsync(string? safeword, string? tenantId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -453,7 +498,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersDeleteAllAsync(string? safeword, string? tenantId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersDeleteAllAsync(string? safeword, string? tenantId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update customer number on customer and all orders
@@ -462,7 +508,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerNumber">The new customer number to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -472,7 +519,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerNumber">The new customer number to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> BusinessCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> BusinessCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get next generated customer number.
@@ -483,7 +531,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Optional: Provide if multiple CustomerNumberOptions configured</param>
         /// <returns>CustomerNumber</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> BusinessCustomersGetNextCustomerNumberAsync(string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> BusinessCustomersGetNextCustomerNumberAsync(string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -495,14 +544,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Optional: Provide if multiple CustomerNumberOptions configured</param>
         /// <returns>CustomerNumber</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> BusinessCustomersGetNextCustomerNumberAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> BusinessCustomersGetNextCustomerNumberAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get cart by ID
         /// </summary>
         /// <returns>Cart found and is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartGetAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartGetAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -510,14 +561,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Cart found and is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartGetAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartGetAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete cart
         /// </summary>
         /// <returns>Cart is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartDeleteCartAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartDeleteCartAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -525,7 +578,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Cart is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartDeleteCartAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartDeleteCartAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add item to new cart
@@ -534,7 +588,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order line to add to new cart</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartCreateCartFromOrderLineAsync(string? marketId, OmniumOrderLine? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartCreateCartFromOrderLineAsync(string? marketId, OmniumOrderLine? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -544,14 +599,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order line to add to new cart</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartCreateCartFromOrderLineAsync(string? marketId, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartCreateCartFromOrderLineAsync(string? marketId, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create new empty cart
         /// </summary>
         /// <returns>New cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartCreateCartAsync(string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartCreateCartAsync(string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -559,7 +616,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>New cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartCreateCartAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartCreateCartAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add product options to cart with an existing order line.
@@ -603,7 +661,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddProductOptionsItemToCartAsync(OmniumAddProductOptionsRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddProductOptionsItemToCartAsync(OmniumAddProductOptionsRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -648,7 +707,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddProductOptionsItemToCartAsync(OmniumAddProductOptionsRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddProductOptionsItemToCartAsync(OmniumAddProductOptionsRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add item to new or existing cart
@@ -663,7 +723,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="priceStoreId">Only use when buying from a store with a higher unit price than the default price</param>
         /// <returns>Item is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -679,7 +740,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="priceStoreId">Only use when buying from a store with a higher unit price than the default price</param>
         /// <returns>Item is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add many items to new or existing cart
@@ -692,7 +754,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of Product SKU ids and quantity (defaults to 1 if not provided). (Required)</param>
         /// <returns>Items is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddManyItemsToCartAsync(string? cartId, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, System.Collections.Generic.IEnumerable<OmniumLineItemRequestModel> body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddManyItemsToCartAsync(string? cartId, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, System.Collections.Generic.IEnumerable<OmniumLineItemRequestModel> body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -706,7 +769,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of Product SKU ids and quantity (defaults to 1 if not provided). (Required)</param>
         /// <returns>Items is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddManyItemsToCartAsync(string? cartId, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, System.Collections.Generic.IEnumerable<OmniumLineItemRequestModel> body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddManyItemsToCartAsync(string? cartId, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, System.Collections.Generic.IEnumerable<OmniumLineItemRequestModel> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add item to new or existing cart
@@ -721,7 +785,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="priceStoreId">Only use when buying from a store with a higher unit price than the default price</param>
         /// <returns>Item is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPackageItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Collections.Generic.IEnumerable<OmniumProductComponent>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPackageItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Collections.Generic.IEnumerable<OmniumProductComponent>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -737,7 +802,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="priceStoreId">Only use when buying from a store with a higher unit price than the default price</param>
         /// <returns>Item is added to existing cart and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPackageItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Collections.Generic.IEnumerable<OmniumProductComponent>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPackageItemToCartAsync(string? cartId, string skuId, decimal? quantity, string? marketId, string? storeId, string? customerId, bool? forceNewOrderLine, string? priceStoreId, System.Collections.Generic.IEnumerable<OmniumProductComponent>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Save cart to Omnium.
@@ -745,7 +811,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart to put</param>
         /// <returns>Cart added and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartSaveCartAsync(OmniumCart? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartSaveCartAsync(OmniumCart? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -754,7 +821,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart to put</param>
         /// <returns>Cart added and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartSaveCartAsync(OmniumCart? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartSaveCartAsync(OmniumCart? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Validate cart
@@ -762,7 +830,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">Cart ID for the cart to validate</param>
         /// <returns>Cart validated successfully without errors or warning</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartValidateAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartValidateAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -771,14 +840,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">Cart ID for the cart to validate</param>
         /// <returns>Cart validated successfully without errors or warning</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartValidateAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartValidateAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add order line to cart
         /// </summary>
         /// <returns>Returns recalculated cart with new line item</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddOrderLineToCartAsync(string? cartId, bool? forceNewOrderLine, OmniumOrderLine? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddOrderLineToCartAsync(string? cartId, bool? forceNewOrderLine, OmniumOrderLine? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -786,7 +857,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Returns recalculated cart with new line item</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddOrderLineToCartAsync(string? cartId, bool? forceNewOrderLine, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddOrderLineToCartAsync(string? cartId, bool? forceNewOrderLine, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add item to existing cart
@@ -796,7 +868,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -807,7 +880,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update quantity on cart order line by skuId / code
@@ -817,7 +891,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to set. Defaults to 0 if less than 0. (Required)</param>
         /// <returns>Quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartQuantityBySkuAsync(string? cartId, string? skuId, decimal quantity);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartQuantityBySkuAsync(string? cartId, string? skuId, decimal quantity);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -828,7 +903,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to set. Defaults to 0 if less than 0. (Required)</param>
         /// <returns>Quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartQuantityBySkuAsync(string? cartId, string? skuId, decimal quantity, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartQuantityBySkuAsync(string? cartId, string? skuId, decimal quantity, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update quantity on cart order line by order line ID
@@ -838,7 +914,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to set. Defaults to 0 if less than 0. (Required)</param>
         /// <returns>Quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, decimal quantity);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, decimal quantity);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -849,7 +926,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to set. Defaults to 0 if less than 0. (Required)</param>
         /// <returns>Quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, decimal quantity, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, decimal quantity, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update selected unit quantity on cart order line by skuId / code
@@ -861,7 +939,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="selectedUnitConversionFactor">Conversion factor between selected unit of measure and default UOM (Default is 1:1)</param>
         /// <returns>Unit quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartSelectedUnitQuantityBySkuAsync(string? cartId, string? skuId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartSelectedUnitQuantityBySkuAsync(string? cartId, string? skuId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -874,7 +953,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="selectedUnitConversionFactor">Conversion factor between selected unit of measure and default UOM (Default is 1:1)</param>
         /// <returns>Unit quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartSelectedUnitQuantityBySkuAsync(string? cartId, string? skuId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartSelectedUnitQuantityBySkuAsync(string? cartId, string? skuId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update selected unit quantity on cart order line by order line ID
@@ -886,7 +966,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="selectedUnitConversionFactor">Conversion factor between selected unit of measure and default UOM (Default is 1:1)</param>
         /// <returns>Unit quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartSelectedUnitQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartSelectedUnitQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -899,14 +980,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="selectedUnitConversionFactor">Conversion factor between selected unit of measure and default UOM (Default is 1:1)</param>
         /// <returns>Unit quantity updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateCartSelectedUnitQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateCartSelectedUnitQuantityByOrderLineIdAsync(string? cartId, string? orderLineId, string? selectedUnit, decimal selectedUnitQuantity, decimal? selectedUnitConversionFactor, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete item from cart
         /// </summary>
         /// <returns>Item is deleted and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartDeleteLineItemAsync(string? lineItemId, string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartDeleteLineItemAsync(string? lineItemId, string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -914,7 +997,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Item is deleted and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartDeleteLineItemAsync(string? lineItemId, string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartDeleteLineItemAsync(string? lineItemId, string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer ID to existing cart
@@ -925,7 +1009,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string? cartId, string? customerId, bool? enrichCart, bool? isPriceRecalculated);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddCustomerIdToCartAsync(string? cartId, string? customerId, bool? enrichCart, bool? isPriceRecalculated);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -937,7 +1022,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string? cartId, string? customerId, bool? enrichCart, bool? isPriceRecalculated, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddCustomerIdToCartAsync(string? cartId, string? customerId, bool? enrichCart, bool? isPriceRecalculated, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Recalculate prices
@@ -945,7 +1031,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">Cart ID</param>
         /// <returns>Cart with recalculated prices</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRecalculatePricesAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRecalculatePricesAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -954,7 +1041,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">Cart ID</param>
         /// <returns>Cart with recalculated prices</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRecalculatePricesAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRecalculatePricesAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add payments to existing cart
@@ -963,7 +1051,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of payments to add to cart</param>
         /// <returns>Payments are added, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPaymentToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumPayment>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPaymentToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumPayment>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -973,7 +1062,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of payments to add to cart</param>
         /// <returns>Payments are added, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPaymentToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumPayment>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPaymentToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumPayment>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add shipments to existing cart
@@ -982,7 +1072,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of shipments to add to cart</param>
         /// <returns>Shipments are added, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddShipmentsToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumShipment>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddShipmentsToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumShipment>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -992,7 +1083,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of shipments to add to cart</param>
         /// <returns>Shipments are added, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddShipmentsToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumShipment>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddShipmentsToCartAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumShipment>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add store to cart
@@ -1001,7 +1093,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">Store selling the products</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddStoreToCartAsync(string? cartId, string? storeId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddStoreToCartAsync(string? cartId, string? storeId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1011,7 +1104,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">Store selling the products</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddStoreToCartAsync(string? cartId, string? storeId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddStoreToCartAsync(string? cartId, string? storeId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adding coupon code to cart and recalculates discounts
@@ -1020,7 +1114,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponCode">Coupon code to add</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCouponCodeToCartAsync(string? cartId, string? couponCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddCouponCodeToCartAsync(string? cartId, string? couponCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1030,7 +1125,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponCode">Coupon code to add</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCouponCodeToCartAsync(string? cartId, string? couponCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddCouponCodeToCartAsync(string? cartId, string? couponCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adding personal discount coupon to cart by unique coupon Id and recalculates discounts
@@ -1039,7 +1135,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponId">Coupon code to add</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPersonalDiscountCouponToCartAsync(string? cartId, string? couponId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPersonalDiscountCouponToCartAsync(string? cartId, string? couponId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1049,7 +1146,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponId">Coupon code to add</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddPersonalDiscountCouponToCartAsync(string? cartId, string? couponId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPersonalDiscountCouponToCartAsync(string? cartId, string? couponId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Removes coupon code from cart and recalculates discounts
@@ -1058,7 +1156,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponCode">Coupon code to remove</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRemoveCouponCodeFromCartAsync(string? cartId, string? couponCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemoveCouponCodeFromCartAsync(string? cartId, string? couponCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1068,7 +1167,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="couponCode">Coupon code to remove</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRemoveCouponCodeFromCartAsync(string? cartId, string? couponCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemoveCouponCodeFromCartAsync(string? cartId, string? couponCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add gift card payment to cart
@@ -1077,7 +1177,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="giftCardCode">Gift card code to use for payment</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddGiftCardToCartAsync(string? cartId, string? giftCardCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddGiftCardToCartAsync(string? cartId, string? giftCardCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1087,7 +1188,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="giftCardCode">Gift card code to use for payment</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddGiftCardToCartAsync(string? cartId, string? giftCardCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddGiftCardToCartAsync(string? cartId, string? giftCardCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Remove gift card payment from cart
@@ -1096,7 +1198,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="giftCardCode">Gift card code to remove</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRemoveGiftCardFromCartAsync(string? cartId, string? giftCardCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemoveGiftCardFromCartAsync(string? cartId, string? giftCardCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1106,7 +1209,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="giftCardCode">Gift card code to remove</param>
         /// <returns>Updated cart</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRemoveGiftCardFromCartAsync(string? cartId, string? giftCardCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemoveGiftCardFromCartAsync(string? cartId, string? giftCardCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search carts
@@ -1114,7 +1218,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returning items found</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartSearchAsync(OmniumCartSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>?> CartSearchAsync(OmniumCartSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1123,7 +1228,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returning items found</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>?> CartSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll carts by search
@@ -1134,7 +1240,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning products</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>?> CartScrollSearchAsync(OmniumCartSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1146,7 +1253,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning products</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>> CartScrollSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumSearchResult>?> CartScrollSearchAsync(OmniumCartSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll carts is used to get a large amount of carts.
@@ -1158,7 +1266,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>?> CartScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1171,7 +1280,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>> CartScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumResult>?> CartScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create order from cart
@@ -1179,7 +1289,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderType">Order type to create (Pos, Online, ClickAndCollect, etc)</param>
         /// <returns>Returning order</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> CartCreateOrderFromCartIdAsync(string? cartId, string? orderType);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> CartCreateOrderFromCartIdAsync(string? cartId, string? orderType);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1188,7 +1299,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderType">Order type to create (Pos, Online, ClickAndCollect, etc)</param>
         /// <returns>Returning order</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> CartCreateOrderFromCartIdAsync(string? cartId, string? orderType, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> CartCreateOrderFromCartIdAsync(string? cartId, string? orderType, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get valid shipping options for a cart.
@@ -1200,7 +1312,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="postalCode">Consignee/receivers postalCode</param>
         /// <returns>A list of shippingOptions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>> CartGetShippingOptionsAsync(string? id, string? postalCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>?> CartGetShippingOptionsAsync(string? id, string? postalCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1213,7 +1326,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="postalCode">Consignee/receivers postalCode</param>
         /// <returns>A list of shippingOptions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>> CartGetShippingOptionsAsync(string? id, string? postalCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>?> CartGetShippingOptionsAsync(string? id, string? postalCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get valid shipping options for a zip/postal code.
@@ -1227,7 +1341,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="postalCode">Consignee/receivers postalCode</param>
         /// <returns>A list of shippingOptions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>> CartGetShippingOptionsByZipCodeAsync(string? marketId, string? postalCode);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>?> CartGetShippingOptionsByZipCodeAsync(string? marketId, string? postalCode);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1242,7 +1357,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="postalCode">Consignee/receivers postalCode</param>
         /// <returns>A list of shippingOptions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>> CartGetShippingOptionsByZipCodeAsync(string? marketId, string? postalCode, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumShippingOption>>?> CartGetShippingOptionsByZipCodeAsync(string? marketId, string? postalCode, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get valid payment options for a cart.
@@ -1253,7 +1369,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Cart id</param>
         /// <returns>A list of payment options</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumPaymentOption>>> CartGetPaymentOptionsAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumPaymentOption>>?> CartGetPaymentOptionsAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1265,14 +1382,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Cart id</param>
         /// <returns>A list of payment options</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumPaymentOption>>> CartGetPaymentOptionsAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumPaymentOption>>?> CartGetPaymentOptionsAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get carts by customer ID
         /// </summary>
         /// <returns>Carts for customer is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>> CartGetCartsByCustomerAsync(string customerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>?> CartGetCartsByCustomerAsync(string customerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1280,7 +1399,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Carts for customer is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>> CartGetCartsByCustomerAsync(string customerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>?> CartGetCartsByCustomerAsync(string customerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of carts, support paging
@@ -1291,7 +1411,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Carts is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>> CartGetCartsAsync(System.Collections.Generic.IEnumerable<string>? storeIds, System.DateTime? changedSince, int? pageSize, int? page);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>?> CartGetCartsAsync(System.Collections.Generic.IEnumerable<string>? storeIds, System.DateTime? changedSince, int? pageSize, int? page);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1303,7 +1424,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Carts is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>> CartGetCartsAsync(System.Collections.Generic.IEnumerable<string>? storeIds, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartSearchResultViewModel>?> CartGetCartsAsync(System.Collections.Generic.IEnumerable<string>? storeIds, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add discount to cart
@@ -1312,7 +1434,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Discount to add to cart</param>
         /// <returns>Discount added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddDiscountAsync(string? cartId, OmniumDiscount? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddDiscountAsync(string? cartId, OmniumDiscount? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1322,7 +1445,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Discount to add to cart</param>
         /// <returns>Discount added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddDiscountAsync(string? cartId, OmniumDiscount? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddDiscountAsync(string? cartId, OmniumDiscount? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch cart - update only values in request
@@ -1331,7 +1455,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart patches. Properties with value will be updated</param>
         /// <returns>Cart updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartPatchCartAsync(string? cartId, OmniumOrderPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartPatchCartAsync(string? cartId, OmniumOrderPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1341,7 +1466,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart patches. Properties with value will be updated</param>
         /// <returns>Cart updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartPatchCartAsync(string? cartId, OmniumOrderPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartPatchCartAsync(string? cartId, OmniumOrderPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Replacing discounts on cart
@@ -1350,7 +1476,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of discounts to place on cart</param>
         /// <returns>Discount updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateDiscountsAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumDiscount>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateDiscountsAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumDiscount>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1360,14 +1487,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of discounts to place on cart</param>
         /// <returns>Discount updated and cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartUpdateDiscountsAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumDiscount>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartUpdateDiscountsAsync(string? cartId, System.Collections.Generic.IEnumerable<OmniumDiscount>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deactivate cart
         /// </summary>
         /// <returns>Cart deactivated and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartDeactivateCartAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartDeactivateCartAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1375,7 +1504,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Cart deactivated and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartDeactivateCartAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartDeactivateCartAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get cart as PDF
@@ -1384,7 +1514,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="templateReference">Template reference including full path and extension (ex "Folder/CustomOffer.json" )</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> CartGetAsPdfAsync(string? cartId, string? templateReference);
+    
+        System.Threading.Tasks.Task<FileResponse?> CartGetAsPdfAsync(string? cartId, string? templateReference);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1394,14 +1525,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="templateReference">Template reference including full path and extension (ex "Folder/CustomOffer.json" )</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> CartGetAsPdfAsync(string? cartId, string? templateReference, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<FileResponse?> CartGetAsPdfAsync(string? cartId, string? templateReference, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Break down packages in cart. All components will be added as separate order lines.
         /// </summary>
         /// <returns>Updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartPackageBreakdownAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartPackageBreakdownAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1409,14 +1542,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartPackageBreakdownAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartPackageBreakdownAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get cart template
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateGetCartTemplateAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateGetCartTemplateAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1424,7 +1559,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateGetCartTemplateAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateGetCartTemplateAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update cart template
@@ -1435,7 +1571,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart template</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateUpdateCartTemplateAsync(OmniumCartTemplate? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateUpdateCartTemplateAsync(OmniumCartTemplate? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1447,7 +1584,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Cart template</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateUpdateCartTemplateAsync(OmniumCartTemplate? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateUpdateCartTemplateAsync(OmniumCartTemplate? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete cart template
@@ -1458,7 +1596,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartTemplateId">The ID of the cart template</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartTemplateDeleteCartTemplateAsync(string? cartTemplateId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartTemplateDeleteCartTemplateAsync(string? cartTemplateId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1470,7 +1609,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartTemplateId">The ID of the cart template</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CartTemplateDeleteCartTemplateAsync(string? cartTemplateId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CartTemplateDeleteCartTemplateAsync(string? cartTemplateId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search cart template orders
@@ -1481,7 +1621,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for cart templates</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplateOmniumSearchResult>> CartTemplateSearchAsync(OmniumCartTemplateSearchRequestModel? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplateOmniumSearchResult>?> CartTemplateSearchAsync(OmniumCartTemplateSearchRequestModel? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1493,7 +1634,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for cart templates</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplateOmniumSearchResult>> CartTemplateSearchAsync(OmniumCartTemplateSearchRequestModel? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplateOmniumSearchResult>?> CartTemplateSearchAsync(OmniumCartTemplateSearchRequestModel? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create cart from template
@@ -1503,7 +1645,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateCreateCartFromTemplateAsync(OmniumCartTemplateCreateCartRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateCreateCartFromTemplateAsync(OmniumCartTemplateCreateCartRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1514,7 +1657,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>> CartTemplateCreateCartFromTemplateAsync(OmniumCartTemplateCreateCartRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartTemplate>?> CartTemplateCreateCartFromTemplateAsync(OmniumCartTemplateCreateCartRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Click and Collect orders for customer. Support paging
@@ -1527,7 +1671,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Defaults to 20</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>> ClickAndCollectGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>?> ClickAndCollectGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1541,7 +1686,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Defaults to 20</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>> ClickAndCollectGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>?> ClickAndCollectGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a click and collect order for a single customers
@@ -1550,7 +1696,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">The id of the order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ClickAndCollectGetOrderForCustomerAsync(string? customerId, string? orderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ClickAndCollectGetOrderForCustomerAsync(string? customerId, string? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1560,7 +1707,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">The id of the order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ClickAndCollectGetOrderForCustomerAsync(string? customerId, string? orderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ClickAndCollectGetOrderForCustomerAsync(string? customerId, string? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Extend the customer pickup deadline for a click and collect order
@@ -1569,7 +1717,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1579,7 +1728,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="extendedPickupTime">TimeSpan for which the customerPickupDeadline will be extended</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ClickAndCollectExtendCustomerPickupDeadlineAsync(string orderId, string extendedPickupTime, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get comment.
@@ -1589,7 +1739,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsGetAsync(string? commentId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsGetAsync(string? commentId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1600,7 +1751,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsGetAsync(string? commentId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsGetAsync(string? commentId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search comments.
@@ -1611,7 +1763,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for comments</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumComment>>> CommentsSearchAsync(OmniumCommentSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumComment>>?> CommentsSearchAsync(OmniumCommentSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1623,7 +1776,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for comments</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumComment>>> CommentsSearchAsync(OmniumCommentSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumComment>>?> CommentsSearchAsync(OmniumCommentSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add/update comment. Can send out notification in the process.
@@ -1634,7 +1788,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium Comment object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsAddAsync(OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsAddAsync(OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1646,7 +1801,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium Comment object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsAddAsync(OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsAddAsync(OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update selected fields in a comment - no support for sending notification in this endpoint.
@@ -1657,7 +1813,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Customer comment to patch</param>
         /// <returns>Comment patched</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsUpdateAsync(OmniumCommentPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsUpdateAsync(OmniumCommentPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1669,7 +1826,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Customer comment to patch</param>
         /// <returns>Comment patched</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>> CommentsUpdateAsync(OmniumCommentPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumComment>?> CommentsUpdateAsync(OmniumCommentPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete comment.
@@ -1679,7 +1837,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Comment deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CommentsDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CommentsDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1690,14 +1849,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Comment deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CommentsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CommentsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a customer group
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>> CustomerGroupsGetCustomerGroupAsync(string? customerGroupId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>?> CustomerGroupsGetCustomerGroupAsync(string? customerGroupId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1705,7 +1866,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>> CustomerGroupsGetCustomerGroupAsync(string? customerGroupId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>?> CustomerGroupsGetCustomerGroupAsync(string? customerGroupId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search customer groups logs
@@ -1716,7 +1878,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for customer groups</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroupOmniumSearchResult>> CustomerGroupsSearchAsync(OmniumCustomerGroupSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroupOmniumSearchResult>?> CustomerGroupsSearchAsync(OmniumCustomerGroupSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1728,7 +1891,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for customer groups</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroupOmniumSearchResult>> CustomerGroupsSearchAsync(OmniumCustomerGroupSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroupOmniumSearchResult>?> CustomerGroupsSearchAsync(OmniumCustomerGroupSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add/update customer group
@@ -1739,7 +1903,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium CustomerGroup object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>> CustomerGroupsAddAsync(OmniumCustomerGroup? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>?> CustomerGroupsAddAsync(OmniumCustomerGroup? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1751,14 +1916,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium CustomerGroup object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>> CustomerGroupsAddAsync(OmniumCustomerGroup? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerGroup>?> CustomerGroupsAddAsync(OmniumCustomerGroup? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete customer group
         /// </summary>
         /// <returns>Customer group deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CustomerGroupsDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CustomerGroupsDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1766,7 +1933,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Customer group deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CustomerGroupsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CustomerGroupsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Change private customer id, and all data assosiated with that id over to new customer object.
@@ -1775,7 +1943,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="toCustomerId">Move data to this customer. Created if not exist.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> CustomerPrivacyChangePrivateCustomerIdAsync(string fromCustomerId, string toCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> CustomerPrivacyChangePrivateCustomerIdAsync(string fromCustomerId, string toCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1785,7 +1954,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="toCustomerId">Move data to this customer. Created if not exist.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> CustomerPrivacyChangePrivateCustomerIdAsync(string fromCustomerId, string toCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> CustomerPrivacyChangePrivateCustomerIdAsync(string fromCustomerId, string toCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Batch change private customer id, and all data assosiated with that id over to new customer object
@@ -1793,7 +1963,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CustomerPrivacyChangePrivateCustomerIdBatchAsync(System.Collections.Generic.IEnumerable<OmniumChangeCustomerId> body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CustomerPrivacyChangePrivateCustomerIdBatchAsync(System.Collections.Generic.IEnumerable<OmniumChangeCustomerId> body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1802,7 +1973,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> CustomerPrivacyChangePrivateCustomerIdBatchAsync(System.Collections.Generic.IEnumerable<OmniumChangeCustomerId> body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> CustomerPrivacyChangePrivateCustomerIdBatchAsync(System.Collections.Generic.IEnumerable<OmniumChangeCustomerId> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Change business customer id, and all data assosiated with that id over to new customer object.
@@ -1811,7 +1983,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="toCustomerId">Move data to this customer. Created if not exist.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> CustomerPrivacyChangeBusinessCustomerIdAsync(string fromCustomerId, string toCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> CustomerPrivacyChangeBusinessCustomerIdAsync(string fromCustomerId, string toCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1821,14 +1994,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="toCustomerId">Move data to this customer. Created if not exist.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>> CustomerPrivacyChangeBusinessCustomerIdAsync(string fromCustomerId, string toCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumBusinessCustomer>?> CustomerPrivacyChangeBusinessCustomerIdAsync(string fromCustomerId, string toCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get delivery
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> DeliveriesGetDeliveryAsync(string? deliveryId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> DeliveriesGetDeliveryAsync(string? deliveryId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1836,7 +2011,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> DeliveriesGetDeliveryAsync(string? deliveryId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> DeliveriesGetDeliveryAsync(string? deliveryId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch delivery
@@ -1848,7 +2024,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Delivery patch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryPatch>> DeliveriesPatchAsync(string? deliveryId, OmniumDeliveryPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryPatch>?> DeliveriesPatchAsync(string? deliveryId, OmniumDeliveryPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1861,14 +2038,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Delivery patch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryPatch>> DeliveriesPatchAsync(string? deliveryId, OmniumDeliveryPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryPatch>?> DeliveriesPatchAsync(string? deliveryId, OmniumDeliveryPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get delivery purchase order lines
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderLine>> DeliveriesGetDeliveryPurchaseOrderLinesAsync(string? deliveryId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderLine>?> DeliveriesGetDeliveryPurchaseOrderLinesAsync(string? deliveryId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1876,7 +2055,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderLine>> DeliveriesGetDeliveryPurchaseOrderLinesAsync(string? deliveryId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderLine>?> DeliveriesGetDeliveryPurchaseOrderLinesAsync(string? deliveryId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search deliveries
@@ -1887,7 +2067,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for deliveries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryOmniumSearchResult>> DeliveriesSearchAsync(OmniumDeliverySearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryOmniumSearchResult>?> DeliveriesSearchAsync(OmniumDeliverySearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1899,7 +2080,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for deliveries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryOmniumSearchResult>> DeliveriesSearchAsync(OmniumDeliverySearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDeliveryOmniumSearchResult>?> DeliveriesSearchAsync(OmniumDeliverySearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create delivery with purchase order lines
@@ -1911,7 +2093,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1924,7 +2107,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update delivery
@@ -1935,7 +2119,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Delivery</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesUpdateAsync(OmniumDelivery? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesUpdateAsync(OmniumDelivery? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1947,7 +2132,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Delivery</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesUpdateAsync(OmniumDelivery? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesUpdateAsync(OmniumDelivery? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many deliveries
@@ -1958,7 +2144,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Deliveries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumDelivery>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumDelivery>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1970,7 +2157,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Deliveries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumDelivery>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumDelivery>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Process goods reception
@@ -1980,7 +2168,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeliveriesProcessGoodsReceptionAsync(System.Collections.Generic.IEnumerable<OmniumDeliveryGoodsReceptionLine>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> DeliveriesProcessGoodsReceptionAsync(System.Collections.Generic.IEnumerable<OmniumDeliveryGoodsReceptionLine>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1991,14 +2180,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeliveriesProcessGoodsReceptionAsync(System.Collections.Generic.IEnumerable<OmniumDeliveryGoodsReceptionLine>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> DeliveriesProcessGoodsReceptionAsync(System.Collections.Generic.IEnumerable<OmniumDeliveryGoodsReceptionLine>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete delivery
         /// </summary>
         /// <returns>Delivery is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeliveriesDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> DeliveriesDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2006,7 +2197,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Delivery is deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeliveriesDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> DeliveriesDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Download file/asset with a give path and serviceType. ServiceType is found on the asset
@@ -2015,7 +2207,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">File path</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> FilesDownloadAsync(string serviceType, OmniumFileDownloadRequest body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> FilesDownloadAsync(string serviceType, OmniumFileDownloadRequest body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2025,14 +2218,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">File path</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> FilesDownloadAsync(string serviceType, OmniumFileDownloadRequest body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> FilesDownloadAsync(string serviceType, OmniumFileDownloadRequest body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get gift card by gift card code
         /// </summary>
         /// <returns>Gift card found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCard>> GiftCardGetAsync(string? code, string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCard>?> GiftCardGetAsync(string? code, string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2040,14 +2235,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Gift card found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCard>> GiftCardGetAsync(string? code, string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCard>?> GiftCardGetAsync(string? code, string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Omnium health check
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> HealthHealthAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> HealthHealthAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2055,7 +2252,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> HealthHealthAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> HealthHealthAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Based on a image url that exists in Omnium, generate a new size.If both width and height is specified, width is used
@@ -2065,7 +2263,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="maxWidth">Max width for the generated image</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ImagesDeliveryGetImageUrlAsync(string? url, int? maxHeight, int? maxWidth);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ImagesDeliveryGetImageUrlAsync(string? url, int? maxHeight, int? maxWidth);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2076,7 +2275,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="maxWidth">Max width for the generated image</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ImagesDeliveryGetImageUrlAsync(string? url, int? maxHeight, int? maxWidth, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ImagesDeliveryGetImageUrlAsync(string? url, int? maxHeight, int? maxWidth, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns inventory items for a single sku
@@ -2085,7 +2285,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="warehouseIds">Warehouse ids for inventory</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventoryGetAsync(string? id, System.Collections.Generic.IEnumerable<string>? warehouseIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventoryGetAsync(string? id, System.Collections.Generic.IEnumerable<string>? warehouseIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2095,7 +2296,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="warehouseIds">Warehouse ids for inventory</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventoryGetAsync(string? id, System.Collections.Generic.IEnumerable<string>? warehouseIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventoryGetAsync(string? id, System.Collections.Generic.IEnumerable<string>? warehouseIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a single inventory item from the OMS
@@ -2104,7 +2306,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="warehouseIds">Warehouse ids for inventory to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryDeleteAsync(string? id, System.Collections.Generic.IEnumerable<string> warehouseIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryDeleteAsync(string? id, System.Collections.Generic.IEnumerable<string> warehouseIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2114,7 +2317,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="warehouseIds">Warehouse ids for inventory to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryDeleteAsync(string? id, System.Collections.Generic.IEnumerable<string> warehouseIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryDeleteAsync(string? id, System.Collections.Generic.IEnumerable<string> warehouseIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new inventory item to the OMS
@@ -2122,7 +2326,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Inventory object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryPostAsync(OmniumInventoryItem? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryPostAsync(OmniumInventoryItem? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2131,7 +2336,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Inventory object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryPostAsync(OmniumInventoryItem? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryPostAsync(OmniumInventoryItem? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a range of inventory items to the OMS.
@@ -2139,7 +2345,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of inventory items objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryAddManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryAddManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2148,7 +2355,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of inventory items objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryAddManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryAddManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update inventory
@@ -2156,7 +2364,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The inventory object to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryUpdateAsync(OmniumInventoryItem? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryUpdateAsync(OmniumInventoryItem? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2165,7 +2374,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The inventory object to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryUpdateAsync(OmniumInventoryItem? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryUpdateAsync(OmniumInventoryItem? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update a range of inventory items to the OMS.
@@ -2173,7 +2383,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of inventory items objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2182,14 +2393,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of inventory items objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumInventoryItem>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Recalculates all inventory items with reservations
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryRecalculateReservedInventoryAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryRecalculateReservedInventoryAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2197,7 +2410,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InventoryRecalculateReservedInventoryAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InventoryRecalculateReservedInventoryAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll inventory is used to get a large amount of inventory items.
@@ -2209,7 +2423,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventoryScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventoryScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2222,7 +2437,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventoryScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventoryScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search inventory items using available parameters in OmniumInventorySearchRequest.
@@ -2270,7 +2486,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The InventorySearchRequest contains properties for filtering inventory</param>
         /// <returns>Search successful, returning inventory items</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventorySearchAsync(OmniumInventorySearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventorySearchAsync(OmniumInventorySearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2319,7 +2536,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The InventorySearchRequest contains properties for filtering inventory</param>
         /// <returns>Search successful, returning inventory items</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>> InventorySearchAsync(OmniumInventorySearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInventoryItemOmniumResult>?> InventorySearchAsync(OmniumInventorySearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all invoices
@@ -2329,7 +2547,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPaid">Filter on paid or unpaid invoices. Leave unassigned to get all.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesAsync(int? page, int? pageSize, bool? isPaid);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesAsync(int? page, int? pageSize, bool? isPaid);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2340,7 +2559,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPaid">Filter on paid or unpaid invoices. Leave unassigned to get all.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesAsync(int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesAsync(int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single invoice
@@ -2348,7 +2568,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="invoiceId">Invoice ID</param>
         /// <returns>Invoice found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesGetAsync(string? invoiceId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesGetAsync(string? invoiceId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2357,7 +2578,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="invoiceId">Invoice ID</param>
         /// <returns>Invoice found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesGetAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesGetAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete invoice and related invoice file
@@ -2367,7 +2589,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InvoicesDeleteAsync(string? invoiceId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InvoicesDeleteAsync(string? invoiceId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2378,7 +2601,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> InvoicesDeleteAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> InvoicesDeleteAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all invoices associated with customer
@@ -2388,7 +2612,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesByCustomerAsync(string? customerId, int? page, int? pageSize, bool? isPaid);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesByCustomerAsync(string? customerId, int? page, int? pageSize, bool? isPaid);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2399,14 +2624,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesByCustomerAsync(string? customerId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesByCustomerAsync(string? customerId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get copy of invoice
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> InvoicesGetAsPdfAsync(string? invoiceId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> InvoicesGetAsPdfAsync(string? invoiceId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2414,7 +2641,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> InvoicesGetAsPdfAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> InvoicesGetAsPdfAsync(string? invoiceId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for invoices
@@ -2424,7 +2652,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesSearchAsync(OmniumInvoiceSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesSearchAsync(OmniumInvoiceSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2435,7 +2664,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesSearchAsync(OmniumInvoiceSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesSearchAsync(OmniumInvoiceSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Upload invoice-file from stream - creates new invoice
@@ -2448,7 +2678,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order connected to the created invoice (Optional)</param>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddInvoiceAsync(string fileName, string? projectId, string? orderId, System.IO.Stream body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddInvoiceAsync(string fileName, string? projectId, string? orderId, System.IO.Stream body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2462,7 +2693,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order connected to the created invoice (Optional)</param>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddInvoiceAsync(string fileName, string? projectId, string? orderId, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddInvoiceAsync(string fileName, string? projectId, string? orderId, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Upload invoice-file from stream - attach to existing invoice
@@ -2472,7 +2704,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddFileToInvoiceAsync(string? invoiceId, string? fileName, System.IO.Stream body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddFileToInvoiceAsync(string? invoiceId, string? fileName, System.IO.Stream body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2483,7 +2716,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddFileToInvoiceAsync(string? invoiceId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddFileToInvoiceAsync(string? invoiceId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add/Update invoice
@@ -2493,7 +2727,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesUpdateInvoiceAsync(OmniumInvoice? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesUpdateInvoiceAsync(OmniumInvoice? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2504,7 +2739,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Invoice added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesUpdateInvoiceAsync(OmniumInvoice? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesUpdateInvoiceAsync(OmniumInvoice? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add asset to invoice from stream.
@@ -2517,7 +2753,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddAssetAsync(string invoiceId, string fileName, string? assetId, System.IO.Stream body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddAssetAsync(string invoiceId, string fileName, string? assetId, System.IO.Stream body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2531,7 +2768,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>> InvoicesAddAssetAsync(string invoiceId, string fileName, string? assetId, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoice>?> InvoicesAddAssetAsync(string invoiceId, string fileName, string? assetId, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all invoices associated with order
@@ -2541,7 +2779,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesByOrderAsync(string? orderId, int? page, int? pageSize, bool? isPaid);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesByOrderAsync(string? orderId, int? page, int? pageSize, bool? isPaid);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2552,14 +2791,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesGetInvoicesByOrderAsync(string? orderId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> InvoicesGetInvoicesByOrderAsync(string? orderId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all markets
         /// </summary>
         /// <returns>Markets found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumMarket>>> MarketsGetAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumMarket>>?> MarketsGetAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2567,7 +2808,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Markets found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumMarket>>> MarketsGetAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumMarket>>?> MarketsGetAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update market
@@ -2575,7 +2817,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The market to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> MarketsUpdateAsync(OmniumMarket? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> MarketsUpdateAsync(OmniumMarket? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2584,7 +2827,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The market to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> MarketsUpdateAsync(OmniumMarket? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> MarketsUpdateAsync(OmniumMarket? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete market - This operation does not clean up other resources or references in Omnium, it only removes the market from the settings.
@@ -2592,7 +2836,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Id of the market to be deleted in the OMS</param>
         /// <returns>Marked deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> MarketsDeleteAsync(string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> MarketsDeleteAsync(string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2601,7 +2846,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Id of the market to be deleted in the OMS</param>
         /// <returns>Marked deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> MarketsDeleteAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> MarketsDeleteAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Send E-mail
@@ -2609,7 +2855,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> NotificationsSendEmailAsync(OmniumEmailMessage? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> NotificationsSendEmailAsync(OmniumEmailMessage? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2618,7 +2865,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> NotificationsSendEmailAsync(OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> NotificationsSendEmailAsync(OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Send SMS
@@ -2626,7 +2874,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">SMS-message to send</param>
         /// <returns>SMS is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> NotificationsSendSmsAsync(OmniumSmsMessage? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> NotificationsSendSmsAsync(OmniumSmsMessage? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2635,7 +2884,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">SMS-message to send</param>
         /// <returns>SMS is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> NotificationsSendSmsAsync(OmniumSmsMessage? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> NotificationsSendSmsAsync(OmniumSmsMessage? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new order to the OMS.
@@ -2723,7 +2973,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersPostAsync(OmniumOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersPostAsync(OmniumOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2812,7 +3063,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersPostAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersPostAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a new order in the OMS, with an auto generated order number (orderNumber). 
@@ -2900,7 +3152,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersCreateAsync(OmniumOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersCreateAsync(OmniumOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2989,7 +3242,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersCreateAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersCreateAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a new Pos order in OMS.
@@ -3036,7 +3290,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Order created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersCreatePosOrderAsync(OmniumOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersCreatePosOrderAsync(OmniumOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3084,7 +3339,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Order created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersCreatePosOrderAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersCreatePosOrderAsync(OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update an order.
@@ -3173,7 +3429,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The order to update.</param>
         /// <returns>The order was updated successfully and the workflow was executed.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> OrdersUpdateAsync(bool? runWorkflow, OmniumOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> OrdersUpdateAsync(bool? runWorkflow, OmniumOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3263,7 +3520,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The order to update.</param>
         /// <returns>The order was updated successfully and the workflow was executed.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> OrdersUpdateAsync(bool? runWorkflow, OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> OrdersUpdateAsync(bool? runWorkflow, OmniumOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update a range of orders. Adds order if order does not already exist.
@@ -3272,7 +3530,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of orders to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersUpdateManyAsync(bool? runWorkflow, System.Collections.Generic.IEnumerable<OmniumOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersUpdateManyAsync(bool? runWorkflow, System.Collections.Generic.IEnumerable<OmniumOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3282,7 +3541,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of orders to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersUpdateManyAsync(bool? runWorkflow, System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersUpdateManyAsync(bool? runWorkflow, System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds a range of new orders to the OMS. Does not overwrite existing orders.
@@ -3290,7 +3550,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Order objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3299,7 +3560,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Order objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds a range of orders to the OMS, without running workflows.
@@ -3307,7 +3569,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Order objects that needs to be imported to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersImportManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersImportManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3316,7 +3579,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Order objects that needs to be imported to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersImportManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersImportManyAsync(System.Collections.Generic.IEnumerable<OmniumOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add payments to an existing order.
@@ -3362,7 +3626,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of payments to add to the order. (Required)</param>
         /// <returns>The payments were added to the order, and the updated order is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddPaymentToOrderAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumPayment> body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddPaymentToOrderAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumPayment> body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3409,7 +3674,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of payments to add to the order. (Required)</param>
         /// <returns>The payments were added to the order, and the updated order is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddPaymentToOrderAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumPayment> body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddPaymentToOrderAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumPayment> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch Order - update only values in request
@@ -3418,7 +3684,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order patches. Properties with value will be updated</param>
         /// <returns>Order updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderPatchUpdateResult>> OrdersPatchOrderAsync(string? orderId, OmniumOrderPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderPatchUpdateResult>?> OrdersPatchOrderAsync(string? orderId, OmniumOrderPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3428,7 +3695,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Order patches. Properties with value will be updated</param>
         /// <returns>Order updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderPatchUpdateResult>> OrdersPatchOrderAsync(string? orderId, OmniumOrderPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderPatchUpdateResult>?> OrdersPatchOrderAsync(string? orderId, OmniumOrderPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch OrderLines - update only values in request
@@ -3451,7 +3719,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">OrderLine patches. OrderLine with value will be updated. LineItemId is required</param>
         /// <returns>OrderLines updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderLineUpdateResult>> OrdersPatchOrderLineAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumOrderLinePatch>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderLineUpdateResult>?> OrdersPatchOrderLineAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumOrderLinePatch>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3475,7 +3744,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">OrderLine patches. OrderLine with value will be updated. LineItemId is required</param>
         /// <returns>OrderLines updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderLineUpdateResult>> OrdersPatchOrderLineAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumOrderLinePatch>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderLineUpdateResult>?> OrdersPatchOrderLineAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumOrderLinePatch>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Cancel order line
@@ -3485,7 +3755,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sendNotifications">If true, notification about cancellation is sent to customer</param>
         /// <returns>Order line cancelled successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersCancelOrderLineAsync(string? orderId, string? lineItemId, bool? sendNotifications);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersCancelOrderLineAsync(string? orderId, string? lineItemId, bool? sendNotifications);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3496,7 +3767,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sendNotifications">If true, notification about cancellation is sent to customer</param>
         /// <returns>Order line cancelled successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersCancelOrderLineAsync(string? orderId, string? lineItemId, bool? sendNotifications, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersCancelOrderLineAsync(string? orderId, string? lineItemId, bool? sendNotifications, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add order line
@@ -3504,7 +3776,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order ID (Required)</param>
         /// <returns>Order line added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddOrderLineAsync(string? orderId, string? shipmentId, OmniumOrderLine? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddOrderLineAsync(string? orderId, string? shipmentId, OmniumOrderLine? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3513,7 +3786,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order ID (Required)</param>
         /// <returns>Order line added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddOrderLineAsync(string? orderId, string? shipmentId, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddOrderLineAsync(string? orderId, string? shipmentId, OmniumOrderLine? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add many order lines
@@ -3521,7 +3795,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order ID (Required)</param>
         /// <returns>Order line added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddManyOrderLinesAsync(string? orderId, string? shipmentId, System.Collections.Generic.IEnumerable<OmniumOrderLine>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddManyOrderLinesAsync(string? orderId, string? shipmentId, System.Collections.Generic.IEnumerable<OmniumOrderLine>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3530,7 +3805,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order ID (Required)</param>
         /// <returns>Order line added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddManyOrderLinesAsync(string? orderId, string? shipmentId, System.Collections.Generic.IEnumerable<OmniumOrderLine>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddManyOrderLinesAsync(string? orderId, string? shipmentId, System.Collections.Generic.IEnumerable<OmniumOrderLine>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update properties on order lines
@@ -3572,7 +3848,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">OrderLineId and List of properties to add or update.</param>
         /// <returns>Order lines updated with properties</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddOrderLinePropertiesAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumLineItemPropertiesPatch> body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddOrderLinePropertiesAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumLineItemPropertiesPatch> body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3615,7 +3892,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">OrderLineId and List of properties to add or update.</param>
         /// <returns>Order lines updated with properties</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersAddOrderLinePropertiesAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumLineItemPropertiesPatch> body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersAddOrderLinePropertiesAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumLineItemPropertiesPatch> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a return with all or some of the line items. Will also credit payment.
@@ -3625,7 +3903,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersReturnAsync(string? orderId, OmniumReturnRequestModel? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersReturnAsync(string? orderId, OmniumReturnRequestModel? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3636,7 +3915,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersReturnAsync(string? orderId, OmniumReturnRequestModel? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersReturnAsync(string? orderId, OmniumReturnRequestModel? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single order
@@ -3644,7 +3924,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the order to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3653,7 +3934,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the order to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single order which has a matching cartId property.
@@ -3661,7 +3943,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of the cart the order originated from</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetByCartIdAsync(string? cartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetByCartIdAsync(string? cartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3670,7 +3953,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of the cart the order originated from</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetByCartIdAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetByCartIdAsync(string? cartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns the number of orders for a given status and given store.
@@ -3686,7 +3970,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="filterOnWarehouse">Filter on shipment warehouse. If false, storefilter will be order.storeId</param>
         /// <returns>The number of orders for a given status and store</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<int>> OrdersGetOrderCountAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, System.Collections.Generic.IEnumerable<string>? orderTypes, bool? filterOnWarehouse);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<int>?> OrdersGetOrderCountAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, System.Collections.Generic.IEnumerable<string>? orderTypes, bool? filterOnWarehouse);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3703,7 +3988,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="filterOnWarehouse">Filter on shipment warehouse. If false, storefilter will be order.storeId</param>
         /// <returns>The number of orders for a given status and store</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<int>> OrdersGetOrderCountAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, System.Collections.Generic.IEnumerable<string>? orderTypes, bool? filterOnWarehouse, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<int>?> OrdersGetOrderCountAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, System.Collections.Generic.IEnumerable<string>? orderTypes, bool? filterOnWarehouse, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders, support paging
@@ -3715,7 +4001,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3728,7 +4015,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders filtered by order type, with support for paging.
@@ -3746,7 +4034,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByOrderTypeAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.Collections.Generic.IEnumerable<string>? orderTypes, System.DateTime? changedSince, int? pageSize, int? page);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByOrderTypeAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.Collections.Generic.IEnumerable<string>? orderTypes, System.DateTime? changedSince, int? pageSize, int? page);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3765,7 +4054,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByOrderTypeAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.Collections.Generic.IEnumerable<string>? orderTypes, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByOrderTypeAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.Collections.Generic.IEnumerable<string>? orderTypes, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders, filtered by shipment pick-up point
@@ -3777,7 +4067,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersForPickUpPointAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersForPickUpPointAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3790,7 +4081,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Current page of the search request. Minimum 1(default is 1)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersForPickUpPointAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersForPickUpPointAsync(System.Collections.Generic.IEnumerable<string>? storeId, System.Collections.Generic.IEnumerable<string>? status, System.DateTime? changedSince, int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns the order status of a single order
@@ -3798,7 +4090,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order id of the order to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> OrdersGetByStatusAsync(string? orderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> OrdersGetByStatusAsync(string? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3807,7 +4100,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order id of the order to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> OrdersGetByStatusAsync(string? orderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> OrdersGetByStatusAsync(string? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get multiple orders by IDs
@@ -3815,7 +4109,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ids">List of orders IDs which will be used to fetch corresponding orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumGetMultipleResponse>> OrdersGetOrdersByIdsAsync(System.Collections.Generic.IEnumerable<string>? ids);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGetMultipleResponse>?> OrdersGetOrdersByIdsAsync(System.Collections.Generic.IEnumerable<string>? ids);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3824,14 +4119,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ids">List of orders IDs which will be used to fetch corresponding orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumGetMultipleResponse>> OrdersGetOrdersByIdsAsync(System.Collections.Generic.IEnumerable<string>? ids, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGetMultipleResponse>?> OrdersGetOrdersByIdsAsync(System.Collections.Generic.IEnumerable<string>? ids, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search and filtering of orders.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchOrdersAsync(OmniumOrderSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchOrdersAsync(OmniumOrderSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3839,7 +4136,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchOrdersAsync(OmniumOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchOrdersAsync(OmniumOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll orders by search
@@ -3857,7 +4155,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning orders</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>> OrdersScrollSearchAsync(OmniumOrderSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>?> OrdersScrollSearchAsync(OmniumOrderSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3876,7 +4175,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning orders</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>> OrdersScrollSearchAsync(OmniumOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>?> OrdersScrollSearchAsync(OmniumOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll orders is used to get a large amount of orders.
@@ -3888,7 +4188,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>> OrdersScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>?> OrdersScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3901,14 +4202,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>> OrdersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumResult>?> OrdersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search orders by custom properties.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByCustomPropertiesAsync(string? key, string? value);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByCustomPropertiesAsync(string? key, string? value);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3916,7 +4219,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByCustomPropertiesAsync(string? key, string? value, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByCustomPropertiesAsync(string? key, string? value, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders for a given customer. Search by id, phone or e-mail. Supports paging.
@@ -3926,7 +4230,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3937,7 +4242,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersForCustomerAsync(string? customerId, string? phone, string? email, System.Collections.Generic.IEnumerable<string>? storeId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders for a given customer. Supports paging.
@@ -3947,7 +4253,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByCustomerIdAsync(string? customerId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByCustomerIdAsync(string? customerId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3958,7 +4265,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersGetOrdersByCustomerIdAsync(string? customerId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersGetOrdersByCustomerIdAsync(string? customerId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of orders for a given customer, matching search text. Supports paging.
@@ -3967,7 +4275,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request containing search query</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchOrdersForCustomerAsync(string? customerId, OmniumSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchOrdersForCustomerAsync(string? customerId, OmniumSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3977,7 +4286,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request containing search query</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchOrdersForCustomerAsync(string? customerId, OmniumSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchOrdersForCustomerAsync(string? customerId, OmniumSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get order for a single customer
@@ -3986,7 +4296,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">The id of the order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetOrderForCustomerAsync(string? customerId, string? orderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetOrderForCustomerAsync(string? customerId, string? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -3996,7 +4307,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">The id of the order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> OrdersGetOrderForCustomerAsync(string? customerId, string? orderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> OrdersGetOrderForCustomerAsync(string? customerId, string? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for order. Will give hits for all orders starting with the order id sent in as parameter
@@ -4004,7 +4316,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order id to search for</param>
         /// <returns>Result model with total hits and a list of orders</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchByOrderIdAsync(string orderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchByOrderIdAsync(string orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4013,14 +4326,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="orderId">Order id to search for</param>
         /// <returns>Result model with total hits and a list of orders</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>> OrdersSearchByOrderIdAsync(string orderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSearchResultViewModel>?> OrdersSearchByOrderIdAsync(string orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get copy of receipt
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersGetAsPdfAsync(string? orderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersGetAsPdfAsync(string? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4028,7 +4343,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersGetAsPdfAsync(string? orderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersGetAsPdfAsync(string? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes an order from the OMS. Soft delete is default (order status will be set to "deleted").
@@ -4036,7 +4352,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="deletePermanently">If true, the order will be permanently deleted. No way back!</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersDeleteAsync(string? orderId, bool? deletePermanently);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersDeleteAsync(string? orderId, bool? deletePermanently);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4045,7 +4362,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="deletePermanently">If true, the order will be permanently deleted. No way back!</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersDeleteAsync(string? orderId, bool? deletePermanently, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersDeleteAsync(string? orderId, bool? deletePermanently, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Check if an order exists in Omnium
@@ -4053,7 +4371,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the order</param>
         /// <returns>The order was found in Omnium</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersExistsAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersExistsAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4062,7 +4381,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the order</param>
         /// <returns>The order was found in Omnium</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> OrdersExistsAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> OrdersExistsAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get payment report with payment transactions
@@ -4070,7 +4390,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>> PaymentReportSearchPaymentTransactionsAsync(OmniumPaymentReportSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsAsync(OmniumPaymentReportSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4079,7 +4400,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>> PaymentReportSearchPaymentTransactionsAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search all PickLists.
@@ -4089,7 +4411,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickListSearchResultViewModel>> PickListSearchAsync(OmniumPickListSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickListSearchResultViewModel>?> PickListSearchAsync(OmniumPickListSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4100,7 +4423,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickListSearchResultViewModel>> PickListSearchAsync(OmniumPickListSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickListSearchResultViewModel>?> PickListSearchAsync(OmniumPickListSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get PickList with id.
@@ -4110,7 +4434,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickList>> PickListGetAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickList>?> PickListGetAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4121,7 +4446,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickList>> PickListGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPickList>?> PickListGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch PickList - update only values in request.
@@ -4131,7 +4457,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PickListPatchPickListAsync(OmniumPickListPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PickListPatchPickListAsync(OmniumPickListPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4142,14 +4469,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PickListPatchPickListAsync(OmniumPickListPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PickListPatchPickListAsync(OmniumPickListPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get price list
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceList>> PriceListsGetPriceListAsync(string id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceList>?> PriceListsGetPriceListAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4157,14 +4486,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceList>> PriceListsGetPriceListAsync(string id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceList>?> PriceListsGetPriceListAsync(string id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add price list
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PriceListsAddPriceListAsync(OmniumPriceList? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PriceListsAddPriceListAsync(OmniumPriceList? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4172,7 +4503,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PriceListsAddPriceListAsync(OmniumPriceList? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PriceListsAddPriceListAsync(OmniumPriceList? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll prices is used to get a large amount of prices.
@@ -4186,7 +4518,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>> PricesScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>?> PricesScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4201,7 +4534,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>> PricesScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>?> PricesScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search prices using available parameters in OmniumPriceSearchRequest.
@@ -4259,7 +4593,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The PriceSearchRequest contains properties for filtering prices</param>
         /// <returns>Search successful, returning prices</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>> PricesSearchAsync(OmniumPriceSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>?> PricesSearchAsync(OmniumPriceSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4318,14 +4653,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The PriceSearchRequest contains properties for filtering prices</param>
         /// <returns>Search successful, returning prices</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>> PricesSearchAsync(OmniumPriceSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPriceOmniumResult>?> PricesSearchAsync(OmniumPriceSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Put one or more prices to a product in Omnium. Will overwrite existing price if found, or add a new price if no match is found.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PricesPutPricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PricesPutPricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4333,14 +4670,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PricesPutPricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PricesPutPricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete one or more prices on a product in Omnium. Will delete existing price if found.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PricesDeletePricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PricesDeletePricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4348,7 +4687,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PricesDeletePricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PricesDeletePricesAsync(System.Collections.Generic.IEnumerable<OmniumPriceUpdateRequest>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a private customer customer to database.
@@ -4356,7 +4696,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer object to be stored in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersPostAsync(OmniumPrivateCustomer? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersPostAsync(OmniumPrivateCustomer? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4365,7 +4706,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer object to be stored in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersPostAsync(OmniumPrivateCustomer? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersPostAsync(OmniumPrivateCustomer? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds a range of new customers to the OMS.
@@ -4375,7 +4717,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4386,7 +4729,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update a range of customers to the OMS.
@@ -4395,7 +4739,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4405,7 +4750,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update private customer
@@ -4413,7 +4759,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer object to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> PrivateCustomersUpdateAsync(OmniumPrivateCustomer? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> PrivateCustomersUpdateAsync(OmniumPrivateCustomer? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4422,7 +4769,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The customer object to be updated in the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> PrivateCustomersUpdateAsync(OmniumPrivateCustomer? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> PrivateCustomersUpdateAsync(OmniumPrivateCustomer? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch private customer - update only some values in request
@@ -4430,7 +4778,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Private customer patch. Only properties with value will be updated.</param>
         /// <returns>Private customer updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>> PrivateCustomersPatchPrivateCustomerAsync(OmniumPrivateCustomerPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>?> PrivateCustomersPatchPrivateCustomerAsync(OmniumPrivateCustomerPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4439,7 +4788,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Private customer patch. Only properties with value will be updated.</param>
         /// <returns>Private customer updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>> PrivateCustomersPatchPrivateCustomerAsync(OmniumPrivateCustomerPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerUpdateResult>?> PrivateCustomersPatchPrivateCustomerAsync(OmniumPrivateCustomerPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Gets the specified customer identifier.
@@ -4447,7 +4797,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerId">The customer identifier.</param>
         /// <returns>Returning the customer</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> PrivateCustomersGetAsync(string? customerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> PrivateCustomersGetAsync(string? customerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4456,7 +4807,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerId">The customer identifier.</param>
         /// <returns>Returning the customer</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>> PrivateCustomersGetAsync(string? customerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomer>?> PrivateCustomersGetAsync(string? customerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Gets customer and related customer club membership info. Customer must have registered phone number and be connected to the specified store.
@@ -4465,7 +4817,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">The store the customer is connected to.</param>
         /// <returns>Returning customer view model</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerViewModel>> PrivateCustomersGetCustomerByPhoneAndStoreAsync(string phoneNumber, string storeId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerViewModel>?> PrivateCustomersGetCustomerByPhoneAndStoreAsync(string phoneNumber, string storeId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4475,7 +4828,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">The store the customer is connected to.</param>
         /// <returns>Returning customer view model</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerViewModel>> PrivateCustomersGetCustomerByPhoneAndStoreAsync(string phoneNumber, string storeId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerViewModel>?> PrivateCustomersGetCustomerByPhoneAndStoreAsync(string phoneNumber, string storeId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete the private customer and anonymize all related orders, projects and other data.
@@ -4483,7 +4837,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer to anonymize</param>
         /// <returns>Anonymization successful, or customer is already anonymized</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAnonymizeCustomerAsync(string id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAnonymizeCustomerAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4492,7 +4847,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer to anonymize</param>
         /// <returns>Anonymization successful, or customer is already anonymized</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAnonymizeCustomerAsync(string id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAnonymizeCustomerAsync(string id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete the private customer.
@@ -4500,7 +4856,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer to delete</param>
         /// <returns>Private customer has been deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersDeleteAsync(string id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersDeleteAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4509,7 +4866,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer to delete</param>
         /// <returns>Private customer has been deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersDeleteAsync(string id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersDeleteAsync(string id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all customer personal data, orders and other data stored in the OMS.
@@ -4517,7 +4875,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerInfo>> PrivateCustomersGetPrivateCustomerInformationAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerInfo>?> PrivateCustomersGetPrivateCustomerInformationAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4526,7 +4885,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerInfo>> PrivateCustomersGetPrivateCustomerInformationAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerInfo>?> PrivateCustomersGetPrivateCustomerInformationAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new consent for the customer
@@ -4535,7 +4895,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The consent to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddConsentAsync(string customerId, OmniumConsent? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddConsentAsync(string customerId, OmniumConsent? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4545,7 +4906,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The consent to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddConsentAsync(string customerId, OmniumConsent? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddConsentAsync(string customerId, OmniumConsent? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all consents for the customer.
@@ -4553,7 +4915,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>A list of consents</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumConsent>>> PrivateCustomersGetConsentsForCustomerAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumConsent>>?> PrivateCustomersGetConsentsForCustomerAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4562,7 +4925,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>A list of consents</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumConsent>>> PrivateCustomersGetConsentsForCustomerAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumConsent>>?> PrivateCustomersGetConsentsForCustomerAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for private customers. Obsolete: Please use POST api/privateCustomers/search instead.
@@ -4571,7 +4935,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersSearchGETAsync(string? query);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersSearchGETAsync(string? query);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4581,7 +4946,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersSearchGETAsync(string? query, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersSearchGETAsync(string? query, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search private customers
@@ -4589,7 +4955,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returns list of private customers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4598,7 +4965,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Returns list of private customers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersSearchPOSTAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all private customers
@@ -4609,7 +4977,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changedSince">Customers added or modified since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4621,7 +4990,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changedSince">Customers added or modified since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersGetAllAsync(int? page, int? pageSize, string? sortOrder, System.DateTime? changedSince, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll privateCustomers by search
@@ -4632,7 +5002,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning privateCustomers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4644,7 +5015,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning privateCustomers</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>> PrivateCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumSearchResult>?> PrivateCustomersScrollSearchAsync(OmniumCustomerSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll privateCustomers is used to get a large amount of customers.
@@ -4656,7 +5028,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumResult>> PrivateCustomersScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumResult>?> PrivateCustomersScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4669,7 +5042,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumResult>> PrivateCustomersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPrivateCustomerOmniumResult>?> PrivateCustomersScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a customer club member
@@ -4680,7 +5054,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersGetCustomerClubMemberAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersGetCustomerClubMemberAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4692,7 +5067,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersGetCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersGetCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer to customer club. Customer is created if not exist. This membership will be approved(consent by default)
@@ -4703,7 +5079,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4715,7 +5092,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer to customer club. Customer is created if not exist. Membership is not approved.
@@ -4729,7 +5107,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="phone">Optional. If not set, id is used as phone</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewPendingCustomerClubMemberAsync(string? id, string storeId, string? phone);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewPendingCustomerClubMemberAsync(string? id, string storeId, string? phone);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4744,7 +5123,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="phone">Optional. If not set, id is used as phone</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewPendingCustomerClubMemberAsync(string? id, string storeId, string? phone, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewPendingCustomerClubMemberAsync(string? id, string storeId, string? phone, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer to customer club member with consents. Customer is created if not exist.
@@ -4759,7 +5139,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithConsentsAsync(string? id, OmniumCustomerClubConsents? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithConsentsAsync(string? id, OmniumCustomerClubConsents? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4775,7 +5156,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithConsentsAsync(string? id, OmniumCustomerClubConsents? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithConsentsAsync(string? id, OmniumCustomerClubConsents? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer to customer club member with consents. Customer is created if not exist.
@@ -4788,7 +5170,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents for this membership. Supported consent type: "ApprovedConsents", "EmailMarketing", "SmsMarketing"</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithConsentListAsync(string? id, string? salesPersonId, System.Collections.Generic.IEnumerable<OmniumConsent>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithConsentListAsync(string? id, string? salesPersonId, System.Collections.Generic.IEnumerable<OmniumConsent>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4802,7 +5185,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents for this membership. Supported consent type: "ApprovedConsents", "EmailMarketing", "SmsMarketing"</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithConsentListAsync(string? id, string? salesPersonId, System.Collections.Generic.IEnumerable<OmniumConsent>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithConsentListAsync(string? id, string? salesPersonId, System.Collections.Generic.IEnumerable<OmniumConsent>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update consents for customer club member
@@ -4817,7 +5201,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberConsentsAsync(string? id, OmniumCustomerClubConsents? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberConsentsAsync(string? id, OmniumCustomerClubConsents? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4833,7 +5218,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberConsentsAsync(string? id, OmniumCustomerClubConsents? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberConsentsAsync(string? id, OmniumCustomerClubConsents? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update consent list for customer club member
@@ -4845,7 +5231,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents for this membership. This will update existing consents and add new. Supported consent type: "ApprovedConsents", "EmailMarketing", "SmsMarketing"</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberConsentListAsync(string? id, System.Collections.Generic.IEnumerable<OmniumConsent> body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberConsentListAsync(string? id, System.Collections.Generic.IEnumerable<OmniumConsent> body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4858,7 +5245,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents for this membership. This will update existing consents and add new. Supported consent type: "ApprovedConsents", "EmailMarketing", "SmsMarketing"</param>
         /// <returns>Customer club object with summary</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberConsentListAsync(string? id, System.Collections.Generic.IEnumerable<OmniumConsent> body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberConsentListAsync(string? id, System.Collections.Generic.IEnumerable<OmniumConsent> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer to customer club member with patch request, containing both consents, interests and signUp storeId. Customer is created if not exist.
@@ -4870,7 +5258,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents and interests for this customer. StoreId can also be set.</param>
         /// <returns>Customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4883,7 +5272,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents and interests for this customer. StoreId can also be set.</param>
         /// <returns>Customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersAddNewCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersAddNewCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update customer club member. Consents and interests will be updated/override with what you send in
@@ -4895,7 +5285,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents, interests for this customer.StoreId can also be set. Will override existing</param>
         /// <returns>Customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4908,7 +5299,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Consents, interests for this customer.StoreId can also be set. Will override existing</param>
         /// <returns>Customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberWithPatchAsync(string? id, OmniumCustomerClubMemberPatchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update list of interests for a customer club member. The list sent in, will replace existing(add or remove).
@@ -4921,7 +5313,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Interest to store, if customer has other interests, they will be deleted. Send in empty lists if all interests should be removed.</param>
         /// <returns>Updated customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberInterestsAsync(string? id, System.Collections.Generic.IEnumerable<string>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberInterestsAsync(string? id, System.Collections.Generic.IEnumerable<string>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4935,7 +5328,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Interest to store, if customer has other interests, they will be deleted. Send in empty lists if all interests should be removed.</param>
         /// <returns>Updated customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>> PrivateCustomersUpdateCustomerClubMemberInterestsAsync(string? id, System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMember>?> PrivateCustomersUpdateCustomerClubMemberInterestsAsync(string? id, System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Remove a customer from customer club
@@ -4946,7 +5340,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Updated customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersRemoveCustomerClubMemberAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersRemoveCustomerClubMemberAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4958,7 +5353,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the customer</param>
         /// <returns>Updated customer club member</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersRemoveCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersRemoveCustomerClubMemberAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update a range of CustomerClub members to the OMS.
@@ -4972,7 +5368,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of customerClubMembers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyCustomerClubMembersAsync(System.Collections.Generic.IEnumerable<OmniumCustomerClubMember>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyCustomerClubMembersAsync(System.Collections.Generic.IEnumerable<OmniumCustomerClubMember>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4987,7 +5384,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of customerClubMembers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyCustomerClubMembersAsync(System.Collections.Generic.IEnumerable<OmniumCustomerClubMember>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyCustomerClubMembersAsync(System.Collections.Generic.IEnumerable<OmniumCustomerClubMember>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all Customer club members
@@ -5000,7 +5398,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="memberSince">Members since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersGetAllCustomerClubMembersAsync(int? page, int? pageSize, System.DateTime? memberSince);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersGetAllCustomerClubMembersAsync(int? page, int? pageSize, System.DateTime? memberSince);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5014,7 +5413,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="memberSince">Members since a given date and time</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersGetAllCustomerClubMembersAsync(int? page, int? pageSize, System.DateTime? memberSince, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersGetAllCustomerClubMembersAsync(int? page, int? pageSize, System.DateTime? memberSince, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for customerClubMembers.
@@ -5022,7 +5422,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersSearchPOST2Async(OmniumCustomerClubMemberSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersSearchPOST2Async(OmniumCustomerClubMemberSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5031,7 +5432,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersSearchPOST2Async(OmniumCustomerClubMemberSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersSearchPOST2Async(OmniumCustomerClubMemberSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll customerClubMembers is used to get a large amount of customerClubMember items.
@@ -5045,7 +5447,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersScrollCustomerClubMembersAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersScrollCustomerClubMembersAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5060,7 +5463,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>> PrivateCustomersScrollCustomerClubMembersAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerClubMemberOmniumResult>?> PrivateCustomersScrollCustomerClubMembersAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get available CustomerClub interests. Used to segment users and marketing
@@ -5070,7 +5474,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>List of interests</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumCustomerClubInterests>>> PrivateCustomersGetCustomerClubInterestsAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumCustomerClubInterests>>?> PrivateCustomersGetCustomerClubInterestsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5081,7 +5486,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>List of interests</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumCustomerClubInterests>>> PrivateCustomersGetCustomerClubInterestsAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumCustomerClubInterests>>?> PrivateCustomersGetCustomerClubInterestsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update customer number on customer and all orders
@@ -5090,7 +5496,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerNumber">The new customer number to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5100,7 +5507,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="customerNumber">The new customer number to be added</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersUpdateCustomerNumberAsync(string customerId, string customerNumber, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get next generated customer number.
@@ -5111,7 +5519,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Optional: Provide if multiple CustomerNumberOptions configured</param>
         /// <returns>CustomerNumber</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersGetNextCustomerNumberAsync(string? marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersGetNextCustomerNumberAsync(string? marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5123,14 +5532,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Optional: Provide if multiple CustomerNumberOptions configured</param>
         /// <returns>CustomerNumber</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersGetNextCustomerNumberAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersGetNextCustomerNumberAsync(string? marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or Update a productAlert. If ID is null, it will be created.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsAddAsync(OmniumProductAlertRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsAddAsync(OmniumProductAlertRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5138,14 +5549,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsAddAsync(OmniumProductAlertRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsAddAsync(OmniumProductAlertRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deactivate productAlerts. Active flag will be set to false, and contact information will be removed.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsDeactivateAsync(System.Collections.Generic.IEnumerable<string> omniumProductAlertIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsDeactivateAsync(System.Collections.Generic.IEnumerable<string> omniumProductAlertIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5153,7 +5566,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsDeactivateAsync(System.Collections.Generic.IEnumerable<string> omniumProductAlertIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsDeactivateAsync(System.Collections.Generic.IEnumerable<string> omniumProductAlertIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get ProductAlerts.
@@ -5162,7 +5576,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="take">Number of elements</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsGetProductAlertsAsync(int? page, int? take);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsGetProductAlertsAsync(int? page, int? take);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5172,7 +5587,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="take">Number of elements</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsGetProductAlertsAsync(int? page, int? take, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsGetProductAlertsAsync(int? page, int? take, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for product alerts.
@@ -5180,7 +5596,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Request with search params</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsSearchProductAlertsAsync(OmniumProductAlertSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsSearchProductAlertsAsync(OmniumProductAlertSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5189,7 +5606,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Request with search params</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductAlertsSearchProductAlertsAsync(OmniumProductAlertSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductAlertsSearchProductAlertsAsync(OmniumProductAlertSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product category. Language code has to be specified, either in the id or in the language parameter. If not default value will be used.
@@ -5198,7 +5616,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="language">Language code. If language code is not given in the id ("123"), then language code should be set ("no"). If language code is neither given in the id nor here, the category in default product language will be returned.</param>
         /// <returns>Category found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategory>> ProductCategoriesGetCategoryAsync(string? categoryId, string? language);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategory>?> ProductCategoriesGetCategoryAsync(string? categoryId, string? language);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5208,7 +5627,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="language">Language code. If language code is not given in the id ("123"), then language code should be set ("no"). If language code is neither given in the id nor here, the category in default product language will be returned.</param>
         /// <returns>Category found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategory>> ProductCategoriesGetCategoryAsync(string? categoryId, string? language, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategory>?> ProductCategoriesGetCategoryAsync(string? categoryId, string? language, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product categories. Returns all categories in all languages.
@@ -5217,7 +5637,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page</param>
         /// <returns>Categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>> ProductCategoriesGetCategoriesAsync(int? pageSize, int? page);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>?> ProductCategoriesGetCategoriesAsync(int? pageSize, int? page);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5227,7 +5648,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page</param>
         /// <returns>Categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>> ProductCategoriesGetCategoriesAsync(int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>?> ProductCategoriesGetCategoriesAsync(int? pageSize, int? page, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new product category to the OMS
@@ -5235,7 +5657,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product category to be added to the OMS. CategoryId is required. If language is not given, default product language will be set.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesPostAsync(OmniumProductCategory? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesPostAsync(OmniumProductCategory? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5244,7 +5667,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product category to be added to the OMS. CategoryId is required. If language is not given, default product language will be set.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesPostAsync(OmniumProductCategory? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesPostAsync(OmniumProductCategory? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Put a product category to the OMS, CAUTION: overwriting existing product category
@@ -5252,7 +5676,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product category to be put to the OMS</param>
         /// <returns>Product category updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesPutAsync(OmniumProductCategory? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesPutAsync(OmniumProductCategory? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5261,14 +5686,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product category to be put to the OMS</param>
         /// <returns>Product category updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesPutAsync(OmniumProductCategory? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesPutAsync(OmniumProductCategory? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product category tree
         /// </summary>
         /// <returns>Product category tree found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>> ProductCategoriesGetCategoryTreeAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>?> ProductCategoriesGetCategoryTreeAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5276,14 +5703,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Product category tree found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>> ProductCategoriesGetCategoryTreeAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>?> ProductCategoriesGetCategoryTreeAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product category tree by product search
         /// </summary>
         /// <returns>Product category tree found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>> ProductCategoriesGetCategoryTreeBySearchAsync(string? rootCategoryId, OmniumProductSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>?> ProductCategoriesGetCategoryTreeBySearchAsync(string? rootCategoryId, OmniumProductSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5291,7 +5720,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Product category tree found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>> ProductCategoriesGetCategoryTreeBySearchAsync(string? rootCategoryId, OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>?> ProductCategoriesGetCategoryTreeBySearchAsync(string? rootCategoryId, OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product category sub items by parent Id
@@ -5300,7 +5730,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="language">Language code, e.g. NO, EN</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategory>>> ProductCategoriesGetSubCategoriesAsync(string? parentId, string? language);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategory>>?> ProductCategoriesGetSubCategoriesAsync(string? parentId, string? language);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5310,7 +5741,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="language">Language code, e.g. NO, EN</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategory>>> ProductCategoriesGetSubCategoriesAsync(string? parentId, string? language, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategory>>?> ProductCategoriesGetSubCategoriesAsync(string? parentId, string? language, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add many product categories to the OMS
@@ -5318,7 +5750,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product categories to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProductCategory>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProductCategory>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5327,7 +5760,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product categories to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProductCategory>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProductCategory>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a product category from the OMS
@@ -5335,7 +5769,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productCategoryId">ID of the category to delete (id including language)</param>
         /// <returns>Product category deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesDeleteAsync(string? productCategoryId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesDeleteAsync(string? productCategoryId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5344,14 +5779,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productCategoryId">ID of the category to delete (id including language)</param>
         /// <returns>Product category deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductCategoriesDeleteAsync(string? productCategoryId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductCategoriesDeleteAsync(string? productCategoryId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll search categories. The response will contain a Scroll ID which can be used with the Scroll endpoint to fetch all remaining items.
         /// </summary>
         /// <returns>Categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>> ProductCategoriesScrollSearchAsync(OmniumProductCategorySearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>?> ProductCategoriesScrollSearchAsync(OmniumProductCategorySearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5359,7 +5796,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>> ProductCategoriesScrollSearchAsync(OmniumProductCategorySearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumSearchResult>?> ProductCategoriesScrollSearchAsync(OmniumProductCategorySearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll product categories is used to get a large amount of categories.
@@ -5371,7 +5809,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumResult>> ProductCategoriesScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumResult>?> ProductCategoriesScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5384,7 +5823,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumResult>> ProductCategoriesScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductCategoryOmniumResult>?> ProductCategoriesScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch product - update only values in request
@@ -5393,7 +5833,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch requests. Id is required. If not set, the patch request will be skipped.</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductsAndVariantsUpdateResult>> ProductsPatchManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductsAndVariantsUpdateResult>?> ProductsPatchManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5403,7 +5844,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch requests. Id is required. If not set, the patch request will be skipped.</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductsAndVariantsUpdateResult>> ProductsPatchManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductsAndVariantsUpdateResult>?> ProductsPatchManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for variants | Obsolete: Use product search instead.
@@ -5411,7 +5853,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Search successful, returning variants</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsSearchVariantsAsync(OmniumProductSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsSearchVariantsAsync(OmniumProductSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5420,7 +5863,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Search successful, returning variants</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsSearchVariantsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsSearchVariantsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Reindex variant index by product id
@@ -5428,7 +5872,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Reindex successful</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsReindexVariantIndexByProductIdsAsync(System.Collections.Generic.IEnumerable<string>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsReindexVariantIndexByProductIdsAsync(System.Collections.Generic.IEnumerable<string>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5437,7 +5882,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Reindex successful</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsReindexVariantIndexByProductIdsAsync(System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsReindexVariantIndexByProductIdsAsync(System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create product statistics
@@ -5445,7 +5891,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Product statistics returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductSales>> ProductsCreateProductStatisticsAsync(OmniumProductStatisticsSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductSales>?> ProductsCreateProductStatisticsAsync(OmniumProductStatisticsSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5454,7 +5901,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Product statistics returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductSales>> ProductsCreateProductStatisticsAsync(OmniumProductStatisticsSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductSales>?> ProductsCreateProductStatisticsAsync(OmniumProductStatisticsSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product by Product ID or SKU ID. Product will be returned with all valid prices(for all markets/stores) sorted by defaultMarket, excluding customer specific prices.
@@ -5463,7 +5911,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU ID</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetAsync(string productId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetAsync(string productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5473,14 +5922,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU ID</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetAsync(string productId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetAsync(string productId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a product from the OMS
         /// </summary>
         /// <returns>Product deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteAsync(string? productId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteAsync(string? productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5488,7 +5939,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Product deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteAsync(string? productId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteAsync(string? productId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch product - update only values in request
@@ -5497,7 +5949,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchProductAsync(string? productId, OmniumProductPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchProductAsync(string? productId, OmniumProductPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5507,7 +5960,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchProductAsync(string? productId, OmniumProductPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchProductAsync(string? productId, OmniumProductPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product by product ID. Returned as is, with no exclusion or sorting of prices.
@@ -5515,7 +5969,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Product document ID (including language post-fix when using product languages)</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetRawProductAsync(string id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetRawProductAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5524,7 +5979,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">Product document ID (including language post-fix when using product languages)</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetRawProductAsync(string id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetRawProductAsync(string id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product by Product ID or SKU ID. Product will be returned with prices ONLY for selected market. If you need the complete object, use get without market
@@ -5533,7 +5989,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Market ID for product and prices</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByMarketAsync(string productId, string marketId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByMarketAsync(string productId, string marketId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5543,7 +6000,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="marketId">Market ID for product and prices</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByMarketAsync(string productId, string marketId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByMarketAsync(string productId, string marketId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product by Product ID or SKU ID. Product will be returned with prices ONLY for selected store, or valid market for store. If you need the complete object, use get without store or market
@@ -5553,7 +6011,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isAssortmentIgnored">True if assortment should be ignored</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByStoreAsync(string productId, string storeId, bool? isAssortmentIgnored);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByStoreAsync(string productId, string storeId, bool? isAssortmentIgnored);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5564,7 +6023,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isAssortmentIgnored">True if assortment should be ignored</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByStoreAsync(string productId, string storeId, bool? isAssortmentIgnored, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByStoreAsync(string productId, string storeId, bool? isAssortmentIgnored, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product by Product ID or SKU ID. Product will be returned with relevant prices for the selected customer or customer group.
@@ -5572,7 +6032,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU ID</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByCustomerAsync(string? productId, string? customerId, string? customerGroup);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByCustomerAsync(string? productId, string? customerId, string? customerGroup);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5581,7 +6042,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU ID</param>
         /// <returns>Product found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetProductByCustomerAsync(string? productId, string? customerId, string? customerGroup, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetProductByCustomerAsync(string? productId, string? customerId, string? customerGroup, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create new product, update if exists
@@ -5679,7 +6141,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product to add</param>
         /// <returns>Product created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostAsync(OmniumProduct? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostAsync(OmniumProduct? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5778,7 +6241,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product to add</param>
         /// <returns>Product created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostAsync(OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostAsync(OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Put a product to Omnium, CAUTION: overwriting existing product
@@ -5786,7 +6250,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product to put</param>
         /// <returns>Product put successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPutProductAsync(OmniumProduct? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPutProductAsync(OmniumProduct? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5795,14 +6260,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Product to put</param>
         /// <returns>Product put successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPutProductAsync(OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPutProductAsync(OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add multiple products to Omnium
         /// </summary>
         /// <returns>Products added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProduct>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProduct>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5810,7 +6277,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Products added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProduct>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProduct>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update (add) many products, enriching existing products if they exist
@@ -5821,7 +6289,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of products to be updated</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsUpdateManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProduct>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsUpdateManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProduct>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5833,14 +6302,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of products to be updated</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsUpdateManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProduct>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsUpdateManyAsync(bool? excludeProductExport, System.Collections.Generic.IEnumerable<OmniumProduct>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for products, return product list items. Does not return entire product models.
         /// </summary>
         /// <returns>Search successful, returning product list items (view model)</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsSearchProductsAsync(OmniumProductSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsSearchProductsAsync(OmniumProductSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5848,7 +6319,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Search successful, returning product list items (view model)</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsSearchProductsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsSearchProductsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get list of variants by product ID
@@ -5856,7 +6328,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU id</param>
         /// <returns>Product and variants found, returning list of variants</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumSearchResult>> ProductsGetVariantsAsync(string? productId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumSearchResult>?> ProductsGetVariantsAsync(string? productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5865,7 +6338,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID or SKU id</param>
         /// <returns>Product and variants found, returning list of variants</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumSearchResult>> ProductsGetVariantsAsync(string? productId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumSearchResult>?> ProductsGetVariantsAsync(string? productId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch many product variants - update only values in request
@@ -5874,7 +6348,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch requests</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5884,7 +6359,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch requests</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductPatch>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new variant to Omnium
@@ -5893,7 +6369,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostVariantAsync(string? productId, OmniumProductVariant? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostVariantAsync(string? productId, OmniumProductVariant? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5903,7 +6380,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostVariantAsync(string? productId, OmniumProductVariant? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostVariantAsync(string? productId, OmniumProductVariant? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Put a variant to Omnium, CAUTION: overwriting existing variant
@@ -5912,7 +6390,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant put successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPutVariantAsync(string? productId, OmniumProduct? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPutVariantAsync(string? productId, OmniumProduct? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5922,7 +6401,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant put successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPutVariantAsync(string? productId, OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPutVariantAsync(string? productId, OmniumProduct? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get list of products by product category id
@@ -5932,7 +6412,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.(default is 20)</param>
         /// <returns>Product found, returning search result</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsGetByCategoryAsync(string? productCategoryId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsGetByCategoryAsync(string? productCategoryId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5943,7 +6424,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.(default is 20)</param>
         /// <returns>Product found, returning search result</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsGetByCategoryAsync(string? productCategoryId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsGetByCategoryAsync(string? productCategoryId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get list of products by product search id
@@ -5953,7 +6435,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.(default is 20)</param>
         /// <returns>Product found, returning search result</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsGetByProductSearchAsync(string? productSearchId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsGetByProductSearchAsync(string? productSearchId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5964,14 +6447,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="pageSize">Max 100. Minimum 1.(default is 20)</param>
         /// <returns>Product found, returning search result</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>> ProductsGetByProductSearchAsync(string? productSearchId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductListItemViewModelOmniumSearchResult>?> ProductsGetByProductSearchAsync(string? productSearchId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add product categories to products by IDs
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsAddCategoriesToProductsAsync(System.Collections.Generic.IEnumerable<OmniumProductCategoryRelationsRequest>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsAddCategoriesToProductsAsync(System.Collections.Generic.IEnumerable<OmniumProductCategoryRelationsRequest>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5979,7 +6464,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsAddCategoriesToProductsAsync(System.Collections.Generic.IEnumerable<OmniumProductCategoryRelationsRequest>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsAddCategoriesToProductsAsync(System.Collections.Generic.IEnumerable<OmniumProductCategoryRelationsRequest>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch product - update only values in request
@@ -5989,7 +6475,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchVariantAsync(string? productId, string? variantId, OmniumProductPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchVariantAsync(string? productId, string? variantId, OmniumProductPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6000,14 +6487,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>Product updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>> ProductsPatchVariantAsync(string? productId, string? variantId, OmniumProductPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductUpdateResult>?> ProductsPatchVariantAsync(string? productId, string? variantId, OmniumProductPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a variant by product and variant ID
         /// </summary>
         /// <returns>Variants found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetVariantAsync(string? productId, string? variantId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetVariantAsync(string? productId, string? variantId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6015,7 +6504,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Variants found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>> ProductsGetVariantAsync(string? productId, string? variantId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProduct>?> ProductsGetVariantAsync(string? productId, string? variantId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a variant from a product
@@ -6024,7 +6514,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="variantId">Variant ID</param>
         /// <returns>Variant deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteVariantAsync(string? productId, string? variantId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteVariantAsync(string? productId, string? variantId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6034,14 +6525,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="variantId">Variant ID</param>
         /// <returns>Variant deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteVariantAsync(string? productId, string? variantId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteVariantAsync(string? productId, string? variantId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a variant by variant ID
         /// </summary>
         /// <returns>Variants found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductVariantOmniumSearchResult>> ProductsGetVariantByVariantIdAsync(string? variantId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductVariantOmniumSearchResult>?> ProductsGetVariantByVariantIdAsync(string? variantId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6049,7 +6542,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Variants found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductVariantOmniumSearchResult>> ProductsGetVariantByVariantIdAsync(string? variantId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductVariantOmniumSearchResult>?> ProductsGetVariantByVariantIdAsync(string? variantId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add new variants to Omnium
@@ -6058,7 +6552,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductVariant>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductVariant>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6068,14 +6563,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Variant to add</param>
         /// <returns>Variant created successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsPostManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductVariant>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsPostManyVariantsAsync(string? productId, System.Collections.Generic.IEnumerable<OmniumProductVariant>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add image to product
         /// </summary>
         /// <returns>Image added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddProductImageAsync(string? url, string? productId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddProductImageAsync(string? url, string? productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6083,14 +6580,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Image added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddProductImageAsync(string? url, string? productId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddProductImageAsync(string? url, string? productId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product assets
         /// </summary>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>> ProductsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>?> ProductsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6098,7 +6597,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>> ProductsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumAsset>>?> ProductsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add assets to product. Will overwrite existing assets if there are assets added with the same asset ID on the product.
@@ -6107,7 +6607,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isAddedToVariant">If set to true, the asset will be added to the variant with a matching</param>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddAssetsAsync(string? skuId, bool? isAddedToVariant, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddAssetsAsync(string? skuId, bool? isAddedToVariant, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6117,14 +6618,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isAddedToVariant">If set to true, the asset will be added to the variant with a matching</param>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsAddAssetsAsync(string? skuId, bool? isAddedToVariant, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddAssetsAsync(string? skuId, bool? isAddedToVariant, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update asset to product
         /// </summary>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsUpdateAssetsAsync(System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsUpdateAssetsAsync(System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6132,14 +6635,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsUpdateAssetsAsync(System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsUpdateAssetsAsync(System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete assets from products
         /// </summary>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6147,14 +6652,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for active promotion IDs
         /// </summary>
         /// <returns>Search successful, returning list of promotion ids</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductPromotionIdSearchResultOmniumSearchResult>> ProductsGetActivePromotionsAsync(OmniumProductSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductPromotionIdSearchResultOmniumSearchResult>?> ProductsGetActivePromotionsAsync(OmniumProductSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6162,7 +6669,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Search successful, returning list of promotion ids</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductPromotionIdSearchResultOmniumSearchResult>> ProductsGetActivePromotionsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductPromotionIdSearchResultOmniumSearchResult>?> ProductsGetActivePromotionsAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get product options for product
@@ -6170,7 +6678,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID for the product which has product options</param>
         /// <returns>Product options returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOptionsViewModel>> ProductsGetProductOptionsAsync(string? productId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOptionsViewModel>?> ProductsGetProductOptionsAsync(string? productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6179,7 +6688,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="productId">Product ID for the product which has product options</param>
         /// <returns>Product options returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOptionsViewModel>> ProductsGetProductOptionsAsync(string? productId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOptionsViewModel>?> ProductsGetProductOptionsAsync(string? productId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll products is used to get a large amount of products.
@@ -6191,7 +6701,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>> ProductsScrollAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>?> ProductsScrollAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6204,7 +6715,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>> ProductsScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>?> ProductsScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Scroll products by search
@@ -6215,7 +6727,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning products</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>> ProductsScrollSearchAsync(OmniumProductSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>?> ProductsScrollSearchAsync(OmniumProductSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6227,14 +6740,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Search successful, returning products</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>> ProductsScrollSearchAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProductOmniumResult>?> ProductsScrollSearchAsync(OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get log items for a project (sorted by date descending)
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLogOmniumSearchResult>> ProjectLogsGetProjectLogAsync(string? projectId, int? page, int? take);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLogOmniumSearchResult>?> ProjectLogsGetProjectLogAsync(string? projectId, int? page, int? take);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6242,7 +6757,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLogOmniumSearchResult>> ProjectLogsGetProjectLogAsync(string? projectId, int? page, int? take, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLogOmniumSearchResult>?> ProjectLogsGetProjectLogAsync(string? projectId, int? page, int? take, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search project logs
@@ -6253,7 +6769,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for project logs</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectLog>>> ProjectLogsSearchAsync(OmniumProjectLogSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectLog>>?> ProjectLogsSearchAsync(OmniumProjectLogSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6265,7 +6782,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for project logs</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectLog>>> ProjectLogsSearchAsync(OmniumProjectLogSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectLog>>?> ProjectLogsSearchAsync(OmniumProjectLogSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add/update project log item
@@ -6276,7 +6794,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium ProjectLog object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLog>> ProjectLogsAddAsync(OmniumProjectLog? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLog>?> ProjectLogsAddAsync(OmniumProjectLog? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6288,14 +6807,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium ProjectLog object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLog>> ProjectLogsAddAsync(OmniumProjectLog? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectLog>?> ProjectLogsAddAsync(OmniumProjectLog? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete project log item
         /// </summary>
         /// <returns>Project log item deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectLogsDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectLogsDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6303,7 +6824,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Project log item deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectLogsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectLogsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search, filter and generate project daily stats
@@ -6311,7 +6833,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectDailyReport>>> ProjectReportsGetProjectDailyReportsAsync(OmniumProjectSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectDailyReport>>?> ProjectReportsGetProjectDailyReportsAsync(OmniumProjectSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6320,7 +6843,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectDailyReport>>> ProjectReportsGetProjectDailyReportsAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectDailyReport>>?> ProjectReportsGetProjectDailyReportsAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get project type stats for a given time-span.
@@ -6331,7 +6855,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTypeReport>>> ProjectReportsGetProjectTypeReportsAsync(OmniumProjectTypeReportRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTypeReport>>?> ProjectReportsGetProjectTypeReportsAsync(OmniumProjectTypeReportRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6343,14 +6868,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTypeReport>>> ProjectReportsGetProjectTypeReportsAsync(OmniumProjectTypeReportRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTypeReport>>?> ProjectReportsGetProjectTypeReportsAsync(OmniumProjectTypeReportRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get single project
         /// </summary>
         /// <returns>Project found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsGetAsync(string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsGetAsync(string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6358,7 +6885,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Project found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsGetAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsGetAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all projects associated with supplier
@@ -6369,7 +6897,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sortOrder">Property to sort by</param>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsGetProjectsByPartnerAsync(string? partnerId, int? page, int? pageSize, string? sortOrder);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsGetProjectsByPartnerAsync(string? partnerId, int? page, int? pageSize, string? sortOrder);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6381,7 +6910,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sortOrder">Property to sort by</param>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsGetProjectsByPartnerAsync(string? partnerId, int? page, int? pageSize, string? sortOrder, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsGetProjectsByPartnerAsync(string? partnerId, int? page, int? pageSize, string? sortOrder, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all projects associated with customer
@@ -6392,7 +6922,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sortOrder">Property to sort by</param>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsGetProjectsByCustomerAsync(string? customerId, int? page, int? pageSize, string? sortOrder);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsGetProjectsByCustomerAsync(string? customerId, int? page, int? pageSize, string? sortOrder);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6404,7 +6935,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="sortOrder">Property to sort by</param>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsGetProjectsByCustomerAsync(string? customerId, int? page, int? pageSize, string? sortOrder, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsGetProjectsByCustomerAsync(string? customerId, int? page, int? pageSize, string? sortOrder, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for projects
@@ -6412,7 +6944,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsSearchAsync(OmniumProjectSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsSearchAsync(OmniumProjectSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6421,7 +6954,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>> ProjectsSearchAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectOmniumSearchResult>?> ProjectsSearchAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add project to OMS.
@@ -6429,7 +6963,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectTypeId">ID of the project type to create</param>
         /// <returns>Projects created and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCreateAsync(string? projectTypeId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCreateAsync(string? projectTypeId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6438,14 +6973,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectTypeId">ID of the project type to create</param>
         /// <returns>Projects created and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCreateAsync(string? projectTypeId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCreateAsync(string? projectTypeId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add log item to project
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddLogItemAsync(string? projectId, OmniumProjectLog? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddLogItemAsync(string? projectId, OmniumProjectLog? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6453,7 +6990,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddLogItemAsync(string? projectId, OmniumProjectLog? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddLogItemAsync(string? projectId, OmniumProjectLog? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project status
@@ -6461,7 +6999,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="status">Completed, WorkflowCompleted, Active, New, Cancelled, Deleted, OnHold, CancelledByCustomer, CancelledByPartner, CancelledByInternal</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateProjectStatusAsync(string? projectId, string? status, string? comment);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateProjectStatusAsync(string? projectId, string? status, string? comment);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6470,7 +7009,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="status">Completed, WorkflowCompleted, Active, New, Cancelled, Deleted, OnHold, CancelledByCustomer, CancelledByPartner, CancelledByInternal</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateProjectStatusAsync(string? projectId, string? status, string? comment, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateProjectStatusAsync(string? projectId, string? status, string? comment, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project
@@ -6479,7 +7019,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project to update</param>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateProjectAsync(bool? runWorkflow, OmniumProjectUpdateRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateProjectAsync(bool? runWorkflow, OmniumProjectUpdateRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6489,7 +7030,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project to update</param>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateProjectAsync(bool? runWorkflow, OmniumProjectUpdateRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateProjectAsync(bool? runWorkflow, OmniumProjectUpdateRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch Project - update only values in request
@@ -6498,7 +7040,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project patches. Properties with value will be updated</param>
         /// <returns>Project updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPatchProjectAsync(bool? runWorkflow, OmniumProjectPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPatchProjectAsync(bool? runWorkflow, OmniumProjectPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6508,14 +7051,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project patches. Properties with value will be updated</param>
         /// <returns>Project updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPatchProjectAsync(bool? runWorkflow, OmniumProjectPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPatchProjectAsync(bool? runWorkflow, OmniumProjectPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add partner to project
         /// </summary>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnerToProjectAsync(string? projectId, string? businessCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnerToProjectAsync(string? projectId, string? businessCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6523,14 +7068,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnerToProjectAsync(string? projectId, string? businessCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnerToProjectAsync(string? projectId, string? businessCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete partner from project
         /// </summary>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeletePartnerFromProjectAsync(string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeletePartnerFromProjectAsync(string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6538,14 +7085,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Project is saved with updated information. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeletePartnerFromProjectAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeletePartnerFromProjectAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all project types
         /// </summary>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ProjectsGetProjectTypesAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ProjectsGetProjectTypesAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6553,7 +7102,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Projects found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ProjectsGetProjectTypesAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ProjectsGetProjectTypesAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer info to a project
@@ -6561,7 +7111,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing customer object to store</param>
         /// <returns>Project is saved with new customer. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCustomerToProjectAsync(OmniumProject? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCustomerToProjectAsync(OmniumProject? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6570,7 +7121,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing customer object to store</param>
         /// <returns>Project is saved with new customer. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCustomerToProjectAsync(OmniumProject? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCustomerToProjectAsync(OmniumProject? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add existing business customer info to a project
@@ -6579,7 +7131,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="businessCustomerId">ID of business customer</param>
         /// <returns>Project is saved with new customer. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddBusinessCustomerToProjectAsync(string projectId, string businessCustomerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddBusinessCustomerToProjectAsync(string projectId, string businessCustomerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6589,7 +7142,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="businessCustomerId">ID of business customer</param>
         /// <returns>Project is saved with new customer. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddBusinessCustomerToProjectAsync(string projectId, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddBusinessCustomerToProjectAsync(string projectId, string businessCustomerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add store id to a project
@@ -6598,7 +7152,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing store id</param>
         /// <returns>Project is saved with new store. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddStoreToProjectAsync(bool? runWorkflow, OmniumProject? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddStoreToProjectAsync(bool? runWorkflow, OmniumProject? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6608,7 +7163,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing store id</param>
         /// <returns>Project is saved with new store. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddStoreToProjectAsync(bool? runWorkflow, OmniumProject? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddStoreToProjectAsync(bool? runWorkflow, OmniumProject? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add information (key, value) to a project
@@ -6616,7 +7172,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing form data</param>
         /// <returns>Project is saved with form elements. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddFormElementsToProjectAsync(OmniumProject? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddFormElementsToProjectAsync(OmniumProject? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6625,7 +7182,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project containing form data</param>
         /// <returns>Project is saved with form elements. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddFormElementsToProjectAsync(OmniumProject? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddFormElementsToProjectAsync(OmniumProject? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get project assets
@@ -6635,7 +7193,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6646,7 +7205,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Returning assets</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsGetAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all invoices associated with project
@@ -6657,7 +7217,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPaid">Add filter on payment-status</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> ProjectsGetInvoicesForProjectAsync(string? projectId, int? page, int? pageSize, bool? isPaid);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> ProjectsGetInvoicesForProjectAsync(string? projectId, int? page, int? pageSize, bool? isPaid);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6669,7 +7230,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="isPaid">Add filter on payment-status</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> ProjectsGetInvoicesForProjectAsync(string? projectId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>?> ProjectsGetInvoicesForProjectAsync(string? projectId, int? page, int? pageSize, bool? isPaid, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add asset to project from stream
@@ -6679,7 +7241,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumAsset>> ProjectsAddAssetAsync(string? projectId, string? fileName, System.IO.Stream body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumAsset>?> ProjectsAddAssetAsync(string? projectId, string? fileName, System.IO.Stream body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6690,7 +7253,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumAsset>> ProjectsAddAssetAsync(string? projectId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumAsset>?> ProjectsAddAssetAsync(string? projectId, string? fileName, System.IO.Stream body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add assets to project
@@ -6700,7 +7264,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsAddAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsAddAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6711,7 +7276,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset added successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsAddAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsAddAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update asset to project
@@ -6721,7 +7287,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsUpdateAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsUpdateAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6732,7 +7299,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsUpdateAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsUpdateAssetsAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumAsset>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete assets from projects
@@ -6742,7 +7310,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6753,7 +7322,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsDeleteAssetsAsync(System.Collections.Generic.IEnumerable<string>? assetIds, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete all assets from project
@@ -6763,7 +7333,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsDeleteAssetsFromProjectAsync(string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsDeleteAssetsFromProjectAsync(string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6774,7 +7345,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <returns>Asset deleted successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsDeleteAssetsFromProjectAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsDeleteAssetsFromProjectAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add partner comment to a project
@@ -6786,7 +7358,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCommentToProjectAsync(OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCommentToProjectAsync(OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6799,7 +7372,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCommentToProjectAsync(OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCommentToProjectAsync(OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update customer comment on a project
@@ -6813,7 +7387,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with the updated version of the customer comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateCustomerCommentAsync(string? projectId, string? commentId, OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateCustomerCommentAsync(string? projectId, string? commentId, OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6828,7 +7403,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with the updated version of the customer comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdateCustomerCommentAsync(string? projectId, string? commentId, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdateCustomerCommentAsync(string? projectId, string? commentId, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add partner comment to a project
@@ -6843,7 +7419,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new partner comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6859,7 +7436,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new partner comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update partner comment on a project
@@ -6873,7 +7451,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with the updated version of the partner comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdatePartnerCommentAsync(string? projectId, string? commentId, OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdatePartnerCommentAsync(string? projectId, string? commentId, OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6888,7 +7467,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with the updated version of the partner comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsUpdatePartnerCommentAsync(string? projectId, string? commentId, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsUpdatePartnerCommentAsync(string? projectId, string? commentId, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add customer comment to project
@@ -6903,7 +7483,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new customer comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCustomerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCustomerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6919,14 +7500,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Project is saved with new customer comment. Updated project is returned.</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddCustomerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddCustomerCommentToProjectAsync(string? projectId, string? emailRecipient, string? smsRecipient, OmniumComment? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Cancel project
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelAsync(OmniumProjectCancelRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelAsync(OmniumProjectCancelRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6934,7 +7517,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelAsync(OmniumProjectCancelRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelAsync(OmniumProjectCancelRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Cancel project by partner
@@ -6942,7 +7526,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelByPartnerAsync(string? projectId, string? comment);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelByPartnerAsync(string? projectId, string? comment);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6951,7 +7536,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelByPartnerAsync(string? projectId, string? comment, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelByPartnerAsync(string? projectId, string? comment, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Cancel project by customer
@@ -6959,7 +7545,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelByCustomerAsync(string? projectId, string? comment);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelByCustomerAsync(string? projectId, string? comment);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6968,14 +7555,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsCancelByCustomerAsync(string? projectId, string? comment, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsCancelByCustomerAsync(string? projectId, string? comment, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Decline workflow step (go to previous step)
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeclineAsync(OmniumWorkflowStepRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeclineAsync(OmniumWorkflowStepRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -6983,29 +7572,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeclineAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeclineAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Accept workflow step (go to next step)
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAcceptAsync(OmniumWorkflowStepRequest? body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Accept workflow step (go to next step)
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAcceptAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Accept workflow step (go to next step)
-        /// </summary>
-        /// <returns>Success</returns>
-        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAcceptPartnerRequestAsync(OmniumWorkflowStepRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAcceptAsync(OmniumWorkflowStepRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7013,14 +7589,33 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAcceptPartnerRequestAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAcceptAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Accept workflow step (go to next step)
+        /// </summary>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAcceptPartnerRequestAsync(OmniumWorkflowStepRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Accept workflow step (go to next step)
+        /// </summary>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAcceptPartnerRequestAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add partners to project
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7028,14 +7623,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsAddPartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsAddPartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete partners from project
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeletePartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeletePartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7043,14 +7640,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeletePartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeletePartnersAsync(System.Collections.Generic.IEnumerable<string>? businessCustomerIds, string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Decline workflow step (go to previous step)
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeclinePartnerRequestAsync(OmniumWorkflowStepRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeclinePartnerRequestAsync(OmniumWorkflowStepRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7058,14 +7657,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsDeclinePartnerRequestAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsDeclinePartnerRequestAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Go to specific workflow step
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsGoToWorkflowStepAsync(OmniumWorkflowStepRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsGoToWorkflowStepAsync(OmniumWorkflowStepRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7073,7 +7674,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsGoToWorkflowStepAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsGoToWorkflowStepAsync(OmniumWorkflowStepRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add partner to list of partners rejecting project
@@ -7081,7 +7683,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="rejectingPartnerId">E-mail-message to send</param>
         /// <returns>Partner successfully added to list of rejecting partners</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsAddRejectingPartnerAsync(string? projectId, string? rejectingPartnerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsAddRejectingPartnerAsync(string? projectId, string? rejectingPartnerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7090,7 +7693,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="rejectingPartnerId">E-mail-message to send</param>
         /// <returns>Partner successfully added to list of rejecting partners</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsAddRejectingPartnerAsync(string? projectId, string? rejectingPartnerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsAddRejectingPartnerAsync(string? projectId, string? rejectingPartnerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Remove partner from list of partners rejecting project
@@ -7098,7 +7702,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="rejectingPartnerId">E-mail-message to send</param>
         /// <returns>Partner successfully removed from list of rejecting partners</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsRemoveRejectingPartnerAsync(string? projectId, string? rejectingPartnerId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsRemoveRejectingPartnerAsync(string? projectId, string? rejectingPartnerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7107,7 +7712,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="rejectingPartnerId">E-mail-message to send</param>
         /// <returns>Partner successfully removed from list of rejecting partners</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsRemoveRejectingPartnerAsync(string? projectId, string? rejectingPartnerId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsRemoveRejectingPartnerAsync(string? projectId, string? rejectingPartnerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Send E-mail
@@ -7115,7 +7721,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsSendEmailAsync(string? projectId, OmniumEmailMessage? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsSendEmailAsync(string? projectId, OmniumEmailMessage? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7124,7 +7731,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">E-mail-message to send</param>
         /// <returns>Email is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsSendEmailAsync(string? projectId, OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsSendEmailAsync(string? projectId, OmniumEmailMessage? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Send SMS
@@ -7132,7 +7740,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">SMS-message to send</param>
         /// <returns>SMS is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsSendSmsAsync(string? projectId, OmniumSmsMessage? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsSendSmsAsync(string? projectId, OmniumSmsMessage? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7141,7 +7750,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">SMS-message to send</param>
         /// <returns>SMS is sent</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsSendSmsAsync(string? projectId, OmniumSmsMessage? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsSendSmsAsync(string? projectId, OmniumSmsMessage? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get project change order
@@ -7153,7 +7763,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changeOrderId">Project change order ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectChangeOrder>> ProjectsChangeOrdersGetProjectChangeOrderAsync(string? projectId, string? changeOrderId, string projectChangeOrderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectChangeOrder>?> ProjectsChangeOrdersGetProjectChangeOrderAsync(string? projectId, string? changeOrderId, string projectChangeOrderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7166,7 +7777,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="changeOrderId">Project change order ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectChangeOrder>> ProjectsChangeOrdersGetProjectChangeOrderAsync(string? projectId, string? changeOrderId, string projectChangeOrderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectChangeOrder>?> ProjectsChangeOrdersGetProjectChangeOrderAsync(string? projectId, string? changeOrderId, string projectChangeOrderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project change order
@@ -7178,7 +7790,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectChangeOrderId">Project change order ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderDeleteAsync(string? projectId, string? projectChangeOrderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderDeleteAsync(string? projectId, string? projectChangeOrderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7191,7 +7804,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectChangeOrderId">Project change order ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderDeleteAsync(string? projectId, string? projectChangeOrderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderDeleteAsync(string? projectId, string? projectChangeOrderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add project change order
@@ -7203,7 +7817,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change order to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderAddAsync(string? projectId, OmniumProjectChangeOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderAddAsync(string? projectId, OmniumProjectChangeOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7216,7 +7831,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change order to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderAddAsync(string? projectId, OmniumProjectChangeOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderAddAsync(string? projectId, OmniumProjectChangeOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project change orders
@@ -7228,7 +7844,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change order to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrdersUpdateAsync(string? projectId, OmniumProjectChangeOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrdersUpdateAsync(string? projectId, OmniumProjectChangeOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7241,7 +7858,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change order to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrdersUpdateAsync(string? projectId, OmniumProjectChangeOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrdersUpdateAsync(string? projectId, OmniumProjectChangeOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project change orders
@@ -7253,7 +7871,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change orders to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrdersAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrdersAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7266,7 +7885,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change orders to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrdersAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrdersAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project change orders
@@ -7278,7 +7898,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change orders to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7291,7 +7912,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project change orders to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsChangeOrdersProjectChangeOrderUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsChangeOrdersProjectChangeOrderUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectChangeOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get project part
@@ -7303,7 +7925,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectPartId">Project part ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectPart>> ProjectsPartsGetProjectPartAsync(string? projectId, string? projectPartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectPart>?> ProjectsPartsGetProjectPartAsync(string? projectId, string? projectPartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7316,7 +7939,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectPartId">Project part ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectPart>> ProjectsPartsGetProjectPartAsync(string? projectId, string? projectPartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectPart>?> ProjectsPartsGetProjectPartAsync(string? projectId, string? projectPartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project part
@@ -7328,7 +7952,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectPartId">Project part ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartDeleteAsync(string? projectId, string? projectPartId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartDeleteAsync(string? projectId, string? projectPartId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7341,7 +7966,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectPartId">Project part ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartDeleteAsync(string? projectId, string? projectPartId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartDeleteAsync(string? projectId, string? projectPartId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add project part
@@ -7353,7 +7979,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project part to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartAddAsync(string? projectId, OmniumProjectPart? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartAddAsync(string? projectId, OmniumProjectPart? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7366,7 +7993,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project part to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartAddAsync(string? projectId, OmniumProjectPart? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartAddAsync(string? projectId, OmniumProjectPart? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project part
@@ -7378,7 +8006,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project part to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartUpdateAsync(string? projectId, OmniumProjectPart? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartUpdateAsync(string? projectId, OmniumProjectPart? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7391,7 +8020,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project part to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartUpdateAsync(string? projectId, OmniumProjectPart? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartUpdateAsync(string? projectId, OmniumProjectPart? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project parts
@@ -7403,7 +8033,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project parts to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7416,7 +8047,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project parts to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update task on project part
@@ -7429,7 +8061,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project task to add or update on project part</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsUpdateProjectTaskAsync(string? projectId, string? projectPartId, OmniumProjectTask? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsUpdateProjectTaskAsync(string? projectId, string? projectPartId, OmniumProjectTask? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7443,7 +8076,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project task to add or update on project part</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsUpdateProjectTaskAsync(string? projectId, string? projectPartId, OmniumProjectTask? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsUpdateProjectTaskAsync(string? projectId, string? projectPartId, OmniumProjectTask? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project parts
@@ -7455,7 +8089,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project parts to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7468,7 +8103,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project parts to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsPartsProjectPartUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsPartsProjectPartUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectPart>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get project transaction
@@ -7480,7 +8116,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="transactionId">Project transaction ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectTransaction>> ProjectsTransactionsGetProjectTransactionAsync(string? projectId, string? transactionId, string projectTransactionId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectTransaction>?> ProjectsTransactionsGetProjectTransactionAsync(string? projectId, string? transactionId, string projectTransactionId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7493,7 +8130,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="transactionId">Project transaction ID to get</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectTransaction>> ProjectsTransactionsGetProjectTransactionAsync(string? projectId, string? transactionId, string projectTransactionId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectTransaction>?> ProjectsTransactionsGetProjectTransactionAsync(string? projectId, string? transactionId, string projectTransactionId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project transaction
@@ -7505,7 +8143,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectTransactionId">Project transaction ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionDeleteAsync(string? projectId, string? projectTransactionId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionDeleteAsync(string? projectId, string? projectTransactionId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7518,7 +8157,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectTransactionId">Project transaction ID to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionDeleteAsync(string? projectId, string? projectTransactionId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionDeleteAsync(string? projectId, string? projectTransactionId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add project transaction
@@ -7530,7 +8170,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transaction to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionAddAsync(string? projectId, OmniumProjectTransaction? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionAddAsync(string? projectId, OmniumProjectTransaction? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7543,7 +8184,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transaction to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionAddAsync(string? projectId, OmniumProjectTransaction? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionAddAsync(string? projectId, OmniumProjectTransaction? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update project transactions
@@ -7555,7 +8197,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transaction to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionsUpdateAsync(string? projectId, OmniumProjectTransaction? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionsUpdateAsync(string? projectId, OmniumProjectTransaction? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7568,7 +8211,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transaction to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionsUpdateAsync(string? projectId, OmniumProjectTransaction? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionsUpdateAsync(string? projectId, OmniumProjectTransaction? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for projects and return a sum over all transactions
@@ -7579,7 +8223,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTransactionSummary>>> ProjectsTransactionsGetTransactionSummaryAsync(OmniumProjectSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTransactionSummary>>?> ProjectsTransactionsGetTransactionSummaryAsync(OmniumProjectSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7591,7 +8236,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTransactionSummary>>> ProjectsTransactionsGetTransactionSummaryAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectTransactionSummary>>?> ProjectsTransactionsGetTransactionSummaryAsync(OmniumProjectSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project transactions
@@ -7603,7 +8249,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transactions to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionsAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionsAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7616,7 +8263,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transactions to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionsAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionsAddManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many project transactions
@@ -7628,7 +8276,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transactions to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7641,7 +8290,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project transactions to add or update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>> ProjectsTransactionsProjectTransactionUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProject>?> ProjectsTransactionsProjectTransactionUpdateManyAsync(string? projectId, System.Collections.Generic.IEnumerable<OmniumProjectTransaction>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get list of all version items.
@@ -7649,7 +8299,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectId">Project ID to fetch version list for</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsVersionsVersionListAsync(string? projectId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsVersionsVersionListAsync(string? projectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7658,7 +8309,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="projectId">Project ID to fetch version list for</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsVersionsVersionListAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsVersionsVersionListAsync(string? projectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get specific project version
@@ -7667,7 +8319,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="versionId">Version ID to fetch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsVersionsVersionList2Async(string? projectId, string? versionId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsVersionsVersionList2Async(string? projectId, string? versionId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7677,14 +8330,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="versionId">Version ID to fetch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ProjectsVersionsVersionList2Async(string? projectId, string? versionId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProjectsVersionsVersionList2Async(string? projectId, string? versionId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all project types
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ProjectTypesGetAllAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ProjectTypesGetAllAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7692,7 +8347,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ProjectTypesGetAllAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ProjectTypesGetAllAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch Project Type - update only values in request
@@ -7700,7 +8356,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project type patches. Properties with value will be updated</param>
         /// <returns>Project Type updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectType>> ProjectTypesPatchProjectAsync(OmniumProjectTypePatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectType>?> ProjectTypesPatchProjectAsync(OmniumProjectTypePatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7709,7 +8366,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Project type patches. Properties with value will be updated</param>
         /// <returns>Project Type updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectType>> ProjectTypesPatchProjectAsync(OmniumProjectTypePatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumProjectType>?> ProjectTypesPatchProjectAsync(OmniumProjectTypePatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single promotion
@@ -7717,7 +8375,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the promotion to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotion>> PromotionsGetAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotion>?> PromotionsGetAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7726,14 +8385,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the promotion to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotion>> PromotionsGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotion>?> PromotionsGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for promotions
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotionOmniumSearchResult>> PromotionsSearchAsync(OmniumPromotionSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotionOmniumSearchResult>?> PromotionsSearchAsync(OmniumPromotionSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7741,7 +8402,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotionOmniumSearchResult>> PromotionsSearchAsync(OmniumPromotionSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPromotionOmniumSearchResult>?> PromotionsSearchAsync(OmniumPromotionSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Generate n number for promotion coupon codes. The codes will be only for single usage
@@ -7750,7 +8412,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="numberOfCouponsToGenerate">Number of coupon codes to generate. Max is 1000</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> PromotionsGenerateSingleUsagePromotionCouponsAsync(string? id, int numberOfCouponsToGenerate);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>?> PromotionsGenerateSingleUsagePromotionCouponsAsync(string? id, int numberOfCouponsToGenerate);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7760,14 +8423,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="numberOfCouponsToGenerate">Number of coupon codes to generate. Max is 1000</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> PromotionsGenerateSingleUsagePromotionCouponsAsync(string? id, int numberOfCouponsToGenerate, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>?> PromotionsGenerateSingleUsagePromotionCouponsAsync(string? id, int numberOfCouponsToGenerate, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get purchase order
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersGetPurchaseOrderAsync(string? purchaseOrderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersGetPurchaseOrderAsync(string? purchaseOrderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7775,7 +8440,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersGetPurchaseOrderAsync(string? purchaseOrderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersGetPurchaseOrderAsync(string? purchaseOrderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch purchase order
@@ -7787,7 +8453,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order patch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderPatch>> PurchaseOrdersPatchAsync(string? purchaseOrderId, OmniumPurchaseOrderPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderPatch>?> PurchaseOrdersPatchAsync(string? purchaseOrderId, OmniumPurchaseOrderPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7800,7 +8467,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order patch</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderPatch>> PurchaseOrdersPatchAsync(string? purchaseOrderId, OmniumPurchaseOrderPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderPatch>?> PurchaseOrdersPatchAsync(string? purchaseOrderId, OmniumPurchaseOrderPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search purchase orders
@@ -7811,7 +8479,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for purchase orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderOmniumSearchResult>> PurchaseOrdersSearchAsync(OmniumPurchaseOrderSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderOmniumSearchResult>?> PurchaseOrdersSearchAsync(OmniumPurchaseOrderSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7823,7 +8492,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for purchase orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderOmniumSearchResult>> PurchaseOrdersSearchAsync(OmniumPurchaseOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderOmniumSearchResult>?> PurchaseOrdersSearchAsync(OmniumPurchaseOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update purchase order
@@ -7834,7 +8504,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersUpdateAsync(OmniumPurchaseOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersUpdateAsync(OmniumPurchaseOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7846,7 +8517,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersUpdateAsync(OmniumPurchaseOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersUpdateAsync(OmniumPurchaseOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update purchase order and run workflow
@@ -7857,7 +8529,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersUpdateAndRunWorkflowAsync(OmniumPurchaseOrder? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>?> PurchaseOrdersUpdateAndRunWorkflowAsync(OmniumPurchaseOrder? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7869,7 +8542,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase order</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersUpdateAndRunWorkflowAsync(OmniumPurchaseOrder? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>?> PurchaseOrdersUpdateAndRunWorkflowAsync(OmniumPurchaseOrder? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update status and run workflow for a purchase order
@@ -7891,7 +8565,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Information about the</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>?> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7914,7 +8589,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Information about the</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderWorkflowExecutionResult>?> PurchaseOrdersRunWorkflowAsync(string? purchaseOrderId, OmniumPurchaseOrderWorkflowRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many purchase orders
@@ -7925,7 +8601,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPurchaseOrder>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPurchaseOrder>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7937,14 +8614,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Purchase orders</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPurchaseOrder>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPurchaseOrder>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete purchase order
         /// </summary>
         /// <returns>Purchase order deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PurchaseOrdersDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PurchaseOrdersDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7952,14 +8631,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Purchase order deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> PurchaseOrdersDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> PurchaseOrdersDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get extended purchase order
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderExtendedModel>> PurchaseOrdersGetExtendedPurchaseOrderAsync(string? purchaseOrderId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderExtendedModel>?> PurchaseOrdersGetExtendedPurchaseOrderAsync(string? purchaseOrderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7967,7 +8648,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderExtendedModel>> PurchaseOrdersGetExtendedPurchaseOrderAsync(string? purchaseOrderId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderExtendedModel>?> PurchaseOrdersGetExtendedPurchaseOrderAsync(string? purchaseOrderId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or save a rating. If ID is null, it will be created.
@@ -7975,7 +8657,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The rating object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RatingsPutAsync(OmniumRating? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RatingsPutAsync(OmniumRating? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7984,14 +8667,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The rating object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RatingsPutAsync(OmniumRating? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RatingsPutAsync(OmniumRating? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a single rating from the OMS
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RatingsDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RatingsDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -7999,7 +8684,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RatingsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RatingsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get ratings for an Omnium object
@@ -8011,7 +8697,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8024,14 +8711,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for ratings
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsSearchRatingsAsync(OmniumSearchRatingRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsSearchRatingsAsync(OmniumSearchRatingRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8039,7 +8728,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsSearchRatingsAsync(OmniumSearchRatingRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsSearchRatingsAsync(OmniumSearchRatingRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get average rating for an Omnium object
@@ -8049,7 +8739,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<double>> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8060,14 +8751,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<double>> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get products recommendations based on products IDs, customer ID, boosted properties and/or included/excluded products properties.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>> RecommendationsSearchRecommendationsAsync(OmniumSearchRecommendationsRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>?> RecommendationsSearchRecommendationsAsync(OmniumSearchRecommendationsRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8075,14 +8768,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>> RecommendationsSearchRecommendationsAsync(OmniumSearchRecommendationsRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>?> RecommendationsSearchRecommendationsAsync(OmniumSearchRecommendationsRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get top selling products recommendations
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>> RecommendationsGetTopSellingProductsRecommendationsAsync(OmniumGetTopSellingProductsRecommendationsRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>?> RecommendationsGetTopSellingProductsRecommendationsAsync(OmniumGetTopSellingProductsRecommendationsRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8090,14 +8785,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>> RecommendationsGetTopSellingProductsRecommendationsAsync(OmniumGetTopSellingProductsRecommendationsRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRecommendationsResult>?> RecommendationsGetTopSellingProductsRecommendationsAsync(OmniumGetTopSellingProductsRecommendationsRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all available claim project types
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ReturnsGetClaimTypesAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ReturnsGetClaimTypesAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8105,7 +8802,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>> ReturnsGetClaimTypesAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProjectType>>?> ReturnsGetClaimTypesAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update status on a return
@@ -8114,7 +8812,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The status which will be set on the return. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> ReturnsUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> ReturnsUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8124,14 +8823,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The status which will be set on the return. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> ReturnsUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> ReturnsUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search returns
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumReturnOrderViewModelOmniumSearchResult>> ReturnsSearchReturnOrdersAsync(OmniumReturnOrderSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumReturnOrderViewModelOmniumSearchResult>?> ReturnsSearchReturnOrdersAsync(OmniumReturnOrderSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8139,7 +8840,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumReturnOrderViewModelOmniumSearchResult>> ReturnsSearchReturnOrdersAsync(OmniumReturnOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumReturnOrderViewModelOmniumSearchResult>?> ReturnsSearchReturnOrdersAsync(OmniumReturnOrderSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a return with all or some of the line items.
@@ -8171,7 +8873,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of items to return. StoreId for return and userId</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>> ReturnsReturnAsync(string? orderId, OmniumReturnRequestModel body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsReturnAsync(string? orderId, OmniumReturnRequestModel body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8204,14 +8907,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">List of items to return. StoreId for return and userId</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>> ReturnsReturnAsync(string? orderId, OmniumReturnRequestModel body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsReturnAsync(string? orderId, OmniumReturnRequestModel body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get role by ID
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleGetAsync(string? roleId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleGetAsync(string? roleId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8219,14 +8924,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleGetAsync(string? roleId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleGetAsync(string? roleId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete a role
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RoleDeleteAsync(string? roleId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RoleDeleteAsync(string? roleId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8234,14 +8941,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RoleDeleteAsync(string? roleId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> RoleDeleteAsync(string? roleId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all roles
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumRole>>> RoleGetAllAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumRole>>?> RoleGetAllAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8249,14 +8958,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumRole>>> RoleGetAllAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumRole>>?> RoleGetAllAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new OmniumRole
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleAddAsync(OmniumRole? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleAddAsync(OmniumRole? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8264,14 +8975,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleAddAsync(OmniumRole? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleAddAsync(OmniumRole? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update a role
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleUpdateAsync(OmniumRole? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleUpdateAsync(OmniumRole? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8279,14 +8992,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>> RoleUpdateAsync(OmniumRole? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleUpdateAsync(OmniumRole? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns order settings
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSettings>> SettingsOrderSettingsAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSettings>?> SettingsOrderSettingsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8294,14 +9009,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSettings>> SettingsOrderSettingsAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderSettings>?> SettingsOrderSettingsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns order type settings
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumOrderType>>> SettingsOrderTypesAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumOrderType>>?> SettingsOrderTypesAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8309,14 +9026,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumOrderType>>> SettingsOrderTypesAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumOrderType>>?> SettingsOrderTypesAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns customer settings
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerSettings>> SettingsCustomerSettingsAsync();
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerSettings>?> SettingsCustomerSettingsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8324,7 +9043,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerSettings>> SettingsCustomerSettingsAsync(System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCustomerSettings>?> SettingsCustomerSettingsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Put shipment on order
@@ -8336,7 +9056,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment to put</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ShipmentsPutAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipment>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ShipmentsPutAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipment>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8349,7 +9070,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment to put</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ShipmentsPutAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipment>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ShipmentsPutAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipment>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch Shipment on order
@@ -8361,7 +9083,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment to put</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ShipmentsPatchAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipmentPatch>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ShipmentsPatchAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipmentPatch>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8374,7 +9097,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment to put</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>> ShipmentsPatchAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipmentPatch>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrder>?> ShipmentsPatchAsync(string? orderId, System.Collections.Generic.IEnumerable<OmniumShipmentPatch>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete shipment
@@ -8386,7 +9110,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment IDs to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> ShipmentsDeleteShipmentsAsync(string orderId, System.Collections.Generic.IEnumerable<string>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> ShipmentsDeleteShipmentsAsync(string orderId, System.Collections.Generic.IEnumerable<string>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8399,7 +9124,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment IDs to delete</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> ShipmentsDeleteShipmentsAsync(string orderId, System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> ShipmentsDeleteShipmentsAsync(string orderId, System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add order lines to shipment
@@ -8411,7 +9137,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment with lineItemIds to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> ShipmentsAddOrderLinesToShipmentAsync(string orderId, System.Collections.Generic.IEnumerable<OmniumShipmentLineItemsUpdateModel>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> ShipmentsAddOrderLinesToShipmentAsync(string orderId, System.Collections.Generic.IEnumerable<OmniumShipmentLineItemsUpdateModel>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8424,7 +9151,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Shipment with lineItemIds to add</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> ShipmentsAddOrderLinesToShipmentAsync(string orderId, System.Collections.Generic.IEnumerable<OmniumShipmentLineItemsUpdateModel>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> ShipmentsAddOrderLinesToShipmentAsync(string orderId, System.Collections.Generic.IEnumerable<OmniumShipmentLineItemsUpdateModel>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single store
@@ -8432,7 +9160,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">ID of the store to return</param>
         /// <returns>Store found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>> StoresGetAsync(string? storeId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>?> StoresGetAsync(string? storeId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8441,7 +9170,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="storeId">ID of the store to return</param>
         /// <returns>Store found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>> StoresGetAsync(string? storeId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>?> StoresGetAsync(string? storeId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of stores
@@ -8449,7 +9179,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">External ID of the store to return</param>
         /// <returns>Store(s) with external ID found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>> StoresGetByExternalIdAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>?> StoresGetByExternalIdAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8458,7 +9189,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">External ID of the store to return</param>
         /// <returns>Store(s) with external ID found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>> StoresGetByExternalIdAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>?> StoresGetByExternalIdAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a store to the OMS
@@ -8466,7 +9198,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that is added to the OMS</param>
         /// <returns>Store is added</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresPostAsync(OmniumStore? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresPostAsync(OmniumStore? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8475,7 +9208,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that is added to the OMS</param>
         /// <returns>Store is added</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresPostAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresPostAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create or update store in Omnium, overriding existing store
@@ -8483,7 +9217,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that needs to be added to the OMS</param>
         /// <returns>Store is updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresPutAsync(OmniumStore? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresPutAsync(OmniumStore? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8492,14 +9227,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that needs to be added to the OMS</param>
         /// <returns>Store is updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresPutAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresPutAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all stores
         /// </summary>
         /// <returns>Returning all stores</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>> StoresGet2Async(bool? filterPublicVisible);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>?> StoresGet2Async(bool? filterPublicVisible);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8507,14 +9244,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Returning all stores</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>> StoresGet2Async(bool? filterPublicVisible, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumSearchResult>?> StoresGet2Async(bool? filterPublicVisible, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a single store from the OMS
         /// </summary>
         /// <returns>Store deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresDeleteAsync(OmniumStore? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresDeleteAsync(OmniumStore? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8522,7 +9261,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Store deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresDeleteAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresDeleteAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch store - update only some values in request
@@ -8530,7 +9270,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store patch. Properties with value will be updated.</param>
         /// <returns>Store updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreUpdateResult>> StoresPatchStoreAsync(OmniumStorePatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreUpdateResult>?> StoresPatchStoreAsync(OmniumStorePatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8539,7 +9280,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store patch. Properties with value will be updated.</param>
         /// <returns>Store updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreUpdateResult>> StoresPatchStoreAsync(OmniumStorePatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreUpdateResult>?> StoresPatchStoreAsync(OmniumStorePatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update existing store, replacing all properties
@@ -8547,7 +9289,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The store object to be updated in the OMS</param>
         /// <returns>Store is updated, and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>> StoresUpdateAsync(OmniumStore? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>?> StoresUpdateAsync(OmniumStore? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8556,7 +9299,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The store object to be updated in the OMS</param>
         /// <returns>Store is updated, and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>> StoresUpdateAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStore>?> StoresUpdateAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adding or enrich an existing store to the OMS
@@ -8564,7 +9308,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that needs to be enriched in the OMS</param>
         /// <returns>Store is updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresEnrichAsync(OmniumStore? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresEnrichAsync(OmniumStore? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8573,7 +9318,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Store object that needs to be enriched in the OMS</param>
         /// <returns>Store is updated</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresEnrichAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresEnrichAsync(OmniumStore? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds a range of stores to the OMS.
@@ -8581,7 +9327,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Store objects that needs to be added to the OMS</param>
         /// <returns>Stores are added</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresAddManyAsync(System.Collections.Generic.IEnumerable<OmniumStore>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresAddManyAsync(System.Collections.Generic.IEnumerable<OmniumStore>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8590,7 +9337,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">A list of Store objects that needs to be added to the OMS</param>
         /// <returns>Stores are added</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresAddManyAsync(System.Collections.Generic.IEnumerable<OmniumStore>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresAddManyAsync(System.Collections.Generic.IEnumerable<OmniumStore>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search stores and warehouses
@@ -8598,7 +9346,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The OmniumStoreSearchRequest contains properties for filtering stores and warehouses</param>
         /// <returns>Search successful, returning stores</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumResult>> StoresSearchStoresAsync(OmniumStoreSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumResult>?> StoresSearchStoresAsync(OmniumStoreSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8607,14 +9356,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The OmniumStoreSearchRequest contains properties for filtering stores and warehouses</param>
         /// <returns>Search successful, returning stores</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumResult>> StoresSearchStoresAsync(OmniumStoreSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumStoreOmniumResult>?> StoresSearchStoresAsync(OmniumStoreSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a single store from the OMS
         /// </summary>
         /// <returns>Store deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresDelete2Async(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresDelete2Async(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8622,7 +9373,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Store deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> StoresDelete2Async(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> StoresDelete2Async(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update subscription
@@ -8630,7 +9382,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Subscriptions object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsPutAsync(OmniumSubscription? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsPutAsync(OmniumSubscription? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8639,14 +9392,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Subscriptions object that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsPutAsync(OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsPutAsync(OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a new subscription, with an auto generated ID
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsPostAsync(OmniumSubscription? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsPostAsync(OmniumSubscription? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8654,7 +9409,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsPostAsync(OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsPostAsync(OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update subscription
@@ -8663,7 +9419,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Subscription to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsUpdateAsync(bool? runWorkflow, OmniumSubscription? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsUpdateAsync(bool? runWorkflow, OmniumSubscription? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8673,7 +9430,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Subscription to update</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsUpdateAsync(bool? runWorkflow, OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsUpdateAsync(bool? runWorkflow, OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a single subscription
@@ -8681,7 +9439,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the subscription to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsGetAsync(string id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsGetAsync(string id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8690,14 +9449,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="id">ID of the subscription to return</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>> SubscriptionsGetAsync(string id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscription>?> SubscriptionsGetAsync(string id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a subscription from the OMS
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8705,14 +9466,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search and filtering of subscriptions.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscriptionSearchResultViewModel>> SubscriptionsSearchAsync(OmniumSubscriptionSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscriptionSearchResultViewModel>?> SubscriptionsSearchAsync(OmniumSubscriptionSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8720,14 +9483,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscriptionSearchResultViewModel>> SubscriptionsSearchAsync(OmniumSubscriptionSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSubscriptionSearchResultViewModel>?> SubscriptionsSearchAsync(OmniumSubscriptionSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create pending orders for subscription
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsCreatePendingOrdersAsync(int numberOfPendingOrders, OmniumSubscription? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsCreatePendingOrdersAsync(int numberOfPendingOrders, OmniumSubscription? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8735,14 +9500,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> SubscriptionsCreatePendingOrdersAsync(int numberOfPendingOrders, OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> SubscriptionsCreatePendingOrdersAsync(int numberOfPendingOrders, OmniumSubscription? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get supplier
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>> SuppliersGetSupplierAsync(string? supplierId);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>?> SuppliersGetSupplierAsync(string? supplierId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8750,7 +9517,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>> SuppliersGetSupplierAsync(string? supplierId, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>?> SuppliersGetSupplierAsync(string? supplierId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search suppliers
@@ -8761,7 +9529,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for suppliers</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplierOmniumSearchResult>> SuppliersSearchAsync(OmniumSupplierSearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplierOmniumSearchResult>?> SuppliersSearchAsync(OmniumSupplierSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8773,7 +9542,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for suppliers</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplierOmniumSearchResult>> SuppliersSearchAsync(OmniumSupplierSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplierOmniumSearchResult>?> SuppliersSearchAsync(OmniumSupplierSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update supplier
@@ -8784,7 +9554,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Supplier</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>> SuppliersUpdateAsync(OmniumSupplier? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>?> SuppliersUpdateAsync(OmniumSupplier? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8796,7 +9567,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Supplier</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>> SuppliersUpdateAsync(OmniumSupplier? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumSupplier>?> SuppliersUpdateAsync(OmniumSupplier? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update many suppliers
@@ -8807,7 +9579,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Suppliers</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> SuppliersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumSupplier>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> SuppliersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumSupplier>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8819,14 +9592,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Suppliers</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> SuppliersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumSupplier>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> SuppliersUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumSupplier>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete supplier
         /// </summary>
         /// <returns>Supplier deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> SuppliersDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> SuppliersDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8834,14 +9609,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Supplier deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> SuppliersDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> SuppliersDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get all project types
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>> TimeEntriesGetTimeEntriesForProjectAsync(string? projectId, int? page, int? pageSize);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>?> TimeEntriesGetTimeEntriesForProjectAsync(string? projectId, int? page, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8849,7 +9626,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>> TimeEntriesGetTimeEntriesForProjectAsync(string? projectId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>?> TimeEntriesGetTimeEntriesForProjectAsync(string? projectId, int? page, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Find time entries
@@ -8860,7 +9638,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for finding time entries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>> TimeEntriesSearchAsync(OmniumTimeEntrySearchRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>?> TimeEntriesSearchAsync(OmniumTimeEntrySearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8872,7 +9651,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request object for finding time entries</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>> TimeEntriesSearchAsync(OmniumTimeEntrySearchRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumTimeEntry>>?> TimeEntriesSearchAsync(OmniumTimeEntrySearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create time entry
@@ -8883,7 +9663,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium TimeEntry object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumTimeEntry>> TimeEntriesAddAsync(OmniumTimeEntry? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumTimeEntry>?> TimeEntriesAddAsync(OmniumTimeEntry? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8895,14 +9676,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Omnium TimeEntry object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumTimeEntry>> TimeEntriesAddAsync(OmniumTimeEntry? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumTimeEntry>?> TimeEntriesAddAsync(OmniumTimeEntry? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete time entries
         /// </summary>
         /// <returns>Time entry deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> TimeEntriesDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> TimeEntriesDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8910,7 +9693,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Time entry deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> TimeEntriesDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> TimeEntriesDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete time entries
@@ -8918,7 +9702,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Ids of objects to delete</param>
         /// <returns>Time entries deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> TimeEntriesDeleteManyAsync(System.Collections.Generic.IEnumerable<string>? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> TimeEntriesDeleteManyAsync(System.Collections.Generic.IEnumerable<string>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8927,14 +9712,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Ids of objects to delete</param>
         /// <returns>Time entries deleted</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> TimeEntriesDeleteManyAsync(System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> TimeEntriesDeleteManyAsync(System.Collections.Generic.IEnumerable<string>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create a new token
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> TokenPostAsync(string? clientId, string? clientSecret, bool? returnAsJson);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> TokenPostAsync(string? clientId, string? clientSecret, bool? returnAsJson);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8942,14 +9729,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> TokenPostAsync(string? clientId, string? clientSecret, bool? returnAsJson, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> TokenPostAsync(string? clientId, string? clientSecret, bool? returnAsJson, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Trigger a preconfigured action
         /// </summary>
         /// <returns>Action triggered successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> TriggersPostAsync(OmniumTriggerRequest? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> TriggersPostAsync(OmniumTriggerRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8957,7 +9746,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Action triggered successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> TriggersPostAsync(OmniumTriggerRequest? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> TriggersPostAsync(OmniumTriggerRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add a new omnium user. ID must be a valid email-address and not be in use by another user.
@@ -8965,7 +9755,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The user object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserAddAsync(OmniumUserModel? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserAddAsync(OmniumUserModel? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8974,7 +9765,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The user object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserAddAsync(OmniumUserModel? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserAddAsync(OmniumUserModel? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or save a user. ID must be a valid email-address.
@@ -8982,7 +9774,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The user object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserPutAsync(OmniumUserModel? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserPutAsync(OmniumUserModel? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -8991,14 +9784,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The user object</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserPutAsync(OmniumUserModel? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserPutAsync(OmniumUserModel? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get an omnium user.
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumUserModel>> UserGetAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumUserModel>?> UserGetAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9006,7 +9801,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumUserModel>> UserGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumUserModel>?> UserGetAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Patch user - update only values in request
@@ -9015,7 +9811,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>User updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserPatchUserAsync(string? id, OmniumUserPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserPatchUserAsync(string? id, OmniumUserPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9025,14 +9822,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Patch request</param>
         /// <returns>User updated successfully</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserPatchUserAsync(string? id, OmniumUserPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserPatchUserAsync(string? id, OmniumUserPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Deletes a single user from the OMS
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserDeleteAsync(string? id);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserDeleteAsync(string? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9040,7 +9839,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UserDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> UserDeleteAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update status and run workflow for an order or shipment
@@ -9072,7 +9872,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The status which will be set on the order. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9105,7 +9906,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">The status which will be set on the order. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowUpdateStatusAsync(string? orderId, OmniumUpdateStatusPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create or update shipments and order lines,  and run workflow.
@@ -9193,7 +9995,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Line items to update and The status which will be set on the order. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowPartialUpdateAsync(string? orderId, OmniumUpdateLineItemStatusPatch? body);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowPartialUpdateAsync(string? orderId, OmniumUpdateLineItemStatusPatch? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9282,14 +10085,16 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Line items to update and The status which will be set on the order. New, InProgress, InTransit, ReadyForPickup, Completed, OrderCanceled, PartiallyShipped</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowPartialUpdateAsync(string? orderId, OmniumUpdateLineItemStatusPatch? body, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowPartialUpdateAsync(string? orderId, OmniumUpdateLineItemStatusPatch? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Process cart workflow test (Dry run of workflow, no changes to order or shipment will be made)
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowProcessCartWorkflowTestAsync(string? cartId, string? status);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowProcessCartWorkflowTestAsync(string? cartId, string? status);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9297,7 +10102,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>> WorkflowProcessCartWorkflowTestAsync(string? cartId, string? status, System.Threading.CancellationToken cancellationToken);
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderWorkflowExecutionResult>?> WorkflowProcessCartWorkflowTestAsync(string? cartId, string? status, System.Threading.CancellationToken cancellationToken);
 
     }
 
