@@ -86,7 +86,7 @@
       "generateDtoTypes": true,
       "generateOptionalPropertiesAsNullable": false,
       "generateNullableReferenceTypes": true,
-      "templateDirectory": null,
+      "templateDirectory": ".\\CustomTemplates\\",
       "serviceHost": null,
       "serviceSchemes": null,
       "output": "Client.g.cs",
