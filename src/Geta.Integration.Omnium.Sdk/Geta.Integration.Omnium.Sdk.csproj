@@ -29,10 +29,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="13.20.0">
+    <PackageReference Include="NSwag.AspNetCore" Version="14.0.8">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NSwag.MSBuild" Version="13.20.0">
+    <PackageReference Include="NSwag.MSBuild" Version="14.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -52,7 +52,7 @@
     </None>
   </ItemGroup>
   <Target Name="NSwag" BeforeTargets="BeforeBuild">
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run $(NSwagConfigFile) /assembly:$(TargetPath) /variables:Configuration=$(Configuration) /runtime:Net60" WorkingDirectory="$(ProjectDir)">
+    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net60) run $(NSwagConfigFile) /variables:Configuration=$(Configuration)" WorkingDirectory="$(ProjectDir)">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
       <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
     </Exec>
