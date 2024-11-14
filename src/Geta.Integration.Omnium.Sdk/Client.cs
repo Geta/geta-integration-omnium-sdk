@@ -1,4 +1,4 @@
-﻿namespace Geta.Integration.Omnium.Sdk;
+namespace Geta.Integration.Omnium.Sdk;
 
 internal class Client : OmniumClientBase, IClient
 {
@@ -6,6 +6,7 @@ internal class Client : OmniumClientBase, IClient
     {
     }
 
+    
     protected override async Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(
         HttpResponseMessage response,
         IReadOnlyDictionary<string, IEnumerable<string>> headers,
