@@ -4718,7 +4718,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentSummaryOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4728,7 +4728,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentSummaryOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search all PickLists.
@@ -33463,7 +33463,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="body">Search request</param>
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentSummaryOmniumSearchResult>> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body)
         {
             return PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(body, System.Threading.CancellationToken.None);
         }
@@ -33476,7 +33476,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Search successful, returning payment transactions</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumPaymentSummaryOmniumSearchResult>?> PaymentReportSearchPaymentTransactionsByDateAndPaymentMethodAsync(OmniumPaymentReportSearchRequest? body, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -33531,12 +33531,12 @@ namespace Geta.Integration.Omnium.Sdk
                         else
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumPaymentTransactionOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumPaymentSummaryOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<OmniumPaymentTransactionOmniumSearchResult>(status_, headers_, objectResponse_.Object);
+                            return new SwaggerResponse<OmniumPaymentSummaryOmniumSearchResult>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 400)
@@ -75099,6 +75099,127 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paymentMethodName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? PaymentMethodName { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Payment summary report
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPaymentSummary
+    {
+        /// <summary>
+        /// Payment date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paymentDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PaymentDate { get; set; } = default!;
+
+        /// <summary>
+        /// Order store id
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("orderStoreId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? OrderStoreId { get; set; } = default!;
+
+        /// <summary>
+        /// payment method
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paymentMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PaymentMethod { get; set; } = default!;
+
+        /// <summary>
+        /// Total incl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalInclVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalInclVat { get; set; } = default!;
+
+        /// <summary>
+        /// Total excl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalExclVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalExclVat { get; set; } = default!;
+
+        /// <summary>
+        /// Total credited incl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalCreditedInclVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalCreditedInclVat { get; set; } = default!;
+
+        /// <summary>
+        /// Total credited excl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalCreditedExclVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalCreditedExclVat { get; set; } = default!;
+
+        /// <summary>
+        /// Total captured and credited per tax rate
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taxRates", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPaymentSummaryTaxRate>? TaxRates { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Generic class for receiving search results with facets
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPaymentSummaryOmniumSearchResult
+    {
+        /// <summary>
+        /// Search result facets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("facets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumFacetViewModel>? Facets { get; set; } = default!;
+
+        /// <summary>
+        /// Total number of hits
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalHits", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalHits { get; set; } = default!;
+
+        /// <summary>
+        /// Search results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPaymentSummary>? Result { get; set; } = default!;
+
+        /// <summary>
+        /// The Scroll ID is used when fetching large amounts of data.
+        /// <br/>Whenever the search results yields a ContinuationToken, the Scroll endpoints should be used to continue fetching documents
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scrollId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScrollId { get; set; } = default!;
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isValid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsValid { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Payment summary for tax rate
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPaymentSummaryTaxRate
+    {
+        /// <summary>
+        /// Tax rate
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taxRate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TaxRate { get; set; } = default!;
+
+        /// <summary>
+        /// Total incl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalCapture", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalCapture { get; set; } = default!;
+
+        /// <summary>
+        /// Total excl VAT
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalCredit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalCredit { get; set; } = default!;
 
     }
 

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.6]
+
+* Added HttpMessageHandler configuration callback
+
 ## [1.1.3]
 
 * Added nullability
