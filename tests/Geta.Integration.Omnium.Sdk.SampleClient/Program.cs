@@ -6,7 +6,9 @@ using Microsoft.Extensions.Hosting;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Configuration.AddJsonFile("appsettings.json");
-builder.Services.AddOmniumIntegration();
+builder.Services
+    .AddOmniumIntegration()
+    .AddOmniumClientFactory();
 
 // NOTE: if you need to run through proxy
 //builder.Services.AddOmniumIntegration(() => new HttpClientHandler
@@ -17,7 +19,8 @@ builder.Services.AddOmniumIntegration();
 //});
 
 
-builder.Services.AddHostedService<SampleConnectionService>();
+//builder.Services.AddHostedService<SampleConnectionService>();
+builder.Services.AddHostedService<DynamicClientConnectionService>();
 
 // NOTE: supports also after post configuration
 //builder.Services.Configure<OmniumConfiguration>(o => o.ClientId = "OVERTWRITE");

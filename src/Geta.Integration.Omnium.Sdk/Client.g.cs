@@ -33,7 +33,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumAnalyticsOrderLineOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -42,7 +42,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumAnalyticsOrderLineOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get customer assets
@@ -2914,6 +2914,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <remarks>
         /// Search for invoices.
         /// </remarks>
+        /// <param name="body">Invoice search request</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -2926,6 +2927,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <remarks>
         /// Search for invoices.
         /// </remarks>
+        /// <param name="body">Invoice search request</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -5045,11 +5047,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// <br/>Only not existing customers will be added(based on customerId)
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -5057,32 +5060,35 @@ namespace Geta.Integration.Omnium.Sdk
         /// <br/>Only not existing customers will be added(based on customerId)
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add or update a range of customers to the OMS.
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Add or update a range of customers to the OMS.
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update private customer
@@ -6646,6 +6652,25 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse?> ProductsAddManyAsync(System.Collections.Generic.IEnumerable<OmniumProduct>? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Delete multiple products from Omnium
+        /// </summary>
+        /// <param name="body">The Ids of the products to delete (OmniumProduct.Id, e.g 12345_en)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteManyAsync(System.Collections.Generic.IEnumerable<string> body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete multiple products from Omnium
+        /// </summary>
+        /// <param name="body">The Ids of the products to delete (OmniumProduct.Id, e.g 12345_en)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteManyAsync(System.Collections.Generic.IEnumerable<string> body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update (add) many products, enriching existing products if they exist
@@ -9382,10 +9407,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page number</param>
         /// <param name="take">Number of elements</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, string? parentObjectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9396,10 +9422,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page number</param>
         /// <param name="take">Number of elements</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, string? parentObjectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Search for ratings
@@ -9476,10 +9503,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="type">The object class to get ratings from (e.g. BusinessCustomer, Product, etc)</param>
         /// <param name="objectId">The object id to get ratings from (e.g. 12345)</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention);
+        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, string? parentObjectId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -9488,10 +9516,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="type">The object class to get ratings from (e.g. BusinessCustomer, Product, etc)</param>
         /// <param name="objectId">The object id to get ratings from (e.g. 12345)</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, string? parentObjectId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get products recommendations based on products IDs, customer ID, boosted properties and/or included/excluded products properties.
@@ -9648,6 +9677,61 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsReturnAsync(string? orderId, OmniumReturnRequestModel body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Create a replacement order with all or some of the line items.
+        /// </summary>
+        /// <remarks>
+        /// Sample request to create a replacement order for a single order line
+        /// <br/>            
+        /// <br/>    POST /api/returns/CreateReplacementOrder
+        /// <br/>    {
+        /// <br/>       "orderId": "EPIC000001",
+        /// <br/>       "orderLineReplacements": [
+        /// <br/>            {
+        /// <br/>                "lineItemId": "1",
+        /// <br/>                "quantity": 1,
+        /// <br/>                "replacementType": "Damaged",
+        /// <br/>                "replacementReason": "Replacement for damaged goods"
+        /// <br/>            },
+        /// <br/>        ],
+        /// <br/>       "comment": "Replacement for damaged goods",
+        /// <br/>       "amountToCredit": "399.00",
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="body">Id of order, and order lines to replace.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsCreateReplacementOrderAsync(OmniumReplacementRequestModel body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a replacement order with all or some of the line items.
+        /// </summary>
+        /// <remarks>
+        /// Sample request to create a replacement order for a single order line
+        /// <br/>            
+        /// <br/>    POST /api/returns/CreateReplacementOrder
+        /// <br/>    {
+        /// <br/>       "orderId": "EPIC000001",
+        /// <br/>       "orderLineReplacements": [
+        /// <br/>            {
+        /// <br/>                "lineItemId": "1",
+        /// <br/>                "quantity": 1,
+        /// <br/>                "replacementType": "Damaged",
+        /// <br/>                "replacementReason": "Replacement for damaged goods"
+        /// <br/>            },
+        /// <br/>        ],
+        /// <br/>       "comment": "Replacement for damaged goods",
+        /// <br/>       "amountToCredit": "399.00",
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="body">Id of order, and order lines to replace.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsCreateReplacementOrderAsync(OmniumReplacementRequestModel body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get role by ID
@@ -10930,7 +11014,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumAnalyticsOrderLineOmniumSearchResult>> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body)
         {
             return AnalyticsOrdersSearchAnalyticsOrderLinesAsync(body, System.Threading.CancellationToken.None);
         }
@@ -10942,7 +11026,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumOrderOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumAnalyticsOrderLineOmniumSearchResult>?> AnalyticsOrdersSearchAnalyticsOrderLinesAsync(OmniumAnalyticsOrderLineSearchRequest? body, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -10997,12 +11081,12 @@ namespace Geta.Integration.Omnium.Sdk
                         else
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumOrderOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumAnalyticsOrderLineOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<OmniumOrderOmniumSearchResult>(status_, headers_, objectResponse_.Object);
+                            return new SwaggerResponse<OmniumAnalyticsOrderLineOmniumSearchResult>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 400)
@@ -26528,6 +26612,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <remarks>
         /// Search for invoices.
         /// </remarks>
+        /// <param name="body">Invoice search request</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumInvoiceOmniumSearchResult>> InvoicesSearchAsync(OmniumInvoiceSearchRequest? body)
@@ -26542,6 +26627,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <remarks>
         /// Search for invoices.
         /// </remarks>
+        /// <param name="body">Invoice search request</param>
         /// <returns>Invoices found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -34834,12 +34920,13 @@ namespace Geta.Integration.Omnium.Sdk
         /// <br/>Only not existing customers will be added(based on customerId)
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<string>> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<string>> PrivateCustomersAddManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body)
         {
-            return PrivateCustomersAddManyAsync(body, System.Threading.CancellationToken.None);
+            return PrivateCustomersAddManyAsync(exportCustomers, body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -34848,11 +34935,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// <br/>Only not existing customers will be added(based on customerId)
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<string>?> PrivateCustomersAddManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -34871,6 +34959,12 @@ namespace Geta.Integration.Omnium.Sdk
                 
                     // Operation Path: "api/PrivateCustomers/AddMany"
                     urlBuilder_.Append("api/PrivateCustomers/AddMany");
+                    urlBuilder_.Append('?');
+                    if (exportCustomers != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("exportCustomers")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(exportCustomers, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -34964,12 +35058,13 @@ namespace Geta.Integration.Omnium.Sdk
         /// Add or update a range of customers to the OMS.
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse> PrivateCustomersAddOrUpdateManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body)
         {
-            return PrivateCustomersAddOrUpdateManyAsync(body, System.Threading.CancellationToken.None);
+            return PrivateCustomersAddOrUpdateManyAsync(exportCustomers, body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -34977,11 +35072,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// Add or update a range of customers to the OMS.
         /// <br/>Max size in batch is 100
         /// </summary>
+        /// <param name="exportCustomers">If true - Omnium will trigger configured connectors to export updated customers</param>
         /// <param name="body">A list of privateCustomers objects that needs to be added/updated to the OMS</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse?> PrivateCustomersAddOrUpdateManyAsync(bool? exportCustomers, System.Collections.Generic.IEnumerable<OmniumPrivateCustomer>? body, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -34999,6 +35095,12 @@ namespace Geta.Integration.Omnium.Sdk
                 
                     // Operation Path: "api/PrivateCustomers/AddOrUpdateMany"
                     urlBuilder_.Append("api/PrivateCustomers/AddOrUpdateMany");
+                    urlBuilder_.Append('?');
+                    if (exportCustomers != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("exportCustomers")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(exportCustomers, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -42450,6 +42552,129 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Delete multiple products from Omnium
+        /// </summary>
+        /// <param name="body">The Ids of the products to delete (OmniumProduct.Id, e.g 12345_en)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse> ProductsDeleteManyAsync(System.Collections.Generic.IEnumerable<string> body)
+        {
+            return ProductsDeleteManyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete multiple products from Omnium
+        /// </summary>
+        /// <param name="body">The Ids of the products to delete (OmniumProduct.Id, e.g 12345_en)</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse?> ProductsDeleteManyAsync(System.Collections.Generic.IEnumerable<string> body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (body == null)
+                throw new System.ArgumentNullException("body");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/Products/DeleteMany"
+                    urlBuilder_.Append("api/Products/DeleteMany");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            return new SwaggerResponse(status_, headers_);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<string>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.ICollection<string>>("Delete request not valid", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 204)
+                        {
+                            return new SwaggerResponse(status_, headers_);
                         }
                         else
                         {
@@ -56254,7 +56479,7 @@ namespace Geta.Integration.Omnium.Sdk
                             throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<OmniumPurchaseOrder>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -57604,11 +57829,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page number</param>
         /// <param name="take">Number of elements</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, string? parentObjectId)
         {
-            return RatingsGetRatingsAsync(type, objectId, page, take, ignoreRequiresAttention, System.Threading.CancellationToken.None);
+            return RatingsGetRatingsAsync(type, objectId, page, take, ignoreRequiresAttention, parentObjectId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -57620,10 +57846,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="page">Page number</param>
         /// <param name="take">Number of elements</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service (default: true)</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumRatingOmniumSearchResult>?> RatingsGetRatingsAsync(string? type, string? objectId, int? page, int? take, bool? ignoreRequiresAttention, string? parentObjectId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -57658,6 +57885,10 @@ namespace Geta.Integration.Omnium.Sdk
                     if (ignoreRequiresAttention != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("ignoreRequiresAttention")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(ignoreRequiresAttention, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (parentObjectId != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("parentObjectId")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(parentObjectId, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     urlBuilder_.Length--;
 
@@ -58101,11 +58332,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="type">The object class to get ratings from (e.g. BusinessCustomer, Product, etc)</param>
         /// <param name="objectId">The object id to get ratings from (e.g. 12345)</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<double>> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<double>> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, string? parentObjectId)
         {
-            return RatingsGetAverageRatingsAsync(type, objectId, ignoreRequiresAttention, System.Threading.CancellationToken.None);
+            return RatingsGetAverageRatingsAsync(type, objectId, ignoreRequiresAttention, parentObjectId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -58115,10 +58347,11 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="type">The object class to get ratings from (e.g. BusinessCustomer, Product, etc)</param>
         /// <param name="objectId">The object id to get ratings from (e.g. 12345)</param>
         /// <param name="ignoreRequiresAttention">Ignore ratings that needs attention by customer service</param>
+        /// <param name="parentObjectId">The parent object id to get ratings for. If both objectId and parentObjectd has value, "or" query will be used</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<double>?> RatingsGetAverageRatingsAsync(string? type, string? objectId, bool? ignoreRequiresAttention, string? parentObjectId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -58145,6 +58378,10 @@ namespace Geta.Integration.Omnium.Sdk
                     if (ignoreRequiresAttention != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("ignoreRequiresAttention")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(ignoreRequiresAttention, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (parentObjectId != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("parentObjectId")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(parentObjectId, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     urlBuilder_.Length--;
 
@@ -58848,6 +59085,164 @@ namespace Geta.Integration.Omnium.Sdk
                     urlBuilder_.Append("api/Returns/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(orderId, System.Globalization.CultureInfo.InvariantCulture)));
                     urlBuilder_.Append("/Return");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Not Found", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Bad Request", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Server Error", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Create a replacement order with all or some of the line items.
+        /// </summary>
+        /// <remarks>
+        /// Sample request to create a replacement order for a single order line
+        /// <br/>            
+        /// <br/>    POST /api/returns/CreateReplacementOrder
+        /// <br/>    {
+        /// <br/>       "orderId": "EPIC000001",
+        /// <br/>       "orderLineReplacements": [
+        /// <br/>            {
+        /// <br/>                "lineItemId": "1",
+        /// <br/>                "quantity": 1,
+        /// <br/>                "replacementType": "Damaged",
+        /// <br/>                "replacementReason": "Replacement for damaged goods"
+        /// <br/>            },
+        /// <br/>        ],
+        /// <br/>       "comment": "Replacement for damaged goods",
+        /// <br/>       "amountToCredit": "399.00",
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="body">Id of order, and order lines to replace.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>> ReturnsCreateReplacementOrderAsync(OmniumReplacementRequestModel body)
+        {
+            return ReturnsCreateReplacementOrderAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a replacement order with all or some of the line items.
+        /// </summary>
+        /// <remarks>
+        /// Sample request to create a replacement order for a single order line
+        /// <br/>            
+        /// <br/>    POST /api/returns/CreateReplacementOrder
+        /// <br/>    {
+        /// <br/>       "orderId": "EPIC000001",
+        /// <br/>       "orderLineReplacements": [
+        /// <br/>            {
+        /// <br/>                "lineItemId": "1",
+        /// <br/>                "quantity": 1,
+        /// <br/>                "replacementType": "Damaged",
+        /// <br/>                "replacementReason": "Replacement for damaged goods"
+        /// <br/>            },
+        /// <br/>        ],
+        /// <br/>       "comment": "Replacement for damaged goods",
+        /// <br/>       "amountToCredit": "399.00",
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="body">Id of order, and order lines to replace.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumReturnOrderForm>>?> ReturnsCreateReplacementOrderAsync(OmniumReplacementRequestModel body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (body == null)
+                throw new System.ArgumentNullException("body");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/Returns/CreateReplacementOrder"
+                    urlBuilder_.Append("api/Returns/CreateReplacementOrder");
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -65768,6 +66163,289 @@ namespace Geta.Integration.Omnium.Sdk
 
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsAddress
+    {
+        [Newtonsoft.Json.JsonProperty("firstName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? FirstName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("lastName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? LastName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("organization", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Organization { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Name { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("line1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Line1 { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("line2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Line2 { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("streetNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? StreetNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("apartmentNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ApartmentNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? City { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? State { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("countryCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CountryCode { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("countryName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CountryName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("postalCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PostalCode { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("regionCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? RegionCode { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("regionName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? RegionName { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsCustomer
+    {
+        [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customerNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customerName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customerType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerType { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customerEmail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerEmail { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customerPhone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomerPhone { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("salesPersonId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SalesPersonId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("isCustomerClubMember", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsCustomerClubMember { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsOrder
+    {
+        [Newtonsoft.Json.JsonProperty("orderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? OrderId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("orderNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? OrderNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("orderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? OrderType { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Status { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("salesPersonId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SalesPersonId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("salesPersonName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SalesPersonName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("created", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime Created { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("completed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Completed { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsOrderLine
+    {
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("market", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Market { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Currency { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Language { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("orderLine", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsOrderLineInfo OrderLine { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shipment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsShipment Shipment { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("order", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsOrder Order { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("returnOrder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsReturnOrder ReturnOrder { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("product", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsProduct Product { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("supplier", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsSupplier Supplier { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("customer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsCustomer Customer { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("promotion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsPromotion Promotion { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("store", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsStore Store { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("warehouse", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsStore Warehouse { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("pickupWarehouse", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsStore PickupWarehouse { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("invoiceAddress", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsAddress InvoiceAddress { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shippingAddress", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsAddress ShippingAddress { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("payment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumAnalyticsPayment Payment { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("analyticsOrderLineType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? AnalyticsOrderLineType { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsOrderLineInfo
+    {
+        [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? LineItemId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Name { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("skuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SkuId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Quantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("returnQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ReturnQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("discountedPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal DiscountedPrice { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("discountedPriceExclTax", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal DiscountedPriceExclTax { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("taxRate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TaxRate { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("extendedPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ExtendedPrice { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("extendedPriceExclTax", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ExtendedPriceExclTax { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("costTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal CostTotal { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("profit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Profit { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("profitPercent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ProfitPercent { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("deliveredQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal DeliveredQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("deliveredDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? DeliveredDate { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("canceledQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal CanceledQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("canceledDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? CanceledDate { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("replacedQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? ReplacedQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("replacedDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ReplacedDate { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("readyForPickupQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? ReadyForPickupQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("readyForPickupDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ReadyForPickupDate { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("replacementType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ReplacementType { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("replacementReason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ReplacementReason { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Generic class for receiving search results with facets
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsOrderLineOmniumSearchResult
+    {
+        /// <summary>
+        /// Search result facets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("facets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumFacetViewModel>? Facets { get; set; } = default!;
+
+        /// <summary>
+        /// Total number of hits
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalHits", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalHits { get; set; } = default!;
+
+        /// <summary>
+        /// Search results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumAnalyticsOrderLine>? Result { get; set; } = default!;
+
+        /// <summary>
+        /// The Scroll ID is used when fetching large amounts of data.
+        /// <br/>Whenever the search results yields a ContinuationToken, the Scroll endpoints should be used to continue fetching documents
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scrollId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScrollId { get; set; } = default!;
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isValid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsValid { get; set; } = default!;
+
+    }
+
     /// <summary>
     /// Search analytics orders (analytics must be activated in configuration to yield results)
     /// </summary>
@@ -66103,6 +66781,134 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isInvoiceAddressPropertiesIncluded", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsInvoiceAddressPropertiesIncluded { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsPayment
+    {
+        [Newtonsoft.Json.JsonProperty("paymentMethodName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PaymentMethodName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("paymentStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PaymentStatus { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("paymentDisplayName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PaymentDisplayName { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsProduct
+    {
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Name { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("skuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SkuId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Brand { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Size { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("gender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Gender { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("color", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Color { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("productType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ProductType { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("productId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ProductId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ParentId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("ean", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Ean { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("mainCategory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? MainCategory { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("categories", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Categories { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("catalogNodes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? CatalogNodes { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsPromotion
+    {
+        [Newtonsoft.Json.JsonProperty("promotionIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? PromotionIds { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("promotionNames", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? PromotionNames { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsReturnOrder
+    {
+        [Newtonsoft.Json.JsonProperty("returnOrderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ReturnOrderId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("rmaNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? RmaNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("created", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime Created { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsShipment
+    {
+        [Newtonsoft.Json.JsonProperty("shippingMethodName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShippingMethodName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shipmentTrackingNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShipmentTrackingNumber { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shipmentTrackingLink", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShipmentTrackingLink { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shipmentDeliveryType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShipmentDeliveryType { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("shippingLabel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShippingLabel { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsStore
+    {
+        [Newtonsoft.Json.JsonProperty("storeId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? StoreId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("storeName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? StoreName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("storeGroupId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? StoreGroupId { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumAnalyticsSupplier
+    {
+        [Newtonsoft.Json.JsonProperty("supplierId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SupplierId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("supplierName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SupplierName { get; set; } = default!;
 
     }
 
@@ -66822,10 +67628,16 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? ExpiredDate { get; set; } = default!;
 
         /// <summary>
-        /// Should the cart be read only to the customer?
+        /// Should the cart be read only?
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isReadOnly", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsReadOnly { get; set; } = default!;
+
+        /// <summary>
+        /// Should the order/cart be read only for the customer?
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isReadOnlyByCustomer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsReadOnlyByCustomer { get; set; } = default!;
 
         /// <summary>
         /// Should promotion prices be ignored when product is added to cart?
@@ -67222,6 +68034,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("discountTotalIncVat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.Obsolete]
         public decimal DiscountTotalIncVat { get; set; } = default!;
+
+        /// <summary>
+        /// Order line groups
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("groups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumOrderGroup>? Groups { get; set; } = default!;
 
     }
 
@@ -69019,6 +69837,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.Collections.Generic.ICollection<string>? CustomerNumbers { get; set; } = default!;
 
         /// <summary>
+        /// Filter by customer groups
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("customerGroups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? CustomerGroups { get; set; } = default!;
+
+        /// <summary>
         /// Customer created from date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createdFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -69113,6 +69937,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int Page { get; set; } = default!;
+
+        /// <summary>
+        /// List with custom properties to search for
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
 
     }
 
@@ -70893,6 +71723,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime Modified { get; set; } = default!;
 
+        /// <summary>
+        /// Minimum number of items to order
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("reorderMinQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ReorderMinQuantity { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -72048,6 +72884,12 @@ namespace Geta.Integration.Omnium.Sdk
         [System.Obsolete]
         public decimal DiscountTotalIncVat { get; set; } = default!;
 
+        /// <summary>
+        /// Order line groups
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("groups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumOrderGroup>? Groups { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -72265,6 +73107,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal ShippingSubTotalExclTax { get; set; } = default!;
 
         /// <summary>
+        /// Calculated: Total shipping cost credited
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shippingCreditedTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ShippingCreditedTotal { get; set; } = default!;
+
+        /// <summary>
         /// Name of cart / offer, such as "A special offer for a special customer".
         /// <br/>This is typically used in scenarios where a customer is presented with an offer (in form of a cart).
         /// </summary>
@@ -72276,6 +73124,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("cartId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? CartId { get; set; } = default!;
+
+        /// <summary>
+        /// Purchase order ID (if order was created from a purchase order)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("purchaseOrderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PurchaseOrderId { get; set; } = default!;
 
         /// <summary>
         /// List of CouponCodes added by user
@@ -72348,6 +73202,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("capturedPaymentTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal CapturedPaymentTotal { get; set; } = default!;
+
+        /// <summary>
+        /// Total amount credited by payment providers
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("creditPaymentTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal CreditPaymentTotal { get; set; } = default!;
 
         /// <summary>
         /// Custom properties
@@ -72523,6 +73383,32 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
+    /// Used for grouping order lines
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumOrderGroup
+    {
+        /// <summary>
+        /// Order group ID
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// Order group name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Name { get; set; } = default!;
+
+        /// <summary>
+        /// Order group description
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Description { get; set; } = default!;
+
+    }
+
+    /// <summary>
     /// Order line
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -72627,6 +73513,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal OrderDiscountAmount { get; set; } = default!;
 
         /// <summary>
+        /// Calculated - credited amount for order line
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("creditedAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal CreditedAmount { get; set; } = default!;
+
+        /// <summary>
         /// Order line comment
         /// </summary>
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -72702,6 +73594,12 @@ namespace Geta.Integration.Omnium.Sdk
         public string? CancelReason { get; set; } = default!;
 
         /// <summary>
+        /// Comment regarding cancellation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("cancelComment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CancelComment { get; set; } = default!;
+
+        /// <summary>
         /// Number of items delivered
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveredQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -72744,10 +73642,16 @@ namespace Geta.Integration.Omnium.Sdk
         public bool IsBackorder { get; set; } = default!;
 
         /// <summary>
-        /// Mark the order line as read only. Typically used for carts where there should be order lines that the customer should not be allowed to modify.
+        /// Mark the order line as read only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isReadOnly", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsReadOnly { get; set; } = default!;
+
+        /// <summary>
+        /// Mark the order line as read only for the customer. Typically used for carts where there should be order lines that the customer should not be allowed to modify.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isReadOnlyByCustomer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsReadOnlyByCustomer { get; set; } = default!;
 
         /// <summary>
         /// Enriched from product data: Item cost
@@ -72998,6 +73902,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("reservedInventoryDeliveryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? ReservedInventoryDeliveryId { get; set; } = default!;
+
+        /// <summary>
+        /// Order line group ID (should correspond to ID on order.groups)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("groupId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? GroupId { get; set; } = default!;
 
     }
 
@@ -73300,6 +74210,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("cancelReason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? CancelReason { get; set; } = default!;
+
+        /// <summary>
+        /// Comment regarding cancellation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("cancelComment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CancelComment { get; set; } = default!;
 
         /// <summary>
         /// Number of items delivered
@@ -75216,7 +76132,7 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal TotalCapture { get; set; } = default!;
 
         /// <summary>
-        /// Total excl VAT
+        /// Total credited incl VAT
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalCredit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal TotalCredit { get; set; } = default!;
@@ -76091,6 +77007,13 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Unit { get; set; } = default!;
 
+        /// <summary>
+        /// Filter prices by customer specific prices.
+        /// <br/>Set to 'true' to get only customer specific prices. Set to 'false' to get prices that are not customer specific. If not assigned, no customer filtering will be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isCustomerSpecificPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsCustomerSpecificPrice { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -76178,6 +77101,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("bonusPoints", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int BonusPoints { get; set; } = default!;
+
+        /// <summary>
+        /// Tags for customer
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
         /// <summary>
         /// Unique ID
@@ -76471,6 +77400,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("bonusPoints", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BonusPoints { get; set; } = default!;
+
+        /// <summary>
+        /// Tags for business customer
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
         /// <summary>
         /// Unique ID
@@ -76798,6 +77733,12 @@ namespace Geta.Integration.Omnium.Sdk
         public bool IsBundle { get; set; } = default!;
 
         /// <summary>
+        /// True if product is a pre-assembled kit made of other products (unlike package and bundle, kits have inventory)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isKit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsKit { get; set; } = default!;
+
+        /// <summary>
         /// True if product is package of other products (unlike bundle, price is specified for package)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isPackage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -77029,10 +77970,16 @@ namespace Geta.Integration.Omnium.Sdk
         public string? SupplierColor { get; set; } = default!;
 
         /// <summary>
-        /// Supplier packaging quantity
+        /// Supplier packaging quantity (D-Pack)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("supplierPackagingQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal? SupplierPackagingQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
 
         /// <summary>
         /// List of additional suppliers
@@ -77963,6 +78910,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal Cost { get; set; } = default!;
 
         /// <summary>
+        /// List of product cost prices retrieved from separate index. Only relevant if HasSeparateCostPrices = true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("costPrices", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumCostPrice>? CostPrices { get; set; } = default!;
+
+        /// <summary>
         /// External product ID from supplier
         /// </summary>
         [Newtonsoft.Json.JsonProperty("supplierSkuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -78214,6 +79167,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("modified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? Modified { get; set; } = default!;
+
+        /// <summary>
+        /// Price history (lowest prices for each market)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lowestPriceHistory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPriceReference>? LowestPriceHistory { get; set; } = default!;
 
     }
 
@@ -78878,6 +79837,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal? SupplierPackagingQuantity { get; set; } = default!;
 
         /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
+
+        /// <summary>
         /// List of additional product suppliers
         /// </summary>
         [Newtonsoft.Json.JsonProperty("additionalSuppliers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -79255,6 +80220,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// Search text
         /// </summary>
         [Newtonsoft.Json.JsonProperty("searchText", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(200)]
         public string? SearchText { get; set; } = default!;
 
         /// <summary>
@@ -79389,6 +80355,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isOnSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsOnSale { get; set; } = default!;
+
+        /// <summary>
+        /// Only works if separate cost prices are enabled in the configuration. True returns products with cost on sale. False returns products with cost not on sale. Null returns both.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isCostOnSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsCostOnSale { get; set; } = default!;
 
         /// <summary>
         /// List of promotion IDs. Return only products with active prices with any of the promotion IDs.
@@ -80017,6 +80989,12 @@ namespace Geta.Integration.Omnium.Sdk
         public bool IsBundle { get; set; } = default!;
 
         /// <summary>
+        /// True if product is a pre-assembled kit made of other products (unlike package and bundle, kits have inventory)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isKit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsKit { get; set; } = default!;
+
+        /// <summary>
         /// True if product is package of other products (unlike bundle, price is specified for package)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isPackage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -80248,10 +81226,16 @@ namespace Geta.Integration.Omnium.Sdk
         public string? SupplierColor { get; set; } = default!;
 
         /// <summary>
-        /// Supplier packaging quantity
+        /// Supplier packaging quantity (D-Pack)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("supplierPackagingQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal? SupplierPackagingQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
 
         /// <summary>
         /// List of additional suppliers
@@ -81054,6 +82038,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("bonusPoints", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int BonusPoints { get; set; } = default!;
+
+        /// <summary>
+        /// Tags for customer
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
         /// <summary>
         /// Unique ID
@@ -83715,6 +84705,13 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumEntityError>? Errors { get; set; } = default!;
 
+        /// <summary>
+        /// List of external IDs. External IDs are visible in Omnium's UI and useful for display, searching and filtering on IDs originating from other systems.
+        /// <br/>A typical use case could be to add the IDs from ERP/POS/E-COM systems that does not match the purchase order ID in order to simplify integration and traceability
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -83817,11 +84814,28 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
-    /// Purchase order form
+    /// Purchase order form, containing line items for order
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumPurchaseOrderFormPatch
     {
+        /// <summary>
+        /// All order lines
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPurchaseOrderLinePatch>? LineItems { get; set; } = default!;
+
+        /// <summary>
+        /// Order total
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? Total { get; set; } = default!;
+
+        /// <summary>
+        /// Order total ex tax
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalExclTax", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TotalExclTax { get; set; } = default!;
 
     }
 
@@ -84078,6 +85092,18 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Location { get; set; } = default!;
 
         /// <summary>
+        /// Supplier packaging quantity (D-Pack)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("supplierPackagingQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? SupplierPackagingQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
+
+        /// <summary>
         /// Only for Virtual Stock Locations - When true the line item inventory will be allocated to the virtual stock locations based on relevant inventory rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allocateBasedOnRules", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -84105,6 +85131,248 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customerOrderNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? CustomerOrderNumber { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Purchase order line
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPurchaseOrderLinePatch
+    {
+        /// <summary>
+        /// Unique order line ID
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? LineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// Sku ID of the order line
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Code { get; set; } = default!;
+
+        /// <summary>
+        /// Display name of the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DisplayName { get; set; } = default!;
+
+        /// <summary>
+        /// Alternative product name of the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("alternativeProductName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? AlternativeProductName { get; set; } = default!;
+
+        /// <summary>
+        /// EAN (European Article Number) / GTIN (Global Trade Item Number) of the line item.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ean", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Ean { get; set; } = default!;
+
+        /// <summary>
+        /// URL of the image associated with the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ImageUrl { get; set; } = default!;
+
+        /// <summary>
+        /// Size of the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Size { get; set; } = default!;
+
+        /// <summary>
+        /// Price for one item excluding tax. This property does not take any discounts into consideration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("placedPriceExclTax", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? PlacedPriceExclTax { get; set; } = default!;
+
+        /// <summary>
+        /// Currency of the line item price
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Currency { get; set; } = default!;
+
+        /// <summary>
+        /// Number of items
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? Quantity { get; set; } = default!;
+
+        /// <summary>
+        /// Total discount amount applied to the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItemDiscountAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? LineItemDiscountAmount { get; set; } = default!;
+
+        /// <summary>
+        /// Total discount amount applied to the line item, excluding tax
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItemDiscountAmountExclTax", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? LineItemDiscountAmountExclTax { get; set; } = default!;
+
+        /// <summary>
+        /// Tax total for the line item, calculated from the tax group on the product
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taxTotal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TaxTotal { get; set; } = default!;
+
+        /// <summary>
+        /// Tax rate applied to the line item. For example, if the tax rate is 25%, the value here should be 25.00.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taxRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TaxRate { get; set; } = default!;
+
+        /// <summary>
+        /// Unit of measurement for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Unit { get; set; } = default!;
+
+        /// <summary>
+        /// Customs code for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("customsCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? CustomsCode { get; set; } = default!;
+
+        /// <summary>
+        /// Specifies whether to update the stock for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("updateStock", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? UpdateStock { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity of the line item that has been delivered
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("deliveredQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? DeliveredQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity of the line item that has been canceled
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("canceledQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? CanceledQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity of the line item that has been counted
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("countedQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? CountedQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// List of custom properties associated with the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+        /// <summary>
+        /// Comment for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Comment { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the supplier SKU
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("supplierSkuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SupplierSkuId { get; set; } = default!;
+
+        /// <summary>
+        /// Name of the supplier
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("supplierName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SupplierName { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the purchase order associated with the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("purchaseOrderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PurchaseOrderId { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the delivery associated with the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("deliveryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DeliveryId { get; set; } = default!;
+
+        /// <summary>
+        /// Estimated time of arrival for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("estimatedTimeOfArrival", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? EstimatedTimeOfArrival { get; set; } = default!;
+
+        /// <summary>
+        /// Specifies whether the line item is a package
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isPackage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsPackage { get; set; } = default!;
+
+        /// <summary>
+        /// Name of the package
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("packageName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PackageName { get; set; } = default!;
+
+        /// <summary>
+        /// SKU ID of the package
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("packageSkuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PackageSkuId { get; set; } = default!;
+
+        /// <summary>
+        /// Line item ID of the package
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("packageLineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PackageLineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// Warehouse code for the line item
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("warehouseCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? WarehouseCode { get; set; } = default!;
+
+        /// <summary>
+        /// Specifies whether the line item is disabled for allocation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isDisabledForAllocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsDisabledForAllocation { get; set; } = default!;
+
+        /// <summary>
+        /// Total volume per unit of the line item, in cubic decimeters (dm³).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("volume", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Volume { get; set; } = default!;
+
+        /// <summary>
+        /// Specifies whether to update the cost price on the product from this line item when goods reception is processed.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("updateCostPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? UpdateCostPrice { get; set; } = default!;
+
+        /// <summary>
+        /// Inventory location
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("location", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Location { get; set; } = default!;
+
+        /// <summary>
+        /// Supplier packaging quantity (D-Pack)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("supplierPackagingQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? SupplierPackagingQuantity { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
+
+        /// <summary>
+        /// Only for Virtual Stock Locations - When true the line item inventory will be allocated to the virtual stock locations based on relevant inventory rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allocateBasedOnRules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllocateBasedOnRules { get; set; } = default!;
 
     }
 
@@ -84428,6 +85696,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.Collections.Generic.ICollection<string>? ProductNumbers { get; set; } = default!;
 
         /// <summary>
+        /// Search purchase orders with external IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? ExternalIds { get; set; } = default!;
+
+        /// <summary>
         /// Sort order of the search results.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -84513,6 +85787,14 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("objectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? ObjectId { get; set; } = default!;
+
+        /// <summary>
+        /// Parent ID
+        /// <br/>For product ratings this will be product.ParentId and can be used to set rating count and average for all products
+        /// <br/>sharing the same parentId.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("parentObjectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ParentObjectId { get; set; } = default!;
 
         /// <summary>
         /// SkuId of the object being evaluated (if product rating)
@@ -84746,6 +86028,43 @@ namespace Geta.Integration.Omnium.Sdk
 
     }
 
+    /// <summary>
+    /// Request model for replacement order
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumReplacementRequestModel
+    {
+        /// <summary>
+        /// Order id of the exsisting order to replace orderlines from.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("orderId", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string OrderId { get; set; } = default!;
+
+        /// <summary>
+        /// Request models for orderlines to replace
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("orderLineReplacements", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.Generic.ICollection<OrderLineReplacementRequestModel> OrderLineReplacements { get; set; } = new System.Collections.ObjectModel.Collection<OrderLineReplacementRequestModel>();
+
+        /// <summary>
+        /// Comment will be added to the replacement payment, and as a property on the replacement order.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Comment { get; set; } = default!;
+
+        /// <summary>
+        /// Optional: By default, a 'dummy' credit payment will be added to the original order, equal to the value of the replacement. This ensures the customer does not receive both the replacement and a full credit payment.
+        /// <br/>In some cases, you may wish to issue a partial credit to the customer, for example, offering a 10% credit due to a delay or any other reason the replacement was necessary. In such scenarios, you should adjust this property's value to reflect the redced amount.
+        /// <br/>            
+        /// <br/>For instance, if the total amount for the replacement is 200 and you want to credit the customer 50, you should set this propery's value to 150.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("amountToCredit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? AmountToCredit { get; set; } = default!;
+
+    }
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumReplacementSettings
     {
@@ -84928,6 +86247,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal ShippingSubTotalExclTax { get; set; } = default!;
 
         /// <summary>
+        /// Calculated: Total shipping cost credited
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shippingCreditedTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ShippingCreditedTotal { get; set; } = default!;
+
+        /// <summary>
         /// Name of cart / offer, such as "A special offer for a special customer".
         /// <br/>This is typically used in scenarios where a customer is presented with an offer (in form of a cart).
         /// </summary>
@@ -84939,6 +86264,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("cartId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? CartId { get; set; } = default!;
+
+        /// <summary>
+        /// Purchase order ID (if order was created from a purchase order)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("purchaseOrderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PurchaseOrderId { get; set; } = default!;
 
         /// <summary>
         /// List of CouponCodes added by user
@@ -85011,6 +86342,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("capturedPaymentTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal CapturedPaymentTotal { get; set; } = default!;
+
+        /// <summary>
+        /// Total amount credited by payment providers
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("creditPaymentTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal CreditPaymentTotal { get; set; } = default!;
 
         /// <summary>
         /// Custom properties
@@ -85662,6 +86999,13 @@ namespace Geta.Integration.Omnium.Sdk
         public string? ObjectId { get; set; } = default!;
 
         /// <summary>
+        /// Parent ID
+        /// <br/>For product ratings this will be product.ParentId. Search for ratings where products share the same parentId
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("parentObjectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ParentObjectId { get; set; } = default!;
+
+        /// <summary>
         /// List of marketids to filter on
         /// </summary>
         [Newtonsoft.Json.JsonProperty("marketIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -85888,6 +87232,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shippingSubTotalExclTax", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal ShippingSubTotalExclTax { get; set; } = default!;
+
+        /// <summary>
+        /// Total shipping cost credited
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shippingCreditedTotal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ShippingCreditedTotal { get; set; } = default!;
 
         /// <summary>
         /// Shipment status
@@ -88101,6 +89451,12 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Name { get; set; } = default!;
 
         /// <summary>
+        /// Only use if the supplier is a store in Omnium
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("omniumStoreId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? OmniumStoreId { get; set; } = default!;
+
+        /// <summary>
         /// Tax ID, or other governmental identification number
         /// </summary>
         [Newtonsoft.Json.JsonProperty("taxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -88168,6 +89524,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("storeIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? StoreIds { get; set; } = default!;
+
+        /// <summary>
+        /// Customer properties, (key values)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+        /// <summary>
+        /// List of external supplier IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
 
     }
 
@@ -88269,6 +89637,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("storeIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? StoreIds { get; set; } = default!;
+
+        /// <summary>
+        /// List with custom properties to search for
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+        /// <summary>
+        /// Search by external IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? ExternalIds { get; set; } = default!;
 
     }
 
@@ -89151,6 +90531,12 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal? SupplierPackagingQuantity { get; set; } = default!;
 
         /// <summary>
+        /// Indicates if supplier packages can be split to order quantities smaller than the full package size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("allowSupplierPackageBreak", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AllowSupplierPackageBreak { get; set; } = default!;
+
+        /// <summary>
         /// List of additional product suppliers
         /// </summary>
         [Newtonsoft.Json.JsonProperty("additionalSuppliers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -89628,6 +91014,39 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("marketId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? MarketId { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Orderline replacement request model
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OrderLineReplacementRequestModel
+    {
+        /// <summary>
+        /// Orderline id to replace
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string LineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity to replace
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Always)]
+        public int Quantity { get; set; } = default!;
+
+        /// <summary>
+        /// Replacement type (Should correspond to predefined list of replacement types)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("replacementType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ReplacementType { get; set; } = default!;
+
+        /// <summary>
+        /// Replacement reason
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("replacementReason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ReplacementReason { get; set; } = default!;
 
     }
 
