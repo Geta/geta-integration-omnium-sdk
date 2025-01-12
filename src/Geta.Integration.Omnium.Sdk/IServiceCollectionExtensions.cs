@@ -21,7 +21,7 @@ public static class IServiceCollectionExtensions
     {
         services.AddMemoryCache();
 
-        services.AddScoped<AuthService>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddTransient<TokenHandler>();
 
         services.TryAddEnumerable(ServiceDescriptor.Singleton<IConfigureOptions<OmniumConfiguration>, OmniumConfigurationConfigurer>());
@@ -61,9 +61,12 @@ public static class IServiceCollectionExtensions
     {
         services.AddMemoryCache();
 
-        services.AddScoped<AuthService>();
-
+        services.AddScoped<IAuthService, ScopedAuthService>();
         services.AddScoped<ScopedTokenHandler>();
+
+        services
+            .AddHttpClient("ScopedOmnium_LoginClient");
+
         services
             .AddHttpClient(OmniumClientFactory.ScopedHttpClientName)
             .AddPolicyHandler(ExceptionPolicies.GetRetryOnTooManyRequestsPolicy())

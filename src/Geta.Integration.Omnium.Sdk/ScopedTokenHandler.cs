@@ -6,7 +6,7 @@ namespace Geta.Integration.Omnium.Sdk;
 /// <summary>
 /// A token handler that uses tenant context to set the appropriate tenant configuration.
 /// </summary>
-public class ScopedTokenHandler : TokenHandler
+public class ScopedTokenHandler : BaseTokenHandler
 {
     private readonly TenantContext _context;
 
@@ -14,14 +14,12 @@ public class ScopedTokenHandler : TokenHandler
     /// Initializes a new instance of the <see cref="ScopedTokenHandler"/> class.
     /// </summary>
     /// <param name="authService">The authentication service.</param>
-    /// <param name="configuration">The configuration options for Omnium.</param>
     /// <param name="cache">The memory cache.</param>
     /// <param name="context">The tenant context.</param>
     public ScopedTokenHandler(
-        AuthService authService,
-        IOptions<OmniumConfiguration> configuration,
+        IAuthService authService,
         IMemoryCache cache,
-        TenantContext context) : base(authService, configuration, cache)
+        TenantContext context) : base(authService, cache)
     {
         _context = context;
     }
@@ -37,5 +35,15 @@ public class ScopedTokenHandler : TokenHandler
         SetTenant(_context.TenantId!, _context.TenantConfiguration!);
 
         return base.SendAsync(request, cancellationToken);
+    }
+
+    internal void SetTenant(string tenantId, IOptions<OmniumConfiguration> tenantConfiguration)
+    {
+        ArgumentNullException.ThrowIfNull(tenantId);
+        ArgumentNullException.ThrowIfNull(tenantConfiguration);
+
+        CacheKey += $"__{tenantId}";
+        ClientId = tenantConfiguration.Value.ClientId;
+        ClientSecret = tenantConfiguration.Value.ClientSecret;
     }
 }
