@@ -59,6 +59,10 @@ public static class IServiceCollectionExtensions
     /// <returns>Service collection for chaining</returns>
     public static IServiceCollection AddOmniumClientFactory(this IServiceCollection services)
     {
+        services.AddMemoryCache();
+
+        services.AddScoped<AuthService>();
+
         services.AddScoped<ScopedTokenHandler>();
         services
             .AddHttpClient(OmniumClientFactory.ScopedHttpClientName)
