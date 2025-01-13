@@ -25,7 +25,7 @@ public class OmniumHealthCheckController : ControllerBase
     }
 }
 
-public abstract class CheckOmniumHealth
+public static class CheckOmniumHealth
 {
     public class Handler : IRequestHandler<Query, string>
     {
@@ -38,12 +38,13 @@ public abstract class CheckOmniumHealth
 
         public async Task<string> Handle(Query request, CancellationToken cancellationToken)
         {
-            var c = _factory.CreateClient("TestTenant", Options.Create(new OmniumConfiguration
-            {
-                BaseAddress = "https://apitest.omnium.no",
-                ClientId = "valdis-multi-tenancy-test-6d9f5c8e-af4c-46d1-ada6-ab569052598c",
-                ClientSecret = "a586c59f730c4bd3ac7ca06bb5214d89-4132380779ec42709540fffbd2eae9c5"
-            }));
+            var c = _factory.CreateClient("TestTenant",
+                                          Options.Create(new OmniumConfiguration
+                                          {
+                                              BaseAddress = "https://apitest.omnium.no",
+                                              ClientId = "valdis-multi-tenancy-test-6d9f5c8e-af4c-46d1-ada6-ab569052598c",
+                                              ClientSecret = "a586c59f730c4bd3ac7ca06bb5214d89-4132380779ec42709540fffbd2eae9c5"
+                                          }));
 
             if (c == null)
             {
@@ -56,7 +57,7 @@ public abstract class CheckOmniumHealth
         }
     }
 
-    public class Query : IRequest<string>
+    public record Query : IRequest<string>
     {
     }
 }
