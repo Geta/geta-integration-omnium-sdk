@@ -1,20 +1,6 @@
 namespace Geta.Integration.Omnium.Sdk;
 
-public interface IAuthService
-{
-    /// <summary>
-    ///     Sends a request to /api/Token with ClientId and Secret
-    ///     to get the Baerer token string
-    /// </summary>
-    /// <returns>Token string used for authentication</returns>
-    Task<string> GetTokenAsync(string clientId, string clientSecret);
-}
-
-/// <summary>
-/// Service handling access tokens (but this guy does not do refresh, it's delegating handler responsibility)
-/// </summary>
-public class AuthService
-    : IAuthService
+public class ScopedAuthService : IAuthService
 {
     private readonly HttpClient _loginClient;
 
@@ -22,7 +8,11 @@ public class AuthService
     ///     HttpClient for getting Bearer token
     /// </summary>
     /// <param name="clientFactory">Injected IHttpClientFactory</param>
-    public AuthService(IHttpClientFactory clientFactory) { _loginClient = clientFactory.CreateClient("Omnium_LoginClient"); }
+    public ScopedAuthService(IHttpClientFactory clientFactory, TenantContext context)
+    {
+        _loginClient = clientFactory.CreateClient("ScopedOmnium_LoginClient");
+        _loginClient.BaseAddress = new Uri(context.TenantConfiguration!.Value.BaseAddress);
+    }
 
     /// <summary>
     ///     Sends a request to /api/Token with ClientId and Secret

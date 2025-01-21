@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geta.Integration.Omnium.Sdk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geta.Integration.Omnium.Sdk.SampleClient", "tests\Geta.Integration.Omnium.Sdk.SampleClient\Geta.Integration.Omnium.Sdk.SampleClient.csproj", "{985B6986-5FBF-43CD-8DC5-694232ADD936}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geta.Integration.Omnium.Sdk.ScopedSampleClient", "tests\Geta.Integration.Omnium.Sdk.ScopedSampleClient\Geta.Integration.Omnium.Sdk.ScopedSampleClient.csproj", "{50CA0D42-7045-E561-9428-ADBAC8F236C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geta.Integration.Omnium.Sdk.Tests.WebApi", "tests\WebApi\Geta.Integration.Omnium.Sdk.Tests.WebApi.csproj", "{EE3C3518-10D5-4F3C-BFBE-6A8D14908305}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{985B6986-5FBF-43CD-8DC5-694232ADD936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{985B6986-5FBF-43CD-8DC5-694232ADD936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{985B6986-5FBF-43CD-8DC5-694232ADD936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50CA0D42-7045-E561-9428-ADBAC8F236C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50CA0D42-7045-E561-9428-ADBAC8F236C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50CA0D42-7045-E561-9428-ADBAC8F236C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50CA0D42-7045-E561-9428-ADBAC8F236C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3C3518-10D5-4F3C-BFBE-6A8D14908305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3C3518-10D5-4F3C-BFBE-6A8D14908305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3C3518-10D5-4F3C-BFBE-6A8D14908305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3C3518-10D5-4F3C-BFBE-6A8D14908305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +54,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8DB59149-4CAB-41E2-B268-AE4A498DAACE} = {F490288B-A741-465B-A78B-397F02D0AA35}
 		{985B6986-5FBF-43CD-8DC5-694232ADD936} = {F490288B-A741-465B-A78B-397F02D0AA35}
+		{50CA0D42-7045-E561-9428-ADBAC8F236C0} = {F490288B-A741-465B-A78B-397F02D0AA35}
+		{EE3C3518-10D5-4F3C-BFBE-6A8D14908305} = {F490288B-A741-465B-A78B-397F02D0AA35}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA200773-A381-4196-99A5-CD4063422F6A}

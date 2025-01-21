@@ -10,7 +10,7 @@ namespace Geta.Integration.Omnium.Sdk;
 public static class IServiceCollectionExtensions
 {
     /// <summary>
-    /// Configures Omnium Integration required services
+    /// Configures Omnium Integration required services.
     /// </summary>
     /// <param name="services">Service collection</param>
     /// <param name="configureHttpMessageHandler">Callback if you need to configure HttpClient (like specifying proxy settings etc.)</param>
@@ -21,7 +21,7 @@ public static class IServiceCollectionExtensions
     {
         services.AddMemoryCache();
 
-        services.AddScoped<AuthService>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddTransient<TokenHandler>();
 
         services.TryAddEnumerable(ServiceDescriptor.Singleton<IConfigureOptions<OmniumConfiguration>, OmniumConfigurationConfigurer>());
@@ -48,6 +48,33 @@ public static class IServiceCollectionExtensions
         {
             httpBuilder.ConfigurePrimaryHttpMessageHandler(configureHttpMessageHandler);
         }
+
+        return services;
+    }
+
+    /// <summary>
+    /// Configures Omnium Integration client factory. This usually is used in multi-tenancy scenarios.
+    /// </summary>
+    /// <param name="services">Service collection</param>
+    /// <returns>Service collection for chaining</returns>
+    public static IServiceCollection AddOmniumClientFactory(this IServiceCollection services)
+    {
+        services.AddMemoryCache();
+
+        services.AddScoped<IAuthService, ScopedAuthService>();
+        services.AddScoped<ScopedTokenHandler>();
+
+        services
+            .AddHttpClient("ScopedOmnium_LoginClient");
+
+        services
+            .AddHttpClient(OmniumClientFactory.ScopedHttpClientName)
+            .AddPolicyHandler(ExceptionPolicies.GetRetryOnTooManyRequestsPolicy())
+            .AddHttpMessageHandler<ScopedTokenHandler>();
+
+        services.AddSingleton<TenantContext>();
+        services.AddScoped<IOmniumClientFactory, OmniumClientFactory>();
+        services.AddScoped(provider => provider);
 
         return services;
     }
