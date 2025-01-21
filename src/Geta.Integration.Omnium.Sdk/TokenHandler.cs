@@ -7,7 +7,7 @@ namespace Geta.Integration.Omnium.Sdk;
 public class TokenHandler : BaseTokenHandler
 {
     /// <inheritdoc />
-    public TokenHandler(AuthService authService, IOptions<OmniumConfiguration> configuration, IMemoryCache cache) : base(authService, cache)
+    public TokenHandler(IAuthService authService, IOptions<OmniumConfiguration> configuration, IMemoryCache cache) : base(authService, cache)
     {
         ClientId = configuration.Value.ClientId;
         ClientSecret = configuration.Value.ClientSecret;
