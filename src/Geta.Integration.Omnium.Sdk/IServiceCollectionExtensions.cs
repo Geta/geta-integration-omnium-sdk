@@ -44,6 +44,14 @@ public static class IServiceCollectionExtensions
             .AddPolicyHandler(ExceptionPolicies.GetRetryOnTooManyRequestsPolicy())
             .AddHttpMessageHandler<TokenHandler>();
 
+        services.ConfigureHttpClientDefaults(builder =>
+        {
+            builder.ConfigureSanitizedLogging(c =>
+            {
+                c.RequestUriReplacements.Add("(?i)(apikey|clientId|clientSecret|secret|secretKey)=[^&]*", "$1=*****");
+            });
+        });
+
         if (configureHttpMessageHandler != null)
         {
             httpBuilder.ConfigurePrimaryHttpMessageHandler(configureHttpMessageHandler);
@@ -75,6 +83,14 @@ public static class IServiceCollectionExtensions
         services.AddSingleton<TenantContext>();
         services.AddScoped<IOmniumClientFactory, OmniumClientFactory>();
         services.AddScoped(provider => provider);
+
+        services.ConfigureHttpClientDefaults(builder =>
+        {
+            builder.ConfigureSanitizedLogging(c =>
+            {
+                c.RequestUriReplacements.Add("(?i)(apikey|clientId|clientSecret|secret|secretKey)=[^&]*", "$1=*****");
+            });
+        });
 
         return services;
     }
