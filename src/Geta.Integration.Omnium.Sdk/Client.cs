@@ -1,6 +1,6 @@
 namespace Geta.Integration.Omnium.Sdk;
 
-internal class Client : OmniumClientBase, IClient
+public class Client : OmniumClientBase, IClient
 {
     public Client(HttpClient httpClient) : base(httpClient)
     {
