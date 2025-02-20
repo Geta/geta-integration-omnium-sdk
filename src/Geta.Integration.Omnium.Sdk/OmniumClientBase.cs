@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Geta.Integration.Omnium.Sdk;
 
-internal partial class OmniumClientBase
+public partial class OmniumClientBase
 {
     private static JsonSerializerSettings ConfigureJsonSerializerSettings(JsonSerializerSettings settings)
     {

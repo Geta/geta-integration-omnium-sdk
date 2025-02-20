@@ -29,7 +29,7 @@
       "generateSyncMethods": false,
       "generatePrepareRequestAndProcessResponseAsAsyncMethods": false,
       "exposeJsonSerializerSettings": false,
-      "clientClassAccessModifier": "internal",
+      "clientClassAccessModifier": "public",
       "typeAccessModifier": "public",
       "generateContractsOutput": false,
       "contractsNamespace": "Geta.Integration.Omnium.Sdk",
