@@ -5,7 +5,11 @@ using Microsoft.Extensions.Hosting;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.json");
+builder.Configuration
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.Development.json", true)
+    .AddEnvironmentVariables();
+
 builder.Services.AddOmniumIntegration();
 
 // NOTE: if you need to run through proxy
