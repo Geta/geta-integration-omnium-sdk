@@ -1129,7 +1129,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1141,7 +1141,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update quantity on cart order line by skuId / code
@@ -1292,8 +1292,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
-        /// <param name="customerSpecificPrices">If true, customer specific prices ustomer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
+        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="customerSpecificPrices">If true, customer specific prices customer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -1306,8 +1306,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
-        /// <param name="customerSpecificPrices">If true, customer specific prices ustomer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
+        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="customerSpecificPrices">If true, customer specific prices customer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -1354,6 +1354,25 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddPaymentToCartAsync(string? cartId, bool? overwriteExisting, System.Collections.Generic.IEnumerable<OmniumPayment>? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Remove payments from existing cart
+        /// </summary>
+        /// <param name="cartId">ID of existing cart. (Required)</param>
+        /// <returns>Payments are added, and updated cart is returned</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemovePaymentsFromCartAsync(string? cartId, OmniumPaymentFilters? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Remove payments from existing cart
+        /// </summary>
+        /// <param name="cartId">ID of existing cart. (Required)</param>
+        /// <returns>Payments are added, and updated cart is returned</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemovePaymentsFromCartAsync(string? cartId, OmniumPaymentFilters? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Add shipments to existing cart
@@ -2517,10 +2536,13 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <param name="existingDeliveryId">If set, the purchase order lines will be added to the existing delivery</param>
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
+        /// <param name="barcode">Use this to add barcode to the shipment. Used for goodsreception</param>
+        /// <param name="newDeliveryId">You can pick the Id of the new delivery. Do this at your own responsibility.</param>
+        /// <param name="preventDuplicateLineItems">If true, the request will fail with BadRequest if duplicate line item IDs are found</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, string? newDeliveryId, bool? preventDuplicateLineItems, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2531,10 +2553,13 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <param name="existingDeliveryId">If set, the purchase order lines will be added to the existing delivery</param>
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
+        /// <param name="barcode">Use this to add barcode to the shipment. Used for goodsreception</param>
+        /// <param name="newDeliveryId">You can pick the Id of the new delivery. Do this at your own responsibility.</param>
+        /// <param name="preventDuplicateLineItems">If true, the request will fail with BadRequest if duplicate line item IDs are found</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, string? newDeliveryId, bool? preventDuplicateLineItems, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Update delivery
@@ -2755,6 +2780,77 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse<string>?> FilesDownloadAsync(string serviceType, OmniumFileDownloadRequest body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Search gift cards
+        /// </summary>
+        /// <param name="body">Search request</param>
+        /// <returns>Returns list of gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardSearchAsync(OmniumGiftCardSearchRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Search gift cards
+        /// </summary>
+        /// <param name="body">Search request</param>
+        /// <returns>Returns list of gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardSearchAsync(OmniumGiftCardSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Scroll gift cards by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardScrollSearchAsync(OmniumGiftCardSearchRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll gift cards by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardScrollSearchAsync(OmniumGiftCardSearchRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Scroll gift card is used to get a large number of gift cards.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumResult>?> GiftCardScrollAsync(string? id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll gift card is used to get a large number of gift cards.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumResult>?> GiftCardScrollAsync(string? id, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get gift card by gift card code
@@ -6938,10 +7034,11 @@ namespace Geta.Integration.Omnium.Sdk
         System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategoryTreeViewModel>>?> ProductCategoriesGetCategoryTreeBySearchAsync(string? rootCategoryId, OmniumProductSearchRequest? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
-        /// Get product category sub items by parent Id
+        /// Retrieves all immediate subcategories for a given parent category from the category index.
         /// </summary>
-        /// <param name="parentId">Product ID or SKU ID</param>
-        /// <param name="language">Language code, e.g. NO, EN</param>
+        /// <param name="parentId">The ID of the parent category. For example, use the root category ID to fetch top-level categories.
+        /// <br/>If the root category is not defined, you can pass "rootCategoryId" to retrieve the top-level categories.</param>
+        /// <param name="language">Language code, e.g. no, en</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -6949,10 +7046,11 @@ namespace Geta.Integration.Omnium.Sdk
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Get product category sub items by parent Id
+        /// Retrieves all immediate subcategories for a given parent category from the category index.
         /// </summary>
-        /// <param name="parentId">Product ID or SKU ID</param>
-        /// <param name="language">Language code, e.g. NO, EN</param>
+        /// <param name="parentId">The ID of the parent category. For example, use the root category ID to fetch top-level categories.
+        /// <br/>If the root category is not defined, you can pass "rootCategoryId" to retrieve the top-level categories.</param>
+        /// <param name="language">Language code, e.g. no, en</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -9726,32 +9824,32 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <remarks>
         /// Sample request for getting promotions that are valid during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activatedBeforeDate": "2024-10-01T00:00:00",
-        /// <br/>           "endedAfterDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page":1,
-        /// <br/>           "take":10
-        /// <br/>         }
-        /// <br/>     }
-        /// <br/> 
-        /// <br/>  
-        /// <br/>
-        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activeFrom": "2024-10-01T00:00:00",
-        /// <br/>           "activatedBeforeDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page": 1,
-        /// <br/>           "take": 10
-        /// <br/>         }
-        /// <br/>     }
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "activatedBeforeDate": "2024-10-01T00:00:00",
+        /// <br/>          "endedAfterDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page":1,
+        /// <br/>          "take":10
+        /// <br/>        }
+        /// <br/>    }
+        /// <br/>            
+        /// <br/>            
+        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07, for shipping and order amount promotion types
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "promotionTypes": ["ShippingPromotion", "OrderAmountPromotion"],
+        /// <br/>          "activeFrom": "2024-10-01T00:00:00",
+        /// <br/>          "activatedBeforeDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page": 1,
+        /// <br/>          "take": 10
+        /// <br/>        }
+        /// <br/>    }
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
@@ -9764,32 +9862,32 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <remarks>
         /// Sample request for getting promotions that are valid during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activatedBeforeDate": "2024-10-01T00:00:00",
-        /// <br/>           "endedAfterDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page":1,
-        /// <br/>           "take":10
-        /// <br/>         }
-        /// <br/>     }
-        /// <br/> 
-        /// <br/>  
-        /// <br/>
-        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activeFrom": "2024-10-01T00:00:00",
-        /// <br/>           "activatedBeforeDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page": 1,
-        /// <br/>           "take": 10
-        /// <br/>         }
-        /// <br/>     }
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "activatedBeforeDate": "2024-10-01T00:00:00",
+        /// <br/>          "endedAfterDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page":1,
+        /// <br/>          "take":10
+        /// <br/>        }
+        /// <br/>    }
+        /// <br/>            
+        /// <br/>            
+        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07, for shipping and order amount promotion types
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "promotionTypes": ["ShippingPromotion", "OrderAmountPromotion"],
+        /// <br/>          "activeFrom": "2024-10-01T00:00:00",
+        /// <br/>          "activatedBeforeDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page": 1,
+        /// <br/>          "take": 10
+        /// <br/>        }
+        /// <br/>    }
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
@@ -10254,6 +10352,27 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrderExtendedModel>?> PurchaseOrdersGetExtendedPurchaseOrderAsync(string? purchaseOrderId, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Split one or more purchase order lines
+        /// </summary>
+        /// <param name="purchaseOrderId">Purchase order ID (Required)</param>
+        /// <param name="body">List of split requests specifying quantities and allocations for each line to split</param>
+        /// <returns>Purchase order lines split successfully</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersSplitOrderLinesAsync(string? purchaseOrderId, System.Collections.Generic.IEnumerable<OmniumSplitPurchaseOrderLine>? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Split one or more purchase order lines
+        /// </summary>
+        /// <param name="purchaseOrderId">Purchase order ID (Required)</param>
+        /// <param name="body">List of split requests specifying quantities and allocations for each line to split</param>
+        /// <returns>Purchase order lines split successfully</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersSplitOrderLinesAsync(string? purchaseOrderId, System.Collections.Generic.IEnumerable<OmniumSplitPurchaseOrderLine>? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Cancel purchase order line
@@ -10949,6 +11068,322 @@ namespace Geta.Integration.Omnium.Sdk
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
         System.Threading.Tasks.Task<SwaggerResponse<OmniumRole>?> RoleUpdateAsync(OmniumRole? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get a group by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsGetGroupAsync(string? id, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get a group by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsGetGroupAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Update a group (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a group with the provided resource (full update including non-member attributes)
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsUpdateGroupAsync(string? id, string tenantId, string provider, ScimGroup? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a group (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a group with the provided resource (full update including non-member attributes)
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsUpdateGroupAsync(string? id, string tenantId, string provider, ScimGroup? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Patch a group (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a group using SCIM PATCH operations. Supports adding members, removing members, and updating non-member attributes
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsPatchGroupAsync(string? id, string tenantId, string provider, ScimPatchRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Patch a group (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a group using SCIM PATCH operations. Supports adding members, removing members, and updating non-member attributes
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsPatchGroupAsync(string? id, string tenantId, string provider, ScimPatchRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Delete a group
+        /// </summary>
+        /// <remarks>
+        /// Delete a group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ScimGroupsDeleteGroupAsync(string? id, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a group
+        /// </summary>
+        /// <remarks>
+        /// Delete a group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ScimGroupsDeleteGroupAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get groups with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve groups with optional filtering by displayName and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., displayName eq "Administrators")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroupScimListResponse>?> ScimGroupsGetGroupsAsync(string? filter, int? startIndex, int? count, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get groups with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve groups with optional filtering by displayName and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., displayName eq "Administrators")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroupScimListResponse>?> ScimGroupsGetGroupsAsync(string? filter, int? startIndex, int? count, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Create a new group
+        /// </summary>
+        /// <remarks>
+        /// Create a new group
+        /// </remarks>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsCreateGroupAsync(string tenantId, string provider, ScimGroup? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new group
+        /// </summary>
+        /// <remarks>
+        /// Create a new group
+        /// </remarks>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsCreateGroupAsync(string tenantId, string provider, ScimGroup? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get a user by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersGetUserAsync(string? id, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get a user by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersGetUserAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Update a user (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a user with the provided resource (full update)
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersUpdateUserAsync(string? id, string tenantId, string provider, ScimUser? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a user (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a user with the provided resource (full update)
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersUpdateUserAsync(string? id, string tenantId, string provider, ScimUser? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Patch a user (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a user using SCIM PATCH operations. Supports single-valued and multi-valued properties
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersPatchUserAsync(string? id, string tenantId, string provider, ScimPatchRequest? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Patch a user (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a user using SCIM PATCH operations. Supports single-valued and multi-valued properties
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersPatchUserAsync(string? id, string tenantId, string provider, ScimPatchRequest? body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <remarks>
+        /// Delete a user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ScimUsersDeleteUserAsync(string? id, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <remarks>
+        /// Delete a user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse?> ScimUsersDeleteUserAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get users with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve users with optional filtering and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., userName eq "user@example.com")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUserScimListResponse>?> ScimUsersGetUsersAsync(string? filter, int? startIndex, int? count, string tenantId, string provider);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get users with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve users with optional filtering and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., userName eq "user@example.com")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUserScimListResponse>?> ScimUsersGetUsersAsync(string? filter, int? startIndex, int? count, string tenantId, string provider, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <remarks>
+        /// Create a new user
+        /// </remarks>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersCreateUserAsync(string tenantId, string provider, ScimUser? body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <remarks>
+        /// Create a new user
+        /// </remarks>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersCreateUserAsync(string tenantId, string provider, ScimUser? body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns order settings
@@ -18162,7 +18597,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="quantity">Quantity to add. Defaults to 1 if not provided.</param>
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity)
         {
             return CartAddItemToExistingCartAsync(cartId, skuId, quantity, System.Threading.CancellationToken.None);
         }
@@ -18177,7 +18612,7 @@ namespace Geta.Integration.Omnium.Sdk
         /// <returns>Item is added and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCartOmniumValidationResult>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartAddItemToExistingCartAsync(string? cartId, string skuId, decimal? quantity, System.Threading.CancellationToken cancellationToken)
         {
             if (skuId == null)
                 throw new System.ArgumentNullException("skuId");
@@ -18241,12 +18676,12 @@ namespace Geta.Integration.Omnium.Sdk
                         else
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCartOmniumValidationResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCart>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<OmniumCartOmniumValidationResult>(status_, headers_, objectResponse_.Object);
+                            return new SwaggerResponse<OmniumCart>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 422)
@@ -19028,8 +19463,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
-        /// <param name="customerSpecificPrices">If true, customer specific prices ustomer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
+        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="customerSpecificPrices">If true, customer specific prices customer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartAddCustomerIdToCartAsync(string? cartId, string? customerId, bool? enrichCart, bool? isPriceRecalculated, bool? customerSpecificPrices)
@@ -19044,8 +19479,8 @@ namespace Geta.Integration.Omnium.Sdk
         /// <param name="cartId">ID of existing cart. (Required)</param>
         /// <param name="customerId">Customer ID to add to cart. (Required)</param>
         /// <param name="enrichCart">If true, the customer name and contact info is added to cart</param>
-        /// <param name="isPriceRecalculated">OBSOLETE: Prices are always updated.</param>
-        /// <param name="customerSpecificPrices">If true, customer specific prices ustomer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
+        /// <param name="isPriceRecalculated">If true, prices will be recalculated based on customer ID. If false, prices will remain the same.</param>
+        /// <param name="customerSpecificPrices">If true, customer specific prices customer specific prices will replaces the current prices. If there is no customer specific prices, the default price will be used instead.</param>
         /// <returns>Customer is added to cart, and updated cart is returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -19325,6 +19760,139 @@ namespace Geta.Integration.Omnium.Sdk
                         urlBuilder_.Append(System.Uri.EscapeDataString("overwriteExisting")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(overwriteExisting, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumCart>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumCart>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Cart ID or payments are invalid", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Remove payments from existing cart
+        /// </summary>
+        /// <param name="cartId">ID of existing cart. (Required)</param>
+        /// <returns>Payments are added, and updated cart is returned</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>> CartRemovePaymentsFromCartAsync(string? cartId, OmniumPaymentFilters? body)
+        {
+            return CartRemovePaymentsFromCartAsync(cartId, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Remove payments from existing cart
+        /// </summary>
+        /// <param name="cartId">ID of existing cart. (Required)</param>
+        /// <returns>Payments are added, and updated cart is returned</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumCart>?> CartRemovePaymentsFromCartAsync(string? cartId, OmniumPaymentFilters? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/Cart/{cartId}/RemovePayments"
+                    urlBuilder_.Append("api/Cart/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(cartId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/RemovePayments");
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -25857,11 +26425,14 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <param name="existingDeliveryId">If set, the purchase order lines will be added to the existing delivery</param>
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
+        /// <param name="barcode">Use this to add barcode to the shipment. Used for goodsreception</param>
+        /// <param name="newDeliveryId">You can pick the Id of the new delivery. Do this at your own responsibility.</param>
+        /// <param name="preventDuplicateLineItems">If true, the request will fail with BadRequest if duplicate line item IDs are found</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, string? newDeliveryId, bool? preventDuplicateLineItems, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body)
         {
-            return DeliveriesCreateDeliveryAsync(purchaseOrderId, existingDeliveryId, cancelRemainingLineItems, expectedDeliveryDate, barcode, body, System.Threading.CancellationToken.None);
+            return DeliveriesCreateDeliveryAsync(purchaseOrderId, existingDeliveryId, cancelRemainingLineItems, expectedDeliveryDate, barcode, newDeliveryId, preventDuplicateLineItems, body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -25873,10 +26444,13 @@ namespace Geta.Integration.Omnium.Sdk
         /// </remarks>
         /// <param name="existingDeliveryId">If set, the purchase order lines will be added to the existing delivery</param>
         /// <param name="cancelRemainingLineItems">If true, remaining line items on purchase order will be cancelled</param>
+        /// <param name="barcode">Use this to add barcode to the shipment. Used for goodsreception</param>
+        /// <param name="newDeliveryId">You can pick the Id of the new delivery. Do this at your own responsibility.</param>
+        /// <param name="preventDuplicateLineItems">If true, the request will fail with BadRequest if duplicate line item IDs are found</param>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumDelivery>?> DeliveriesCreateDeliveryAsync(string? purchaseOrderId, string? existingDeliveryId, bool? cancelRemainingLineItems, System.DateTime? expectedDeliveryDate, string? barcode, string? newDeliveryId, bool? preventDuplicateLineItems, System.Collections.Generic.IEnumerable<OmniumPurchaseOrderLineReference>? body, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -25912,6 +26486,14 @@ namespace Geta.Integration.Omnium.Sdk
                     if (barcode != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("barcode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(barcode, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (newDeliveryId != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("newDeliveryId")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(newDeliveryId, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (preventDuplicateLineItems != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("preventDuplicateLineItems")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(preventDuplicateLineItems, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     urlBuilder_.Length--;
 
@@ -27105,6 +27687,326 @@ namespace Geta.Integration.Omnium.Sdk
                         {
                             string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new OmniumApiException("Asset was not found with the selected service type", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Search gift cards
+        /// </summary>
+        /// <param name="body">Search request</param>
+        /// <returns>Returns list of gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>> GiftCardSearchAsync(OmniumGiftCardSearchRequest? body)
+        {
+            return GiftCardSearchAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Search gift cards
+        /// </summary>
+        /// <param name="body">Search request</param>
+        /// <returns>Returns list of gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardSearchAsync(OmniumGiftCardSearchRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/GiftCard/Search"
+                    urlBuilder_.Append("api/GiftCard/Search");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumGiftCardOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumGiftCardOmniumSearchResult>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Scroll gift cards by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>> GiftCardScrollSearchAsync(OmniumGiftCardSearchRequest? body)
+        {
+            return GiftCardScrollSearchAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll gift cards by search
+        /// </summary>
+        /// <remarks>
+        /// Scrolling is not intended for real time user requests, but rather for processing large amounts of data. Only use scroll endpoints if you intend to fetch all items returned by the search request. 
+        /// <br/>           Paging (take, page) is disabled for scroll searches.
+        /// </remarks>
+        /// <returns>Search successful, returning gift cards</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumSearchResult>?> GiftCardScrollSearchAsync(OmniumGiftCardSearchRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/GiftCard/Scroll"
+                    urlBuilder_.Append("api/GiftCard/Scroll");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumGiftCardOmniumSearchResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumGiftCardOmniumSearchResult>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Search request invalid", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Scroll gift card is used to get a large number of gift cards.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumResult>> GiftCardScrollAsync(string? id)
+        {
+            return GiftCardScrollAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Scroll gift card is used to get a large number of gift cards.
+        /// </summary>
+        /// <remarks>
+        /// The scroll Id can be obtained from a standard search request that supports scrolling.
+        /// <br/>           Scrolling is not intended for real time user requests, but rather for processing large amounts of data.
+        /// </remarks>
+        /// <param name="id">The scroll id is passed on the request the next batch of data from the original request.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumGiftCardOmniumResult>?> GiftCardScrollAsync(string? id, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/GiftCard/Scroll/{id}"
+                    urlBuilder_.Append("api/GiftCard/Scroll/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumGiftCardOmniumResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumGiftCardOmniumResult>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -32051,6 +32953,16 @@ namespace Geta.Integration.Omnium.Sdk
                             throw new OmniumApiException<string>("An error occurred while updating the order.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -32330,6 +33242,16 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("An error occurred while updating the order.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == 404)
@@ -32901,6 +33823,16 @@ namespace Geta.Integration.Omnium.Sdk
                             throw new OmniumApiException<string>("An error occurred while adding payments to the order.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -33149,6 +34081,16 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         {
@@ -44539,10 +45481,11 @@ namespace Geta.Integration.Omnium.Sdk
         }
 
         /// <summary>
-        /// Get product category sub items by parent Id
+        /// Retrieves all immediate subcategories for a given parent category from the category index.
         /// </summary>
-        /// <param name="parentId">Product ID or SKU ID</param>
-        /// <param name="language">Language code, e.g. NO, EN</param>
+        /// <param name="parentId">The ID of the parent category. For example, use the root category ID to fetch top-level categories.
+        /// <br/>If the root category is not defined, you can pass "rootCategoryId" to retrieve the top-level categories.</param>
+        /// <param name="language">Language code, e.g. no, en</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<OmniumProductCategory>>> ProductCategoriesGetSubCategoriesAsync(string? parentId, string? language)
@@ -44552,10 +45495,11 @@ namespace Geta.Integration.Omnium.Sdk
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Get product category sub items by parent Id
+        /// Retrieves all immediate subcategories for a given parent category from the category index.
         /// </summary>
-        /// <param name="parentId">Product ID or SKU ID</param>
-        /// <param name="language">Language code, e.g. NO, EN</param>
+        /// <param name="parentId">The ID of the parent category. For example, use the root category ID to fetch top-level categories.
+        /// <br/>If the root category is not defined, you can pass "rootCategoryId" to retrieve the top-level categories.</param>
+        /// <param name="language">Language code, e.g. no, en</param>
         /// <returns>Sub categories found and returned</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
     
@@ -59710,32 +60654,32 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <remarks>
         /// Sample request for getting promotions that are valid during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activatedBeforeDate": "2024-10-01T00:00:00",
-        /// <br/>           "endedAfterDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page":1,
-        /// <br/>           "take":10
-        /// <br/>         }
-        /// <br/>     }
-        /// <br/> 
-        /// <br/>  
-        /// <br/>
-        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activeFrom": "2024-10-01T00:00:00",
-        /// <br/>           "activatedBeforeDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page": 1,
-        /// <br/>           "take": 10
-        /// <br/>         }
-        /// <br/>     }
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "activatedBeforeDate": "2024-10-01T00:00:00",
+        /// <br/>          "endedAfterDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page":1,
+        /// <br/>          "take":10
+        /// <br/>        }
+        /// <br/>    }
+        /// <br/>            
+        /// <br/>            
+        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07, for shipping and order amount promotion types
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "promotionTypes": ["ShippingPromotion", "OrderAmountPromotion"],
+        /// <br/>          "activeFrom": "2024-10-01T00:00:00",
+        /// <br/>          "activatedBeforeDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page": 1,
+        /// <br/>          "take": 10
+        /// <br/>        }
+        /// <br/>    }
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
@@ -59750,32 +60694,32 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         /// <remarks>
         /// Sample request for getting promotions that are valid during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activatedBeforeDate": "2024-10-01T00:00:00",
-        /// <br/>           "endedAfterDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page":1,
-        /// <br/>           "take":10
-        /// <br/>         }
-        /// <br/>     }
-        /// <br/> 
-        /// <br/>  
-        /// <br/>
-        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07
-        /// <br/>
-        /// <br/>     POST /api/Promotions/Search
-        /// <br/>     {
-        /// <br/>         {
-        /// <br/>           "activeFrom": "2024-10-01T00:00:00",
-        /// <br/>           "activatedBeforeDate": "2024-10-07T00:00:00",
-        /// <br/>           "marketIds": ["NOR"],
-        /// <br/>           "page": 1,
-        /// <br/>           "take": 10
-        /// <br/>         }
-        /// <br/>     }
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "activatedBeforeDate": "2024-10-01T00:00:00",
+        /// <br/>          "endedAfterDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page":1,
+        /// <br/>          "take":10
+        /// <br/>        }
+        /// <br/>    }
+        /// <br/>            
+        /// <br/>            
+        /// <br/>Sample request for getting promotions that will become active during the time interval 2024-10-01 - 2024-10-07, for shipping and order amount promotion types
+        /// <br/>            
+        /// <br/>    POST /api/Promotions/Search
+        /// <br/>    {
+        /// <br/>        {
+        /// <br/>          "promotionTypes": ["ShippingPromotion", "OrderAmountPromotion"],
+        /// <br/>          "activeFrom": "2024-10-01T00:00:00",
+        /// <br/>          "activatedBeforeDate": "2024-10-07T00:00:00",
+        /// <br/>          "marketIds": ["NOR"],
+        /// <br/>          "page": 1,
+        /// <br/>          "take": 10
+        /// <br/>        }
+        /// <br/>    }
         /// </remarks>
         /// <returns>Success</returns>
         /// <exception cref="OmniumApiException">A server side error occurred.</exception>
@@ -59851,12 +60795,6 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 409)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new OmniumApiException("Could not add order. Order with the same order ID has already been added.", status_, responseText_, headers_, null);
                         }
                         else
                         {
@@ -61193,6 +62131,12 @@ namespace Geta.Integration.Omnium.Sdk
                             throw new OmniumApiException<string>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
+                        if (status_ == 409)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Conflict", status_, responseText_, headers_, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -61467,6 +62411,12 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return null;
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Conflict", status_, responseText_, headers_, null);
                         }
                         else
                         {
@@ -62127,6 +63077,147 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return null;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Split one or more purchase order lines
+        /// </summary>
+        /// <param name="purchaseOrderId">Purchase order ID (Required)</param>
+        /// <param name="body">List of split requests specifying quantities and allocations for each line to split</param>
+        /// <returns>Purchase order lines split successfully</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>> PurchaseOrdersSplitOrderLinesAsync(string? purchaseOrderId, System.Collections.Generic.IEnumerable<OmniumSplitPurchaseOrderLine>? body)
+        {
+            return PurchaseOrdersSplitOrderLinesAsync(purchaseOrderId, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Split one or more purchase order lines
+        /// </summary>
+        /// <param name="purchaseOrderId">Purchase order ID (Required)</param>
+        /// <param name="body">List of split requests specifying quantities and allocations for each line to split</param>
+        /// <returns>Purchase order lines split successfully</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OmniumPurchaseOrder>?> PurchaseOrdersSplitOrderLinesAsync(string? purchaseOrderId, System.Collections.Generic.IEnumerable<OmniumSplitPurchaseOrderLine>? body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/PurchaseOrders/{purchaseOrderId}/OrderLines/Split"
+                    urlBuilder_.Append("api/PurchaseOrders/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(purchaseOrderId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/OrderLines/Split");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<OmniumPurchaseOrder>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<OmniumPurchaseOrder>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Invalid split request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("Conflict", status_, responseText_, headers_, null);
                         }
                         else
                         {
@@ -64307,6 +65398,16 @@ namespace Geta.Integration.Omnium.Sdk
                             return new SwaggerResponse<OmniumOrderPatchUpdateResult>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
                         if (status_ == 400)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -64914,6 +66015,1726 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Get a group by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>> ScimGroupsGetGroupAsync(string? id, string tenantId, string provider)
+        {
+            return ScimGroupsGetGroupAsync(id, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get a group by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsGetGroupAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimGroup>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimGroup>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Update a group (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a group with the provided resource (full update including non-member attributes)
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>> ScimGroupsUpdateGroupAsync(string? id, string tenantId, string provider, ScimGroup? body)
+        {
+            return ScimGroupsUpdateGroupAsync(id, tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a group (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a group with the provided resource (full update including non-member attributes)
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsUpdateGroupAsync(string? id, string tenantId, string provider, ScimGroup? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimGroup>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimGroup>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Patch a group (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a group using SCIM PATCH operations. Supports adding members, removing members, and updating non-member attributes
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>> ScimGroupsPatchGroupAsync(string? id, string tenantId, string provider, ScimPatchRequest? body)
+        {
+            return ScimGroupsPatchGroupAsync(id, tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Patch a group (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a group using SCIM PATCH operations. Supports adding members, removing members, and updating non-member attributes
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsPatchGroupAsync(string? id, string tenantId, string provider, ScimPatchRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PATCH");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimGroup>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimGroup>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Delete a group
+        /// </summary>
+        /// <remarks>
+        /// Delete a group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse> ScimGroupsDeleteGroupAsync(string? id, string tenantId, string provider)
+        {
+            return ScimGroupsDeleteGroupAsync(id, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a group
+        /// </summary>
+        /// <remarks>
+        /// Delete a group by ID
+        /// </remarks>
+        /// <param name="id">Group ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse?> ScimGroupsDeleteGroupAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 204)
+                        {
+                            return new SwaggerResponse(status_, headers_);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Get groups with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve groups with optional filtering by displayName and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., displayName eq "Administrators")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimGroupScimListResponse>> ScimGroupsGetGroupsAsync(string? filter, int? startIndex, int? count, string tenantId, string provider)
+        {
+            return ScimGroupsGetGroupsAsync(filter, startIndex, count, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get groups with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve groups with optional filtering by displayName and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., displayName eq "Administrators")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimGroupScimListResponse>?> ScimGroupsGetGroupsAsync(string? filter, int? startIndex, int? count, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups");
+                    urlBuilder_.Append('?');
+                    if (filter != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("filter")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(filter, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startIndex != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startIndex")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(startIndex, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (count != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("count")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(count, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimGroupScimListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimGroupScimListResponse>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Create a new group
+        /// </summary>
+        /// <remarks>
+        /// Create a new group
+        /// </remarks>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>> ScimGroupsCreateGroupAsync(string tenantId, string provider, ScimGroup? body)
+        {
+            return ScimGroupsCreateGroupAsync(tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new group
+        /// </summary>
+        /// <remarks>
+        /// Create a new group
+        /// </remarks>
+        /// <param name="body">SCIM Group resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimGroup>?> ScimGroupsCreateGroupAsync(string tenantId, string provider, ScimGroup? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Groups"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Groups");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 201)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimGroup>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimGroup>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Get a user by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimUser>> ScimUsersGetUserAsync(string? id, string tenantId, string provider)
+        {
+            return ScimUsersGetUserAsync(id, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get a user by ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a single user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersGetUserAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimUser>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimUser>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Update a user (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a user with the provided resource (full update)
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimUser>> ScimUsersUpdateUserAsync(string? id, string tenantId, string provider, ScimUser? body)
+        {
+            return ScimUsersUpdateUserAsync(id, tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a user (full replacement)
+        /// </summary>
+        /// <remarks>
+        /// Replace a user with the provided resource (full update)
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersUpdateUserAsync(string? id, string tenantId, string provider, ScimUser? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimUser>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimUser>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Patch a user (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a user using SCIM PATCH operations. Supports single-valued and multi-valued properties
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimUser>> ScimUsersPatchUserAsync(string? id, string tenantId, string provider, ScimPatchRequest? body)
+        {
+            return ScimUsersPatchUserAsync(id, tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Patch a user (partial update)
+        /// </summary>
+        /// <remarks>
+        /// Partially update a user using SCIM PATCH operations. Supports single-valued and multi-valued properties
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <param name="body">SCIM PATCH request with operations</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersPatchUserAsync(string? id, string tenantId, string provider, ScimPatchRequest? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PATCH");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimUser>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimUser>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <remarks>
+        /// Delete a user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse> ScimUsersDeleteUserAsync(string? id, string tenantId, string provider)
+        {
+            return ScimUsersDeleteUserAsync(id, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <remarks>
+        /// Delete a user by ID
+        /// </remarks>
+        /// <param name="id">User ID</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse?> ScimUsersDeleteUserAsync(string? id, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users/{id}"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 204)
+                        {
+                            return new SwaggerResponse(status_, headers_);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return null;
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Get users with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve users with optional filtering and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., userName eq "user@example.com")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimUserScimListResponse>> ScimUsersGetUsersAsync(string? filter, int? startIndex, int? count, string tenantId, string provider)
+        {
+            return ScimUsersGetUsersAsync(filter, startIndex, count, tenantId, provider, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get users with optional filtering and pagination
+        /// </summary>
+        /// <remarks>
+        /// Retrieve users with optional filtering and pagination
+        /// </remarks>
+        /// <param name="filter">SCIM filter expression (e.g., userName eq "user@example.com")</param>
+        /// <param name="startIndex">1-based index of the first result</param>
+        /// <param name="count">Number of resources to return</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimUserScimListResponse>?> ScimUsersGetUsersAsync(string? filter, int? startIndex, int? count, string tenantId, string provider, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users");
+                    urlBuilder_.Append('?');
+                    if (filter != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("filter")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(filter, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (startIndex != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("startIndex")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(startIndex, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (count != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("count")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(count, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimUserScimListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimUserScimListResponse>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <remarks>
+        /// Create a new user
+        /// </remarks>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ScimUser>> ScimUsersCreateUserAsync(string tenantId, string provider, ScimUser? body)
+        {
+            return ScimUsersCreateUserAsync(tenantId, provider, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <remarks>
+        /// Create a new user
+        /// </remarks>
+        /// <param name="body">SCIM User resource</param>
+        /// <returns>Success</returns>
+        /// <exception cref="OmniumApiException">A server side error occurred.</exception>
+    
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ScimUser>?> ScimUsersCreateUserAsync(string tenantId, string provider, ScimUser? body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (tenantId == null)
+                throw new System.ArgumentNullException("tenantId");
+
+            if (provider == null)
+                throw new System.ArgumentNullException("provider");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "scim/v2/{tenantId}/{provider}/Users"
+                    urlBuilder_.Append("scim/v2/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(tenantId, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append('/');
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append("/Users");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 429)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<string>("Client Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 201)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimUser>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ScimUser>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Bad Request", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 500)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ScimError>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<ScimError>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         {
@@ -71397,6 +74218,16 @@ namespace Geta.Integration.Omnium.Sdk
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new OmniumApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -71716,6 +74547,16 @@ namespace Geta.Integration.Omnium.Sdk
                                 throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new OmniumApiException<string>("Server Error", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IDictionary<string, object>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new OmniumApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new OmniumApiException<System.Collections.Generic.IDictionary<string, object>>("Conflict", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         {
@@ -72357,9 +75198,16 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Email { get; set; } = default!;
 
         /// <summary>
-        /// Role
+        /// Roles in company
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("roles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Roles { get; set; } = default!;
+
+        /// <summary>
+        /// Role in company (deprecated - use Roles instead for multiple roles support)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("role", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Obsolete]
         public string? Role { get; set; } = default!;
 
         /// <summary>
@@ -74321,6 +77169,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? UpdateStatusDate { get; set; } = default!;
 
         /// <summary>
+        /// Calculated: When the order was set to ready for pickup. The property can be set by workflow step with name: Set ready for pickup date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("readyForPickup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ReadyForPickup { get; set; } = default!;
+
+        /// <summary>
         /// Status order should be moved to. (Updated by UpdateOrderStatusScheduledTask)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("nextOrderStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -74538,6 +77392,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNewCustomer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsNewCustomer { get; set; } = default!;
+
+        /// <summary>
+        /// Read only: Current version ID
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("versionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? VersionId { get; set; } = default!;
 
     }
 
@@ -74994,6 +77854,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("excludedSeasons", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? ExcludedSeasons { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("excludedProperties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? ExcludedProperties { get; set; } = default!;
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -75354,6 +78220,50 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
+    /// Represents a selectable option for a package component.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumComponentOption
+    {
+        /// <summary>
+        /// The SKU ID of the selectable option.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("skuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SkuId { get; set; } = default!;
+
+        /// <summary>
+        /// The product ID associated with this option. Only required if SkuId is not specified. This allows all variants of a product to be valid options.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("productId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ProductId { get; set; } = default!;
+
+        /// <summary>
+        /// Relevant only for packages (not bundles).
+        /// <br/>Price offsets applied to the package price when this option is selected.  
+        /// <br/>Offsets can be positive or negative, indicating that the price is added to or deducted from the package price.  
+        /// <br/>If no offsets are defined, the option does not affect the package price.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("priceOffsets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPrice>? PriceOffsets { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Defines how multiple promotion conditions are combined
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum OmniumConditionOperator
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"And")]
+        And = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Or")]
+        Or = 1,
+
+    }
+
+    /// <summary>
     /// Used for storing GDPR constens. All customers can have multiple consents of any kind.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -75487,9 +78397,16 @@ namespace Geta.Integration.Omnium.Sdk
         public OmniumAddress Address { get; set; } = default!;
 
         /// <summary>
-        /// Role in company
+        /// Roles in company
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("roles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Roles { get; set; } = default!;
+
+        /// <summary>
+        /// Role in company (deprecated - use Roles instead for multiple roles support)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("role", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Obsolete]
         public string? Role { get; set; } = default!;
 
         /// <summary>
@@ -75768,6 +78685,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("productId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? ProductId { get; set; } = default!;
+
+        /// <summary>
+        /// If true, prices for variant will replace existing prices with other dates. If false, only prices with exact same dates will be overridden.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ignoreDates", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IgnoreDates { get; set; } = default!;
+
+        /// <summary>
+        /// If true, prices for variant will replace existing prices with other dates for the "ValidUntil" property, but will still need an exact match for the "ValidFrom" property. This will only work if "IgnoreDates" is set to "false".
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ignoreValidUntilDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IgnoreValidUntilDate { get; set; } = default!;
 
     }
 
@@ -76531,6 +79460,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? SortOrder { get; set; } = default!;
+
+        /// <summary>
+        /// Customer tags
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
+
+        /// <summary>
+        /// Filter by excluding tags
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("excludedTags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? ExcludedTags { get; set; } = default!;
 
         /// <summary>
         /// Number of items to take
@@ -78175,6 +81116,10 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("balance", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Balance { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OmniumGiftCardType Type { get; set; } = default!;
+
         /// <summary>
         /// Gift card currency
         /// </summary>
@@ -78246,6 +81191,211 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
+
+        /// <summary>
+        /// Transactions, used to show the history of the gift card.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("transactions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumGiftCardTransaction>? Transactions { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Generic query result
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumGiftCardOmniumResult
+    {
+        /// <summary>
+        /// Total number of hits
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalHits", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalHits { get; set; } = default!;
+
+        /// <summary>
+        /// Search results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumGiftCard>? Result { get; set; } = default!;
+
+        /// <summary>
+        /// The Scroll ID is used when fetching large amounts of data.
+        /// <br/>Whenever the search results yields a ContinuationToken, the Scroll endpoints should be used to continue fetching documents
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scrollId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScrollId { get; set; } = default!;
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isValid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsValid { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Generic class for receiving search results with facets
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumGiftCardOmniumSearchResult
+    {
+        /// <summary>
+        /// Search result facets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("facets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumFacetViewModel>? Facets { get; set; } = default!;
+
+        /// <summary>
+        /// Total number of hits
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalHits", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalHits { get; set; } = default!;
+
+        /// <summary>
+        /// Search results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumGiftCard>? Result { get; set; } = default!;
+
+        /// <summary>
+        /// The Scroll ID is used when fetching large amounts of data.
+        /// <br/>Whenever the search results yields a ContinuationToken, the Scroll endpoints should be used to continue fetching documents
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scrollId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScrollId { get; set; } = default!;
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isValid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsValid { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumGiftCardSearchRequest
+    {
+        /// <summary>
+        /// Number of items to take
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("take", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Take { get; set; } = default!;
+
+        /// <summary>
+        /// Page (Fetches from [Page * Take] to [(Page + 1) * Take])
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Page { get; set; } = default!;
+
+        /// <summary>
+        /// GiftCard created from date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("createdFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? CreatedFrom { get; set; } = default!;
+
+        /// <summary>
+        /// GiftCard created before date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("createdTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? CreatedTo { get; set; } = default!;
+
+        /// <summary>
+        /// Search by multiple gift card codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("giftCardCodes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? GiftCardCodes { get; set; } = default!;
+
+        /// <summary>
+        /// Filter by gift card created in specific market.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("marketId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? MarketId { get; set; } = default!;
+
+        /// <summary>
+        /// Filter by gift cards expired or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isExpired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsExpired { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Transactions on gift cards
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumGiftCardTransaction
+    {
+        /// <summary>
+        /// The id of the transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// The time when the transaction was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("date", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime Date { get; set; } = default!;
+
+        /// <summary>
+        /// Amount of the transaction, in the given Currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("amount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Amount { get; set; } = default!;
+
+        /// <summary>
+        /// The currency of the transaction. If null, the currency is the same as for the gift card.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Currency { get; set; } = default!;
+
+        /// <summary>
+        /// Optional explanation of the transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Description { get; set; } = default!;
+
+        /// <summary>
+        /// Reference to where the transaction originated from. E.g. order number og receipt number.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Reference { get; set; } = default!;
+
+        /// <summary>
+        /// In which store this transaction was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("storeId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? StoreId { get; set; } = default!;
+
+        /// <summary>
+        /// The id of the sales person who made the transaction, if originates from pos.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("salesPersonId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SalesPersonId { get; set; } = default!;
+
+        /// <summary>
+        /// The amount given in the gift card currency, in case the transaction was made in a different currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("amountInGiftCardCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? AmountInGiftCardCurrency { get; set; } = default!;
+
+        /// <summary>
+        /// The exchange rate used to convert the amount to the gift card currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("exchangeRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? ExchangeRate { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum OmniumGiftCardType
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"GiftCard")]
+        GiftCard = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"CreditNote")]
+        CreditNote = 1,
 
     }
 
@@ -79912,6 +83062,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? UpdateStatusDate { get; set; } = default!;
 
         /// <summary>
+        /// Calculated: When the order was set to ready for pickup. The property can be set by workflow step with name: Set ready for pickup date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("readyForPickup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ReadyForPickup { get; set; } = default!;
+
+        /// <summary>
         /// Status order should be moved to. (Updated by UpdateOrderStatusScheduledTask)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("nextOrderStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -80135,6 +83291,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNewCustomer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsNewCustomer { get; set; } = default!;
+
+        /// <summary>
+        /// Read only: Current version ID
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("versionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? VersionId { get; set; } = default!;
 
     }
 
@@ -80712,6 +83874,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? LineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// List of external order line IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
 
         /// <summary>
         /// SKU
@@ -81396,6 +84564,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? LineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// List of external order line IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
 
         /// <summary>
         /// Product / SKU number
@@ -82933,6 +86107,34 @@ namespace Geta.Integration.Omnium.Sdk
 
     }
 
+    /// <summary>
+    /// Represents a single step in an order's status timeline, including the timestamp of the status change and the duration since the previous step.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumOrderStatusLogItem
+    {
+        /// <summary>
+        /// The status the order entered at this point in the timeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Status { get; set; } = default!;
+
+        /// <summary>
+        /// The exact time when the order first entered this status.
+        /// <br/>Stored in UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime Timestamp { get; set; } = default!;
+
+        /// <summary>
+        /// The duration in milliseconds since the previous status was recorded.
+        /// <br/>Null for the first status.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("durationSincePreviousMs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? DurationSincePreviousMs { get; set; } = default!;
+
+    }
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumOrderType
     {
@@ -83376,6 +86578,44 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Payment transaction filters - Specified filters for selecting one or more payments
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPaymentFilters
+    {
+        /// <summary>
+        /// Id
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ids", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Ids { get; set; } = default!;
+
+        /// <summary>
+        /// Payment ID from provider
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("transactionIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? TransactionIds { get; set; } = default!;
+
+        /// <summary>
+        /// Transaction type, e.g. "Authorization", "Capture", "Credit", etc...
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("transactionTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? TransactionTypes { get; set; } = default!;
+
+        /// <summary>
+        /// Payment method name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paymentMethodNames", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? PaymentMethodNames { get; set; } = default!;
+
+        /// <summary>
+        /// Payment status, e.g. "Processed", "Failed"
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("statuses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Statuses { get; set; } = default!;
 
     }
 
@@ -85079,6 +88319,9 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("unitPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal UnitPrice { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("isCurrentPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsCurrentPrice { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -85844,7 +89087,7 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Catalog { get; set; } = default!;
 
         /// <summary>
-        /// This is the main category for the product, and should be one of the CategoryIds in Categories. If Catalog is not used, this category's name will be used as grouping in statistics.
+        /// This is the main category for the product, and should be one of the CategoryIds in Categories. If Catalog is not used, this category's name will be used as grouping in statistics. If the main category is missing from the category list, it will automatically be added.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mainCategoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? MainCategoryId { get; set; } = default!;
@@ -86891,6 +90134,24 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Quantity { get; set; } = default!;
 
+        /// <summary>
+        /// This property is for external use only and has no functional effect within Omnium.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isRequired", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsRequired { get; set; } = default!;
+
+        /// <summary>
+        /// A list of selectable options for this component. The SkuId is populated when an option is selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumComponentOption>? Options { get; set; } = default!;
+
+        /// <summary>
+        /// The display name of the component. Primarily relevant when using component options where no default value is selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("componentName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ComponentName { get; set; } = default!;
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -87296,6 +90557,12 @@ namespace Geta.Integration.Omnium.Sdk
         public System.DateTime? Published { get; set; } = default!;
 
         /// <summary>
+        /// Product activation end date. Can be null
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("stopPublished", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? StopPublished { get; set; } = default!;
+
+        /// <summary>
         /// List of properties. Key value pairs with any non strongly typed properties.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -87381,6 +90648,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
+
+        /// <summary>
+        /// Product discontinuation date. If discontinued date has passed, it should not be reordered from supplier
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("discontinued", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? Discontinued { get; set; } = default!;
 
     }
 
@@ -88443,6 +91716,37 @@ namespace Geta.Integration.Omnium.Sdk
         public decimal? PriceTo { get; set; } = default!;
 
         /// <summary>
+        /// Search for products with prices that became valid (activated) on or after this date/time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("priceActivatedFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PriceActivatedFrom { get; set; } = default!;
+
+        /// <summary>
+        /// Search for products with prices that became valid (activated) on or before this date/time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("priceActivatedTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PriceActivatedTo { get; set; } = default!;
+
+        /// <summary>
+        /// Search for products with prices that became invalid (deactivated) on or after this date/time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("priceDeactivatedFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PriceDeactivatedFrom { get; set; } = default!;
+
+        /// <summary>
+        /// Search for products with prices that became invalid (deactivated) on or before this date/time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("priceDeactivatedTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? PriceDeactivatedTo { get; set; } = default!;
+
+        /// <summary>
+        /// When true, uses OR logic: returns products that are either modified since ModifiedFrom OR have prices that became active in PriceActivatedFrom/To range OR have prices that became inactive in PriceDeactivatedFrom/To range.
+        /// <br/>When false (default), uses AND logic (current behavior).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isUnionDeltaQuery", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsUnionDeltaQuery { get; set; } = default!;
+
+        /// <summary>
         /// Search by customer ID. Only prices valid for customer will be returned
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -88548,7 +91852,7 @@ namespace Geta.Integration.Omnium.Sdk
         public int? SortIndexThreshold { get; set; } = default!;
 
         /// <summary>
-        /// True will only return active products. False will only return inactive products.
+        /// True will only return active products. False will return both active and inactive products.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isActive", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsActive { get; set; } = default!;
@@ -88750,6 +92054,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isAssortmentCodesRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsAssortmentCodesRequired { get; set; } = default!;
+
+        /// <summary>
+        /// Search for products by component IDs. Returns all products that contain any of the specified IDs in their component-related properties (e.g., skuId, productId).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("componentIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? ComponentIds { get; set; } = default!;
 
     }
 
@@ -89224,7 +92534,7 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Catalog { get; set; } = default!;
 
         /// <summary>
-        /// This is the main category for the product, and should be one of the CategoryIds in Categories. If Catalog is not used, this category's name will be used as grouping in statistics.
+        /// This is the main category for the product, and should be one of the CategoryIds in Categories. If Catalog is not used, this category's name will be used as grouping in statistics. If the main category is missing from the category list, it will automatically be added.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mainCategoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? MainCategoryId { get; set; } = default!;
@@ -92203,6 +95513,32 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPromotionAdvancedReward
+    {
+        /// <summary>
+        /// Is advanced reward settings enabled
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isAdvancedRewardEnabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsAdvancedRewardEnabled { get; set; } = default!;
+
+        /// <summary>
+        /// Used on Multibuy if the most expensive product should be the one that will be discounted
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isDiscountMostExpensive", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsDiscountMostExpensive { get; set; } = default!;
+
+        /// <summary>
+        /// Number of times this discount can be applied on a cart. 0 is unlimited
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("discountUsageLimit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int DiscountUsageLimit { get; set; } = default!;
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -92312,7 +95648,7 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
-    /// Reward model for multi-buy promotions (i.e., “2 for the price of 1”). Only used if reward type is "MultiBuys".
+    /// Reward model for multi-buy promotions (i.e., "2 for the price of 1"). Only used if reward type is "MultiBuys".
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumPromotionMultiBuyReward
@@ -92330,15 +95666,51 @@ namespace Geta.Integration.Omnium.Sdk
         public int NumberOfDiscountedItems { get; set; } = default!;
 
         /// <summary>
-        /// Percent discount on discounted items
+        /// Percentage discount (0-100) when UsePercentage is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("percentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Percentage { get; set; } = default!;
 
+        /// <summary>
+        /// Amounts for the promotion. Used for giving a fixed amount or fixed price discount.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("promotionAmounts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPromotionAmount>? PromotionAmounts { get; set; } = default!;
+
+        /// <summary>
+        /// Use percentage for the promotion. Set to true if the promotion should give a percentage discount. False if it should give a fixed amount discount.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("usePercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool UsePercentage { get; set; } = default!;
+
+        /// <summary>
+        /// Set to true for fixed price promotions (e.g., "3 for $99"). When true, use PromotionAmounts to specify the fixed price.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isFixedPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsFixedPrice { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("promotionAdvancedReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumPromotionAdvancedReward PromotionAdvancedReward { get; set; } = default!;
+
+        /// <summary>
+        /// Enable quantity-based tiered pricing. When true, use QuantityTiers instead of single-tier settings.
+        /// <br/>Example: "2 for 499 NOK, 3 for 649 NOK, 4 for 799 NOK"
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("useTieredPricing", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool UseTieredPricing { get; set; } = default!;
+
+        /// <summary>
+        /// List of quantity-based tiers. Each tier defines a quantity threshold and its associated pricing.
+        /// <br/>Tiers must have unique quantities per market and should be sorted ascending by quantity.
+        /// <br/>Only used when UseTieredPricing is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantityTiers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPromotionQuantityTier>? QuantityTiers { get; set; } = default!;
+
     }
 
     /// <summary>
-    /// Reward model for multi-buy promotions (i.e., “2 for the price of 1”). Only used if reward type is "MultiBuys".
+    /// Reward model for multi-buy promotions (i.e., "2 for the price of 1"). Only used if reward type is "MultiBuys".
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumPromotionMultiBuyRewardPatch
@@ -92356,10 +95728,28 @@ namespace Geta.Integration.Omnium.Sdk
         public int? NumberOfDiscountedItems { get; set; } = default!;
 
         /// <summary>
-        /// Percent discount on discounted items
+        /// Percentage discount (0-100) when UsePercentage is true. Not used when IsFixedPrice is true (use PromotionAmounts instead).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("percentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal? Percentage { get; set; } = default!;
+
+        /// <summary>
+        /// Amounts for the promotion. Used for giving a fixed amount discount.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("promotionAmounts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPromotionAmount>? PromotionAmounts { get; set; } = default!;
+
+        /// <summary>
+        /// Use percentage for the promotion. Set to true if the promotion should give a percentage discount. False if it should give a fixed amount discount.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("usePercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? UsePercentage { get; set; } = default!;
+
+        /// <summary>
+        /// Set to true for fixed price promotions (e.g., "3 for $99"). When true, use PromotionAmounts to specify the fixed price.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("isFixedPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsFixedPrice { get; set; } = default!;
 
     }
 
@@ -92525,6 +95915,20 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
+        /// <summary>
+        /// Additional properties / meta data
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
+        /// <summary>
+        /// Force update of all product prices for this promotion, regardless of whether changes are detected.
+        /// <br/>This will remove existing promotion prices and recalculate them based on the current promotion configuration.
+        /// <br/>Only applies to promotions where prices are not calculated in cart.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("forcePriceUpdate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ForcePriceUpdate { get; set; } = default!;
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -92587,6 +95991,55 @@ namespace Geta.Integration.Omnium.Sdk
 
         [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Brand { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Represents a quantity-based pricing tier for MultiBuy promotions in the public API.
+    /// <br/>Enables tiered discounts like "2 for 499 NOK, 3 for 649 NOK, 4 for 799 NOK".
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumPromotionQuantityTier
+    {
+        /// <summary>
+        /// The quantity threshold for this tier (e.g., 2, 3, 4).
+        /// <br/>Customers must purchase at least this many items to qualify for this tier's pricing.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Quantity { get; set; } = default!;
+
+        /// <summary>
+        /// Fixed price for this quantity tier. Used when promotion IsFixedPrice is true.
+        /// <br/>Example: For "2 for 499", this would be 499.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("fixedPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal FixedPrice { get; set; } = default!;
+
+        /// <summary>
+        /// Discount percentage for this tier. Used when UsePercentage is true.
+        /// <br/>Value should be between 0-100 (e.g., 20 for 20% off).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("percentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Percentage { get; set; } = default!;
+
+        /// <summary>
+        /// Discount amount per item for this tier.
+        /// <br/>Used when UsePercentage is false and IsFixedPrice is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("discountAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal DiscountAmount { get; set; } = default!;
+
+        /// <summary>
+        /// Market ID for this tier (e.g., "NO", "SE", "DK").
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("marketId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? MarketId { get; set; } = default!;
+
+        /// <summary>
+        /// Currency for this tier (e.g., "NOK", "SEK", "DKK").
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Currency { get; set; } = default!;
 
     }
 
@@ -92716,6 +96169,12 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
+        /// <summary>
+        /// Additional properties / meta data
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumPropertyItem>? Properties { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -92823,6 +96282,14 @@ namespace Geta.Integration.Omnium.Sdk
         public System.Collections.Generic.ICollection<string>? MarketIds { get; set; } = default!;
 
         /// <summary>
+        /// List of promotion types to filter on.
+        /// <br/>Valid types: ShippingPromotion, CategoryOrBrandPromotion, ProductSearchPromotion,
+        /// <br/>PriceListPromotion, MultibuyPromotion, OrderAmountPromotion, KitPromotion
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("promotionTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? PromotionTypes { get; set; } = default!;
+
+        /// <summary>
         /// Page number, fallback to 1
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -92897,6 +96364,19 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("discountedProducts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumPromotionProduct>? DiscountedProducts { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("productSearchRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumProductSearchRequest ProductSearchRequest { get; set; } = default!;
+
+        /// <summary>
+        /// Minimum total quantity of items required in the order (Only applies if PromotionType is OrderAmountPromotion).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("minQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MinQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("conditionOperator", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OmniumConditionOperator ConditionOperator { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -92942,6 +96422,19 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("discountedProducts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumPromotionProduct>? DiscountedProducts { get; set; } = default!;
 
+        [Newtonsoft.Json.JsonProperty("productSearchRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumProductSearchRequest ProductSearchRequest { get; set; } = default!;
+
+        /// <summary>
+        /// Minimum total quantity of items required in the order (Only applies if PromotionType is OrderAmountPromotion).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("minQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MinQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("conditionOperator", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OmniumConditionOperator ConditionOperator { get; set; } = default!;
+
     }
 
     /// <summary>
@@ -92964,7 +96457,9 @@ namespace Geta.Integration.Omnium.Sdk
         public System.Collections.Generic.ICollection<OmniumPromotionSelectedShipmentMethods>? ShippingMethods { get; set; } = default!;
 
         /// <summary>
-        /// Amount conditions for the promotion (Only applies if PromotionType is ShippingPromotion).
+        /// Amount conditions for the promotion (Applies to ShippingPromotion and OrderAmountPromotion).
+        /// <br/>For ShippingPromotion: minimum order amount for free/discounted shipping.
+        /// <br/>For OrderAmountPromotion: minimum order amount for the promotion to apply.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("amountCondition", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OmniumPromotionAmount>? AmountCondition { get; set; } = default!;
@@ -92989,6 +96484,19 @@ namespace Geta.Integration.Omnium.Sdk
 
         [Newtonsoft.Json.JsonProperty("promotionKitReward", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public OmniumPromotionKitReward PromotionKitReward { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("productSearchRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OmniumProductSearchRequest ProductSearchRequest { get; set; } = default!;
+
+        /// <summary>
+        /// Minimum total quantity of items required in the order (Only applies if PromotionType is OrderAmountPromotion).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("minQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MinQuantity { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("conditionOperator", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OmniumConditionOperator ConditionOperator { get; set; } = default!;
 
     }
 
@@ -93414,13 +96922,6 @@ namespace Geta.Integration.Omnium.Sdk
         [Newtonsoft.Json.JsonProperty("ean", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.Obsolete]
         public string? Ean { get; set; } = default!;
-
-        /// <summary>
-        /// GTINs (Global Trade Item Number) of the line item.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("gtins", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.Obsolete]
-        public System.Collections.Generic.ICollection<string>? Gtins { get; set; } = default!;
 
         /// <summary>
         /// GTIN (Global Trade Item Number) of the line item.
@@ -94004,10 +97505,10 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Code { get; set; } = default!;
 
         /// <summary>
-        /// SkuPackageId
+        /// The Barcode of the kolli/package that contains this lineItem. Can be the same over multiple lineitems
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("packageSkuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string? PackageSkuId { get; set; } = default!;
+        [Newtonsoft.Json.JsonProperty("packageBarcode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? PackageBarcode { get; set; } = default!;
 
     }
 
@@ -94207,6 +97708,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("keepExistingOrderLines", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? KeepExistingOrderLines { get; set; } = default!;
+
+        /// <summary>
+        /// Purchase order tags (Used by notification filters, and for grouping / filtering purchase orders)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
 
     }
 
@@ -94651,6 +98158,12 @@ namespace Geta.Integration.Omnium.Sdk
         public string? Key { get; set; } = default!;
 
         /// <summary>
+        /// TranslateKey used for translation in UI (but could of course also be used in your application)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("translateKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? TranslateKey { get; set; } = default!;
+
+        /// <summary>
         /// Products related
         /// </summary>
         [Newtonsoft.Json.JsonProperty("relatedProductItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -94662,10 +98175,16 @@ namespace Geta.Integration.Omnium.Sdk
     public partial class OmniumRelatedProductItem
     {
         /// <summary>
-        /// Product or Sku ID
+        /// Product ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("productId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? ProductId { get; set; } = default!;
+
+        /// <summary>
+        /// Sku ID
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("skuId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? SkuId { get; set; } = default!;
 
         /// <summary>
         /// Product name
@@ -95382,6 +98901,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createdTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? CreatedTo { get; set; } = default!;
+
+        /// <summary>
+        /// Modified from date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modifiedFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ModifiedFrom { get; set; } = default!;
+
+        /// <summary>
+        /// Modified before date
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("modifiedTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ModifiedTo { get; set; } = default!;
 
         /// <summary>
         /// Take
@@ -96110,6 +99641,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("goodsDescription", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? GoodsDescription { get; set; } = default!;
+
+        /// <summary>
+        /// Timeline of all status changes for this shipment, including timestamps  and duration between statuses.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("orderStatusLog", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumOrderStatusLogItem>? OrderStatusLog { get; set; } = default!;
 
         /// <summary>
         /// Completed date
@@ -96991,6 +100528,39 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Label { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Request to split a purchase order line into two lines
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumSplitPurchaseOrderLine
+    {
+        /// <summary>
+        /// The line item ID to split
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? LineItemId { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity to move to the new line. The remaining quantity stays on the original line.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantityToSplit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal QuantityToSplit { get; set; } = default!;
+
+        /// <summary>
+        /// Virtual warehouse allocations to move/split.
+        /// <br/>If not specified, allocations will be split proportionally based on QuantityToSplit.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("virtualWarehouseAllocationsToSplit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumVirtualWarehouseAllocationToSplit>? VirtualWarehouseAllocationsToSplit { get; set; } = default!;
+
+        /// <summary>
+        /// Optional: Specify a custom line item ID for the new line. If not provided, a new ID will be generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("newLineItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? NewLineItemId { get; set; } = default!;
 
     }
 
@@ -98225,6 +101795,12 @@ namespace Geta.Integration.Omnium.Sdk
         public OmniumAddress Address { get; set; } = default!;
 
         /// <summary>
+        /// Additional addresses associated with the supplier (e.g., billing, delivery).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("addresses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumAddress>? Addresses { get; set; } = default!;
+
+        /// <summary>
         /// Supplier e-mail
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -98279,6 +101855,31 @@ namespace Geta.Integration.Omnium.Sdk
         public int? DefaultOrderIntervalDays { get; set; } = default!;
 
         /// <summary>
+        /// Standard payment terms agreed with the supplier, expressed as number of days.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("paymentTerms", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? PaymentTerms { get; set; } = default!;
+
+        /// <summary>
+        /// The Incoterms agreement that applies to purchases from this supplier (e.g., FOB, DDP).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("incoterms", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Incoterms { get; set; } = default!;
+
+        /// <summary>
+        /// The supplier’s standard freight provider (e.g., PostNord, DHL, Loomis).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shippingProvider", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ShippingProvider { get; set; } = default!;
+
+        /// <summary>
+        /// Default shipment costs applied when ordering from this supplier. 
+        /// <br/>Can represent either a fixed cost or a baseline for freight calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("shipmentCost", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal ShipmentCost { get; set; } = default!;
+
+        /// <summary>
         /// Available store IDs
         /// </summary>
         [Newtonsoft.Json.JsonProperty("storeIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -98307,6 +101908,18 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("previousVersionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? PreviousVersionId { get; set; } = default!;
+
+        /// <summary>
+        /// Tags used for categorization or search purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Tags { get; set; } = default!;
+
+        /// <summary>
+        /// List of store group IDs linked to this supplier.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("storeGroupIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? StoreGroupIds { get; set; } = default!;
 
     }
 
@@ -98850,6 +102463,12 @@ namespace Geta.Integration.Omnium.Sdk
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// List of external user IDs. Could be ids from other SCIM providers
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OmniumExternalId>? ExternalIds { get; set; } = default!;
 
         /// <summary>
         /// Azure B2C Id for user
@@ -99600,6 +103219,33 @@ namespace Geta.Integration.Omnium.Sdk
 
     }
 
+    /// <summary>
+    /// Virtual Warehouse Allocation identifier for split operations.
+    /// <br/>Use either Id or WarehouseCode to identify which allocation to split.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OmniumVirtualWarehouseAllocationToSplit
+    {
+        /// <summary>
+        /// Unique Id of the allocation to split. If specified, takes priority over WarehouseCode.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// Quantity to move from this allocation to the new line.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Quantity { get; set; } = default!;
+
+        /// <summary>
+        /// Warehouse code of the allocation to split. Used when Id is not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("warehouseCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? WarehouseCode { get; set; } = default!;
+
+    }
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OmniumVisitingaddress
     {
@@ -100107,7 +103753,7 @@ namespace Geta.Integration.Omnium.Sdk
     }
 
     /// <summary>
-    /// Defines the type of promotion [ShippingPromotion = 0, CategoryOrBrandPromotion = 1, MultiBuyPromotion = 2, OrderAmountPromotion = 3]
+    /// Defines the type of promotion [ShippingPromotion = 0, CategoryOrBrandPromotion = 1, MultiBuyPromotion = 2, OrderAmountPromotion = 3, KitPromotion = 4, ProductSearchPromotion = 5]
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public enum PromotionType
@@ -100124,6 +103770,487 @@ namespace Geta.Integration.Omnium.Sdk
 
         [System.Runtime.Serialization.EnumMember(Value = @"OrderAmountPromotion")]
         OrderAmountPromotion = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"KitPromotion")]
+        KitPromotion = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ProductSearchPromotion")]
+        ProductSearchPromotion = 5,
+
+    }
+
+    /// <summary>
+    /// Email addresses for the user
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimEmail
+    {
+        /// <summary>
+        /// Email address value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Value { get; set; } = default!;
+
+        /// <summary>
+        /// A label indicating the attribute's function (e.g., 'work' or 'home')
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Type { get; set; } = default!;
+
+        /// <summary>
+        /// A Boolean value indicating the 'primary' or preferred attribute value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("primary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Primary { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM Error response
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimError
+    {
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+        /// <summary>
+        /// A detailed human-readable message
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Detail { get; set; } = default!;
+
+        /// <summary>
+        /// The HTTP status code
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Status { get; set; } = default!;
+
+        /// <summary>
+        /// A SCIM detail error keyword
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("scimType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ScimType { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM Group resource based on urn:ietf:params:scim:schemas:core:2.0:Group
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimGroup
+    {
+        /// <summary>
+        /// A human-readable name for the Group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DisplayName { get; set; } = default!;
+
+        /// <summary>
+        /// A list of members of the Group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("members", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimGroupMember>? Members { get; set; } = default!;
+
+        /// <summary>
+        /// Unique identifier for the SCIM resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// An identifier for the resource as defined by the provisioning client
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ExternalId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ScimMeta Meta { get; set; } = default!;
+
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// A member of a SCIM group
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimGroupMember
+    {
+        /// <summary>
+        /// The identifier of the member of this Group (omnium user id)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Value { get; set; } = default!;
+
+        /// <summary>
+        /// The URI corresponding to a SCIM resource that is a member of this Group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Ref { get; set; } = default!;
+
+        /// <summary>
+        /// A human-readable name for the member
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("display", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Display { get; set; } = default!;
+
+        /// <summary>
+        /// A label indicating the type of resource (e.g., 'User' or 'Group')
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Type { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM List Response for paginated queries
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimGroupScimListResponse
+    {
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+        /// <summary>
+        /// The total number of results returned by the list or query operation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalResults", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int TotalResults { get; set; } = default!;
+
+        /// <summary>
+        /// A multi-valued list of complex objects containing the requested resources
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("resources", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimGroup>? Resources { get; set; } = default!;
+
+        /// <summary>
+        /// The 1-based index of the first result in the current set of list results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("startIndex", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StartIndex { get; set; } = default!;
+
+        /// <summary>
+        /// The number of resources returned in a list response page
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("itemsPerPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ItemsPerPage { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Metadata about a SCIM resource
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimMeta
+    {
+        /// <summary>
+        /// The name of the resource type of the resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("resourceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ResourceType { get; set; } = default!;
+
+        /// <summary>
+        /// The DateTime that the resource was added to the service provider
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("created", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Created { get; set; } = default!;
+
+        /// <summary>
+        /// The most recent DateTime that the details of this resource were updated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lastModified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? LastModified { get; set; } = default!;
+
+        /// <summary>
+        /// The URI of the resource being returned
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("location", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Location { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// A single SCIM patch operation
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimPatchOperation
+    {
+        /// <summary>
+        /// The operation to perform (add, remove, replace)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("op", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Op { get; set; } = default!;
+
+        /// <summary>
+        /// The attribute path describing the target of the operation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Path { get; set; } = default!;
+
+        /// <summary>
+        /// The value to be used in the operation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object? Value { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM PATCH request based on urn:ietf:params:scim:api:messages:2.0:PatchOp
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimPatchRequest
+    {
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+        /// <summary>
+        /// A list of patch operations to be performed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("operations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimPatchOperation>? Operations { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Phone number for the user
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimPhoneNumber
+    {
+        /// <summary>
+        /// Phone number value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Value { get; set; } = default!;
+
+        /// <summary>
+        /// A label indicating the attribute's function (e.g., 'work', 'home', 'mobile')
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Type { get; set; } = default!;
+
+        /// <summary>
+        /// A Boolean value indicating the 'primary' or preferred attribute value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("primary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Primary { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Role for the user
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimRole
+    {
+        /// <summary>
+        /// The value of the role (omnium role id)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Value { get; set; } = default!;
+
+        /// <summary>
+        /// A human-readable name for the role
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("display", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Display { get; set; } = default!;
+
+        /// <summary>
+        /// A label indicating the attribute's function
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Type { get; set; } = default!;
+
+        /// <summary>
+        /// A Boolean value indicating the 'primary' or preferred attribute value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("primary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Primary { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM User resource based on urn:ietf:params:scim:schemas:core:2.0:User
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimUser
+    {
+        /// <summary>
+        /// Unique identifier for the User, typically used by the user to directly authenticate
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? UserName { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ScimUserName Name { get; set; } = default!;
+
+        /// <summary>
+        /// The name of the User, suitable for display to end-users
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DisplayName { get; set; } = default!;
+
+        /// <summary>
+        /// Email addresses for the user
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("emails", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimEmail>? Emails { get; set; } = default!;
+
+        /// <summary>
+        /// Phone numbers for the User
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("phoneNumbers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimPhoneNumber>? PhoneNumbers { get; set; } = default!;
+
+        /// <summary>
+        /// A Boolean value indicating the User's administrative status
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("active", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Active { get; set; } = default!;
+
+        /// <summary>
+        /// A list of groups to which the user belongs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("groups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimUserGroup>? Groups { get; set; } = default!;
+
+        /// <summary>
+        /// A list of roles for the User
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("roles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimRole>? Roles { get; set; } = default!;
+
+        /// <summary>
+        /// Unique identifier for the SCIM resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Id { get; set; } = default!;
+
+        /// <summary>
+        /// An identifier for the resource as defined by the provisioning client
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("externalId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? ExternalId { get; set; } = default!;
+
+        [Newtonsoft.Json.JsonProperty("meta", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ScimMeta Meta { get; set; } = default!;
+
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// Group membership for the user
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimUserGroup
+    {
+        /// <summary>
+        /// The identifier of the User's group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Value { get; set; } = default!;
+
+        /// <summary>
+        /// The URI of the corresponding 'Group' resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("ref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Ref { get; set; } = default!;
+
+        /// <summary>
+        /// A human-readable name for the Group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("display", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Display { get; set; } = default!;
+
+        /// <summary>
+        /// A label indicating the attribute's function (e.g., 'direct' or 'indirect')
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Type { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// The components of the user's real name
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimUserName
+    {
+        /// <summary>
+        /// The family name of the User, or last name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("familyName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? FamilyName { get; set; } = default!;
+
+        /// <summary>
+        /// The given name of the User, or first name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("givenName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? GivenName { get; set; } = default!;
+
+        /// <summary>
+        /// The full name, including all middle names, titles, and suffixes
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("formatted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Formatted { get; set; } = default!;
+
+    }
+
+    /// <summary>
+    /// SCIM List Response for paginated queries
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ScimUserScimListResponse
+    {
+        /// <summary>
+        /// The URIs that are used to indicate the namespaces of the SCIM schemas
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string>? Schemas { get; set; } = default!;
+
+        /// <summary>
+        /// The total number of results returned by the list or query operation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("totalResults", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int TotalResults { get; set; } = default!;
+
+        /// <summary>
+        /// A multi-valued list of complex objects containing the requested resources
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("resources", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ScimUser>? Resources { get; set; } = default!;
+
+        /// <summary>
+        /// The 1-based index of the first result in the current set of list results
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("startIndex", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StartIndex { get; set; } = default!;
+
+        /// <summary>
+        /// The number of resources returned in a list response page
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("itemsPerPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ItemsPerPage { get; set; } = default!;
 
     }
 
